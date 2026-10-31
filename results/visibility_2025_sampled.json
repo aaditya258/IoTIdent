@@ -1,0 +1,688 @@
+{
+ "DATA2025v2": {
+  "dataset": "DATA2025v2",
+  "days_read": 11,
+  "flows": 930163,
+  "tcp_443_flows": 137997,
+  "udp_443_flows": 1182,
+  "client_hellos_found": 32924,
+  "client_hellos_complete": 32557,
+  "truncation_rate": 0.0111,
+  "parse_errors": 0,
+  "tls13_offered_of_complete": 19236,
+  "tls13_share_of_complete": 0.5908,
+  "tls13_offered_any_incl_truncated": 19417,
+  "legacy_version_counts": {
+   "0303": 32915,
+   "0301": 5,
+   "0302": 4
+  },
+  "supported_versions_offered": {
+   "0304": 19236,
+   "0303": 17956,
+   "0302": 1982,
+   "0301": 1965
+  },
+  "extension_rates_of_complete": {
+   "server_name (SNI)": 0.9274,
+   "supported_groups": 0.9411,
+   "signature_algorithms": 0.943,
+   "ALPN": 0.3828,
+   "session_ticket": 0.7109,
+   "supported_versions": 0.5908,
+   "key_share": 0.5908,
+   "pre_shared_key": 0.0559,
+   "encrypted_client_hello": 0.0
+  },
+  "extension_presence_counts_all_handshakes": {
+   "server_name (SNI)": 30382,
+   "supported_groups": 30823,
+   "signature_algorithms": 30868,
+   "ALPN": 12661,
+   "session_ticket": 23329,
+   "supported_versions": 19417,
+   "key_share": 19236,
+   "pre_shared_key": 1820,
+   "encrypted_client_hello": 176
+  },
+  "ech_extension_present_count": 176,
+  "quic_versions": {
+   "QUIC v1 (RFC 9000)": 194,
+   "IETF draft-29": 988
+  },
+  "udp_443_without_long_header": 0,
+  "device_windows_30min": 10188,
+  "handshake_window_availability": 0.3234,
+  "quic_window_availability": 0.0472,
+  "devices": 33,
+  "devices_with_any_client_hello": 27,
+  "devices_offering_tls13": 8,
+  "devices_with_ech_extension": 1,
+  "per_month": {
+   "25-02": {
+    "ch": 1981,
+    "ch_complete": 1981,
+    "tls13": 898,
+    "ech": 0,
+    "quic": 56
+   },
+   "25-03": {
+    "ch": 1016,
+    "ch_complete": 1016,
+    "tls13": 209,
+    "ech": 0,
+    "quic": 0
+   },
+   "25-04": {
+    "ch": 3315,
+    "ch_complete": 3222,
+    "tls13": 1045,
+    "ech": 38,
+    "quic": 203
+   },
+   "25-05": {
+    "ch": 4914,
+    "ch_complete": 4823,
+    "tls13": 2565,
+    "ech": 48,
+    "quic": 218
+   },
+   "25-06": {
+    "ch": 2609,
+    "ch_complete": 2543,
+    "tls13": 1457,
+    "ech": 34,
+    "quic": 89
+   },
+   "25-07": {
+    "ch": 3328,
+    "ch_complete": 3306,
+    "tls13": 2280,
+    "ech": 6,
+    "quic": 122
+   },
+   "25-08": {
+    "ch": 4127,
+    "ch_complete": 4106,
+    "tls13": 2342,
+    "ech": 13,
+    "quic": 119
+   },
+   "25-09": {
+    "ch": 3432,
+    "ch_complete": 3408,
+    "tls13": 2297,
+    "ech": 12,
+    "quic": 122
+   },
+   "25-10": {
+    "ch": 3299,
+    "ch_complete": 3264,
+    "tls13": 2237,
+    "ech": 17,
+    "quic": 125
+   },
+   "25-11": {
+    "ch": 4903,
+    "ch_complete": 4888,
+    "tls13": 3906,
+    "ech": 8,
+    "quic": 128
+   }
+  },
+  "per_device": {
+   "dc:e5:5b:7e:cb:11": {
+    "flows": 301994,
+    "ch": 15986,
+    "ch_complete": 15619,
+    "tls13": 15619,
+    "ech": 176
+   },
+   "90:23:5b:18:45:19": {
+    "flows": 77712,
+    "ch": 8779,
+    "ch_complete": 8779,
+    "tls13": 1621,
+    "ech": 0
+   },
+   "98:03:cf:7b:c1:6e": {
+    "flows": 50189,
+    "ch": 4177,
+    "ch_complete": 4177,
+    "tls13": 0,
+    "ech": 0
+   },
+   "04:13:7a:83:fb:a1": {
+    "flows": 1559,
+    "ch": 776,
+    "ch_complete": 776,
+    "tls13": 776,
+    "ech": 0
+   },
+   "7c:f6:66:e3:ac:64": {
+    "flows": 27987,
+    "ch": 586,
+    "ch_complete": 586,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ed:cf:7b:01:52": {
+    "flows": 10369,
+    "ch": 550,
+    "ch_complete": 550,
+    "tls13": 550,
+    "ech": 0
+   },
+   "d8:d6:68:dd:8b:eb": {
+    "flows": 23387,
+    "ch": 515,
+    "ch_complete": 515,
+    "tls13": 0,
+    "ech": 0
+   },
+   "68:ec:8a:08:65:49": {
+    "flows": 32628,
+    "ch": 424,
+    "ch_complete": 424,
+    "tls13": 424,
+    "ech": 0
+   },
+   "a0:92:08:d9:2e:ee": {
+    "flows": 14868,
+    "ch": 311,
+    "ch_complete": 311,
+    "tls13": 0,
+    "ech": 0
+   },
+   "a4:97:5c:b8:e7:58": {
+    "flows": 546,
+    "ch": 190,
+    "ch_complete": 190,
+    "tls13": 190,
+    "ech": 0
+   },
+   "b8:06:0d:8f:75:dd": {
+    "flows": 5817,
+    "ch": 139,
+    "ch_complete": 139,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b8:06:0d:8f:63:6d": {
+    "flows": 5826,
+    "ch": 136,
+    "ch_complete": 136,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b8:06:0d:8f:64:7e": {
+    "flows": 2909,
+    "ch": 67,
+    "ch_complete": 67,
+    "tls13": 0,
+    "ech": 0
+   },
+   "a4:97:5c:b8:e7:4f": {
+    "flows": 54640,
+    "ch": 54,
+    "ch_complete": 54,
+    "tls13": 54,
+    "ech": 0
+   },
+   "e8:68:e7:70:af:da": {
+    "flows": 22637,
+    "ch": 40,
+    "ch_complete": 40,
+    "tls13": 0,
+    "ech": 0
+   },
+   "f0:09:0d:c2:62:cb": {
+    "flows": 19669,
+    "ch": 33,
+    "ch_complete": 33,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b0:c5:54:54:ea:83": {
+    "flows": 26749,
+    "ch": 28,
+    "ch_complete": 28,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:68:e7:70:b3:9d": {
+    "flows": 19300,
+    "ch": 24,
+    "ch_complete": 24,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:68:e7:70:49:9f": {
+    "flows": 19648,
+    "ch": 21,
+    "ch_complete": 21,
+    "tls13": 0,
+    "ech": 0
+   },
+   "74:fe:ce:1c:1a:71": {
+    "flows": 3531,
+    "ch": 19,
+    "ch_complete": 19,
+    "tls13": 0,
+    "ech": 0
+   },
+   "74:fe:ce:1c:21:8d": {
+    "flows": 3531,
+    "ch": 18,
+    "ch_complete": 18,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e4:9b": {
+    "flows": 22476,
+    "ch": 11,
+    "ch_complete": 11,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e3:76": {
+    "flows": 27953,
+    "ch": 11,
+    "ch_complete": 11,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:e9:4a:3a": {
+    "flows": 24824,
+    "ch": 9,
+    "ch_complete": 9,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:e9:4a:16": {
+    "flows": 24835,
+    "ch": 9,
+    "ch_complete": 9,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b8:06:0d:76:90:90": {
+    "flows": 12,
+    "ch": 7,
+    "ch_complete": 7,
+    "tls13": 0,
+    "ech": 0
+   },
+   "68:3a:48:4c:bc:1c": {
+    "flows": 27,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 2,
+    "ech": 0
+   },
+   "6c:29:90:ab:15:89": {
+    "flows": 9219,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "6c:29:90:ab:bc:f8": {
+    "flows": 10113,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:56:d8:57": {
+    "flows": 29623,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "54:ef:44:6c:4a:16": {
+    "flows": 4015,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:56:ce:bf": {
+    "flows": 25786,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:52:da:80": {
+    "flows": 25784,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   }
+  }
+ },
+ "DATA2025v1": {
+  "dataset": "DATA2025v1",
+  "days_read": 4,
+  "flows": 883108,
+  "tcp_443_flows": 211374,
+  "udp_443_flows": 4375,
+  "client_hellos_found": 29594,
+  "client_hellos_complete": 29040,
+  "truncation_rate": 0.0187,
+  "parse_errors": 0,
+  "tls13_offered_of_complete": 22035,
+  "tls13_share_of_complete": 0.7588,
+  "tls13_offered_any_incl_truncated": 22220,
+  "legacy_version_counts": {
+   "0303": 29594
+  },
+  "supported_versions_offered": {
+   "0304": 22035,
+   "0303": 21668,
+   "0302": 9831,
+   "0301": 9831
+  },
+  "extension_rates_of_complete": {
+   "server_name (SNI)": 0.9927,
+   "supported_groups": 0.9922,
+   "signature_algorithms": 0.9936,
+   "ALPN": 0.5493,
+   "session_ticket": 0.529,
+   "supported_versions": 0.7588,
+   "key_share": 0.7588,
+   "pre_shared_key": 0.0563,
+   "encrypted_client_hello": 0.0004
+  },
+  "extension_presence_counts_all_handshakes": {
+   "server_name (SNI)": 29283,
+   "supported_groups": 29262,
+   "signature_algorithms": 29039,
+   "ALPN": 16398,
+   "session_ticket": 15510,
+   "supported_versions": 22220,
+   "key_share": 22113,
+   "pre_shared_key": 1634,
+   "encrypted_client_hello": 195
+  },
+  "ech_extension_present_count": 195,
+  "quic_versions": {
+   "QUIC v1 (RFC 9000)": 1515,
+   "IETF draft-29": 2854
+  },
+  "udp_443_without_long_header": 6,
+  "device_windows_30min": 4826,
+  "handshake_window_availability": 0.426,
+  "quic_window_availability": 0.1107,
+  "devices": 33,
+  "devices_with_any_client_hello": 30,
+  "devices_offering_tls13": 15,
+  "devices_with_ech_extension": 3,
+  "per_month": {
+   "25-02": {
+    "ch": 8162,
+    "ch_complete": 8050,
+    "tls13": 6243,
+    "ech": 55,
+    "quic": 1301
+   },
+   "25-03": {
+    "ch": 3887,
+    "ch_complete": 3827,
+    "tls13": 2964,
+    "ech": 22,
+    "quic": 556
+   },
+   "25-04": {
+    "ch": 9921,
+    "ch_complete": 9737,
+    "tls13": 7062,
+    "ech": 54,
+    "quic": 1224
+   },
+   "25-05": {
+    "ch": 7624,
+    "ch_complete": 7426,
+    "tls13": 5766,
+    "ech": 64,
+    "quic": 1288
+   }
+  },
+  "per_device": {
+   "dc:e5:5b:b6:23:0a": {
+    "flows": 270444,
+    "ch": 11532,
+    "ch_complete": 11351,
+    "tls13": 11351,
+    "ech": 96
+   },
+   "68:3a:48:4c:bf:68": {
+    "flows": 39499,
+    "ch": 5299,
+    "ch_complete": 5299,
+    "tls13": 5295,
+    "ech": 0
+   },
+   "70:70:aa:e5:d1:c9": {
+    "flows": 52268,
+    "ch": 2740,
+    "ch_complete": 2740,
+    "tls13": 459,
+    "ech": 0
+   },
+   "20:d7:78:a7:16:b4": {
+    "flows": 14751,
+    "ch": 2456,
+    "ch_complete": 2456,
+    "tls13": 0,
+    "ech": 0
+   },
+   "dc:a0:d0:2e:9e:68": {
+    "flows": 61949,
+    "ch": 1681,
+    "ch_complete": 1681,
+    "tls13": 1368,
+    "ech": 0
+   },
+   "98:03:cf:7b:52:ac": {
+    "flows": 28758,
+    "ch": 1441,
+    "ch_complete": 1441,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b2:84:b3:e5:6f:15": {
+    "flows": 10435,
+    "ch": 987,
+    "ch_complete": 986,
+    "tls13": 981,
+    "ech": 0
+   },
+   "40:ed:cf:6e:6f:12": {
+    "flows": 57552,
+    "ch": 971,
+    "ch_complete": 971,
+    "tls13": 971,
+    "ech": 0
+   },
+   "dc:4a:3e:93:20:59": {
+    "flows": 23516,
+    "ch": 565,
+    "ch_complete": 223,
+    "tls13": 84,
+    "ech": 89
+   },
+   "48:e1:5c:94:d6:74": {
+    "flows": 21198,
+    "ch": 552,
+    "ch_complete": 552,
+    "tls13": 552,
+    "ech": 0
+   },
+   "d4:e2:2f:b4:7c:23": {
+    "flows": 13408,
+    "ch": 427,
+    "ch_complete": 427,
+    "tls13": 427,
+    "ech": 0
+   },
+   "44:db:d2:40:1a:b3": {
+    "flows": 10454,
+    "ch": 263,
+    "ch_complete": 263,
+    "tls13": 260,
+    "ech": 0
+   },
+   "a0:92:08:d9:4c:94": {
+    "flows": 13677,
+    "ch": 185,
+    "ch_complete": 185,
+    "tls13": 0,
+    "ech": 0
+   },
+   "68:ec:8a:08:5d:51": {
+    "flows": 28367,
+    "ch": 146,
+    "ch_complete": 146,
+    "tls13": 146,
+    "ech": 0
+   },
+   "ec:b5:fa:ae:76:64": {
+    "flows": 25542,
+    "ch": 93,
+    "ch_complete": 93,
+    "tls13": 6,
+    "ech": 0
+   },
+   "a4:97:5c:b3:dd:26": {
+    "flows": 467,
+    "ch": 84,
+    "ch_complete": 84,
+    "tls13": 84,
+    "ech": 0
+   },
+   "c2:fe:63:d2:38:50": {
+    "flows": 2004,
+    "ch": 76,
+    "ch_complete": 46,
+    "tls13": 30,
+    "ech": 10
+   },
+   "a4:97:5c:b3:de:35": {
+    "flows": 41078,
+    "ch": 21,
+    "ch_complete": 21,
+    "tls13": 21,
+    "ech": 0
+   },
+   "e4:fa:c4:c3:d8:0d": {
+    "flows": 13437,
+    "ch": 16,
+    "ch_complete": 16,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ae:30:31:92:f3": {
+    "flows": 3112,
+    "ch": 8,
+    "ch_complete": 8,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ae:30:31:90:9a": {
+    "flows": 3296,
+    "ch": 8,
+    "ch_complete": 8,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b0:c5:54:54:ea:d4": {
+    "flows": 11190,
+    "ch": 8,
+    "ch_complete": 8,
+    "tls13": 0,
+    "ech": 0
+   },
+   "5c:62:8b:1d:08:a2": {
+    "flows": 3757,
+    "ch": 6,
+    "ch_complete": 6,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e5:ff": {
+    "flows": 20630,
+    "ch": 5,
+    "ch_complete": 5,
+    "tls13": 0,
+    "ech": 0
+   },
+   "54:f2:9f:d9:3c:61": {
+    "flows": 9766,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:9b:98": {
+    "flows": 11952,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:95:6f": {
+    "flows": 11897,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:95:d5": {
+    "flows": 12842,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:9b:4f": {
+    "flows": 11921,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e6:62": {
+    "flows": 20555,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 0,
+    "ech": 0
+   },
+   "a0:ff:0c:86:27:e6": {
+    "flows": 26836,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "00:16:46:db:77:00": {
+    "flows": 20,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:a0:ed:43:3b:a0": {
+    "flows": 6530,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "inventory": [
+  {
+   "dataset": "DATA2025v1",
+   "n_files": 85,
+   "first_day": "25-02-11",
+   "last_day": "25-05-10",
+   "total_gb": 14.9,
+   "median_mb": 193.2,
+   "min_mb": 84.3,
+   "max_mb": 240.9,
+   "truncated_days": [],
+   "n_after_size_filter": 85
+  },
+  {
+   "dataset": "DATA2025v2",
+   "n_files": 240,
+   "first_day": "25-02-07",
+   "last_day": "25-11-17",
+   "total_gb": 12.35,
+   "median_mb": 62.1,
+   "min_mb": 2.5,
+   "max_mb": 92.1,
+   "truncated_days": [
+    [
+     "25-10-13",
+     4.3
+    ],
+    [
+     "25-10-14",
+     2.5
+    ]
+   ],
+   "n_after_size_filter": 238
+  }
+ ],
+ "timings": {
+  "DATA2025v1": {
+   "day": "25-02-18",
+   "mb": 193.2,
+   "seconds": 192.5,
+   "windows": 1260,
+   "rss_delta_mb": 784.7
+  },
+  "DATA2025v2": {
+   "day": "25-09-30",
+   "mb": 62.2,
+   "seconds": 44.3,
+   "windows": 752,
+   "rss_delta_mb": -186.1
+  }
+ },
+ "estimated_build_hours_every1": 7.47,
+ "estimated_windows_every1": 286076,
+ "estimated_bundle_gb": 0.74,
+ "machine_ram_gb": 7.7,
+ "recommended_every": 1,
+ "recommended_cap_per_class": 2222,
+ "min_day_size_frac": 0.25,
+ "n_devices_in_map": 114
+}

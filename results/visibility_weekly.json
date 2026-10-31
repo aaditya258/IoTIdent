@@ -1,0 +1,710 @@
+{
+ "DATA2025v1": {
+  "dataset": "DATA2025v1",
+  "days_read": 13,
+  "flows": 3355281,
+  "tcp_443_flows": 785022,
+  "udp_443_flows": 26074,
+  "client_hellos_found": 107621,
+  "client_hellos_complete": 104869,
+  "truncation_rate": 0.0256,
+  "parse_errors": 2,
+  "tls13_offered_of_complete": 80054,
+  "tls13_share_of_complete": 0.7634,
+  "tls13_offered_any_incl_truncated": 80717,
+  "legacy_version_counts": {
+   "0303": 107620,
+   "0301": 1
+  },
+  "supported_versions_offered": {
+   "0304": 80054,
+   "0303": 78704,
+   "0302": 35906,
+   "0301": 35906
+  },
+  "extension_rates_of_complete": {
+   "server_name (SNI)": 0.994,
+   "supported_groups": 0.9937,
+   "signature_algorithms": 0.9949,
+   "ALPN": 0.5458,
+   "session_ticket": 0.538,
+   "supported_versions": 0.7634,
+   "key_share": 0.7634,
+   "pre_shared_key": 0.0656,
+   "encrypted_client_hello": 0.0002
+  },
+  "extension_presence_counts_all_handshakes": {
+   "server_name (SNI)": 106528,
+   "supported_groups": 106521,
+   "signature_algorithms": 105018,
+   "ALPN": 59544,
+   "session_ticket": 57188,
+   "supported_versions": 80717,
+   "key_share": 80294,
+   "pre_shared_key": 6884,
+   "encrypted_client_hello": 668
+  },
+  "ech_extension_present_count": 668,
+  "quic_versions": {
+   "QUIC v1 (RFC 9000)": 11817,
+   "IETF draft-29": 14240
+  },
+  "udp_443_without_long_header": 17,
+  "device_windows_30min": 16869,
+  "handshake_window_availability": 0.4209,
+  "quic_window_availability": 0.1143,
+  "devices": 35,
+  "devices_with_any_client_hello": 32,
+  "devices_offering_tls13": 17,
+  "devices_with_ech_extension": 3,
+  "per_month": {
+   "25-02": {
+    "ch": 23216,
+    "ch_complete": 22067,
+    "tls13": 17719,
+    "ech": 168,
+    "quic": 3843
+   },
+   "25-03": {
+    "ch": 27271,
+    "ch_complete": 26992,
+    "tls13": 21158,
+    "ech": 91,
+    "quic": 3534
+   },
+   "25-04": {
+    "ch": 39705,
+    "ch_complete": 38817,
+    "tls13": 28273,
+    "ech": 247,
+    "quic": 11738
+   },
+   "25-05": {
+    "ch": 17429,
+    "ch_complete": 16993,
+    "tls13": 12904,
+    "ech": 162,
+    "quic": 6942
+   }
+  },
+  "per_device": {
+   "dc:e5:5b:b6:23:0a": {
+    "flows": 993228,
+    "ch": 41940,
+    "ch_complete": 41191,
+    "tls13": 41190,
+    "ech": 349
+   },
+   "68:3a:48:4c:bf:68": {
+    "flows": 141389,
+    "ch": 18921,
+    "ch_complete": 18921,
+    "tls13": 18910,
+    "ech": 0
+   },
+   "70:70:aa:e5:d1:c9": {
+    "flows": 186165,
+    "ch": 9951,
+    "ch_complete": 9949,
+    "tls13": 1730,
+    "ech": 0
+   },
+   "20:d7:78:a7:16:b4": {
+    "flows": 56095,
+    "ch": 7617,
+    "ch_complete": 7617,
+    "tls13": 0,
+    "ech": 0
+   },
+   "98:03:cf:7b:52:ac": {
+    "flows": 118011,
+    "ch": 6496,
+    "ch_complete": 6496,
+    "tls13": 0,
+    "ech": 0
+   },
+   "dc:a0:d0:2e:9e:68": {
+    "flows": 192493,
+    "ch": 5215,
+    "ch_complete": 5212,
+    "tls13": 4430,
+    "ech": 0
+   },
+   "40:ed:cf:6e:6f:12": {
+    "flows": 237539,
+    "ch": 3589,
+    "ch_complete": 3589,
+    "tls13": 3589,
+    "ech": 0
+   },
+   "dc:4a:3e:93:20:59": {
+    "flows": 146833,
+    "ch": 2484,
+    "ch_complete": 639,
+    "tls13": 146,
+    "ech": 250
+   },
+   "48:e1:5c:94:d6:74": {
+    "flows": 70957,
+    "ch": 2089,
+    "ch_complete": 2089,
+    "tls13": 2089,
+    "ech": 0
+   },
+   "b2:84:b3:e5:6f:15": {
+    "flows": 14855,
+    "ch": 1658,
+    "ch_complete": 1656,
+    "tls13": 1651,
+    "ech": 0
+   },
+   "bc:bb:58:03:12:3e": {
+    "flows": 20382,
+    "ch": 1628,
+    "ch_complete": 1625,
+    "tls13": 1624,
+    "ech": 0
+   },
+   "d4:e2:2f:b4:7c:23": {
+    "flows": 40869,
+    "ch": 1250,
+    "ch_complete": 1250,
+    "tls13": 1250,
+    "ech": 0
+   },
+   "f4:f5:d8:8f:0a:3c": {
+    "flows": 30869,
+    "ch": 1181,
+    "ch_complete": 1181,
+    "tls13": 1181,
+    "ech": 0
+   },
+   "44:db:d2:40:1a:b3": {
+    "flows": 46728,
+    "ch": 1098,
+    "ch_complete": 1098,
+    "tls13": 1090,
+    "ech": 0
+   },
+   "a0:92:08:d9:4c:94": {
+    "flows": 40794,
+    "ch": 530,
+    "ch_complete": 530,
+    "tls13": 0,
+    "ech": 0
+   },
+   "68:ec:8a:08:5d:51": {
+    "flows": 102355,
+    "ch": 522,
+    "ch_complete": 522,
+    "tls13": 522,
+    "ech": 0
+   },
+   "c2:fe:63:d2:38:50": {
+    "flows": 7250,
+    "ch": 463,
+    "ch_complete": 315,
+    "tls13": 262,
+    "ech": 69
+   },
+   "ec:b5:fa:ae:76:64": {
+    "flows": 82496,
+    "ch": 330,
+    "ch_complete": 330,
+    "tls13": 15,
+    "ech": 0
+   },
+   "a4:97:5c:b3:dd:26": {
+    "flows": 4020,
+    "ch": 300,
+    "ch_complete": 300,
+    "tls13": 300,
+    "ech": 0
+   },
+   "a4:97:5c:b3:de:35": {
+    "flows": 148561,
+    "ch": 75,
+    "ch_complete": 75,
+    "tls13": 75,
+    "ech": 0
+   },
+   "e4:fa:c4:c3:d8:0d": {
+    "flows": 44796,
+    "ch": 54,
+    "ch_complete": 54,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ae:30:31:92:f3": {
+    "flows": 13207,
+    "ch": 42,
+    "ch_complete": 42,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ae:30:31:90:9a": {
+    "flows": 12883,
+    "ch": 33,
+    "ch_complete": 33,
+    "tls13": 0,
+    "ech": 0
+   },
+   "54:f2:9f:d9:3c:61": {
+    "flows": 36011,
+    "ch": 28,
+    "ch_complete": 28,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b0:c5:54:54:ea:d4": {
+    "flows": 42040,
+    "ch": 28,
+    "ch_complete": 28,
+    "tls13": 0,
+    "ech": 0
+   },
+   "5c:62:8b:1d:08:a2": {
+    "flows": 15610,
+    "ch": 27,
+    "ch_complete": 27,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:95:d5": {
+    "flows": 51400,
+    "ch": 13,
+    "ch_complete": 13,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:9b:4f": {
+    "flows": 50397,
+    "ch": 13,
+    "ch_complete": 13,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:9b:98": {
+    "flows": 46628,
+    "ch": 12,
+    "ch_complete": 12,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:dd:95:6f": {
+    "flows": 46615,
+    "ch": 12,
+    "ch_complete": 12,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e6:62": {
+    "flows": 76154,
+    "ch": 11,
+    "ch_complete": 11,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e5:ff": {
+    "flows": 109978,
+    "ch": 11,
+    "ch_complete": 11,
+    "tls13": 0,
+    "ech": 0
+   },
+   "a0:ff:0c:86:27:e6": {
+    "flows": 100293,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:a0:ed:43:3b:a0": {
+    "flows": 27284,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "00:16:46:db:77:00": {
+    "flows": 96,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   }
+  }
+ },
+ "DATA2025v2": {
+  "dataset": "DATA2025v2",
+  "days_read": 35,
+  "flows": 3289497,
+  "tcp_443_flows": 448660,
+  "udp_443_flows": 6919,
+  "client_hellos_found": 118784,
+  "client_hellos_complete": 117380,
+  "truncation_rate": 0.0118,
+  "parse_errors": 0,
+  "tls13_offered_of_complete": 72615,
+  "tls13_share_of_complete": 0.6186,
+  "tls13_offered_any_incl_truncated": 73324,
+  "legacy_version_counts": {
+   "0303": 118773,
+   "0301": 6,
+   "0302": 5
+  },
+  "supported_versions_offered": {
+   "0304": 72615,
+   "0303": 68881,
+   "0302": 4644,
+   "0301": 4627
+  },
+  "extension_rates_of_complete": {
+   "server_name (SNI)": 0.9312,
+   "supported_groups": 0.9445,
+   "signature_algorithms": 0.9464,
+   "ALPN": 0.3341,
+   "session_ticket": 0.7439,
+   "supported_versions": 0.6186,
+   "key_share": 0.6186,
+   "pre_shared_key": 0.0549,
+   "encrypted_client_hello": 0.0
+  },
+  "extension_presence_counts_all_handshakes": {
+   "server_name (SNI)": 110019,
+   "supported_groups": 111585,
+   "signature_algorithms": 111792,
+   "ALPN": 39923,
+   "session_ticket": 88022,
+   "supported_versions": 73324,
+   "key_share": 72615,
+   "pre_shared_key": 6447,
+   "encrypted_client_hello": 731
+  },
+  "ech_extension_present_count": 731,
+  "quic_versions": {
+   "QUIC v1 (RFC 9000)": 581,
+   "IETF draft-29": 6314
+  },
+  "udp_443_without_long_header": 24,
+  "device_windows_30min": 35921,
+  "handshake_window_availability": 0.3157,
+  "quic_window_availability": 0.0468,
+  "devices": 34,
+  "devices_with_any_client_hello": 28,
+  "devices_offering_tls13": 9,
+  "devices_with_ech_extension": 2,
+  "per_month": {
+   "25-02": {
+    "ch": 5401,
+    "ch_complete": 5220,
+    "tls13": 1706,
+    "ech": 97,
+    "quic": 272
+   },
+   "25-03": {
+    "ch": 4559,
+    "ch_complete": 4498,
+    "tls13": 1474,
+    "ech": 26,
+    "quic": 178
+   },
+   "25-04": {
+    "ch": 14671,
+    "ch_complete": 14378,
+    "tls13": 9682,
+    "ech": 133,
+    "quic": 773
+   },
+   "25-05": {
+    "ch": 11981,
+    "ch_complete": 11855,
+    "tls13": 6890,
+    "ech": 77,
+    "quic": 374
+   },
+   "25-06": {
+    "ch": 14682,
+    "ch_complete": 14509,
+    "tls13": 8968,
+    "ech": 80,
+    "quic": 492
+   },
+   "25-07": {
+    "ch": 15666,
+    "ch_complete": 15502,
+    "tls13": 9445,
+    "ech": 90,
+    "quic": 511
+   },
+   "25-08": {
+    "ch": 15294,
+    "ch_complete": 15186,
+    "tls13": 9112,
+    "ech": 57,
+    "quic": 492
+   },
+   "25-09": {
+    "ch": 11944,
+    "ch_complete": 11759,
+    "tls13": 6956,
+    "ech": 103,
+    "quic": 370
+   },
+   "25-10": {
+    "ch": 14974,
+    "ch_complete": 14888,
+    "tls13": 10662,
+    "ech": 47,
+    "quic": 1851
+   },
+   "25-11": {
+    "ch": 9612,
+    "ch_complete": 9585,
+    "tls13": 7720,
+    "ech": 21,
+    "quic": 1582
+   }
+  },
+  "per_device": {
+   "dc:e5:5b:7e:cb:11": {
+    "flows": 1068977,
+    "ch": 64447,
+    "ch_complete": 63224,
+    "tls13": 63220,
+    "ech": 634
+   },
+   "90:23:5b:18:45:19": {
+    "flows": 272062,
+    "ch": 27740,
+    "ch_complete": 27740,
+    "tls13": 4660,
+    "ech": 0
+   },
+   "98:03:cf:7b:c1:6e": {
+    "flows": 175134,
+    "ch": 14897,
+    "ch_complete": 14897,
+    "tls13": 0,
+    "ech": 0
+   },
+   "7c:f6:66:e3:ac:64": {
+    "flows": 103265,
+    "ch": 2133,
+    "ch_complete": 2133,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d8:d6:68:dd:8b:eb": {
+    "flows": 82647,
+    "ch": 1813,
+    "ch_complete": 1813,
+    "tls13": 0,
+    "ech": 0
+   },
+   "40:ed:cf:7b:01:52": {
+    "flows": 26892,
+    "ch": 1419,
+    "ch_complete": 1419,
+    "tls13": 1419,
+    "ech": 0
+   },
+   "68:ec:8a:08:65:49": {
+    "flows": 112780,
+    "ch": 1404,
+    "ch_complete": 1404,
+    "tls13": 1404,
+    "ech": 0
+   },
+   "a0:92:08:d9:2e:ee": {
+    "flows": 41775,
+    "ch": 873,
+    "ch_complete": 873,
+    "tls13": 0,
+    "ech": 0
+   },
+   "04:13:7a:83:fb:a1": {
+    "flows": 1559,
+    "ch": 776,
+    "ch_complete": 776,
+    "tls13": 776,
+    "ech": 0
+   },
+   "a4:97:5c:b8:e7:58": {
+    "flows": 2062,
+    "ch": 706,
+    "ch_complete": 706,
+    "tls13": 706,
+    "ech": 0
+   },
+   "b8:06:0d:8f:63:6d": {
+    "flows": 23486,
+    "ch": 548,
+    "ch_complete": 548,
+    "tls13": 0,
+    "ech": 0
+   },
+   "76:6b:73:16:a3:14": {
+    "flows": 1598,
+    "ch": 480,
+    "ch_complete": 299,
+    "tls13": 237,
+    "ech": 97
+   },
+   "b8:06:0d:8f:75:dd": {
+    "flows": 17515,
+    "ch": 420,
+    "ch_complete": 420,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b8:06:0d:8f:64:7e": {
+    "flows": 8746,
+    "ch": 202,
+    "ch_complete": 202,
+    "tls13": 0,
+    "ech": 0
+   },
+   "a4:97:5c:b8:e7:4f": {
+    "flows": 196649,
+    "ch": 191,
+    "ch_complete": 191,
+    "tls13": 191,
+    "ech": 0
+   },
+   "e8:68:e7:70:af:da": {
+    "flows": 85906,
+    "ch": 141,
+    "ch_complete": 141,
+    "tls13": 0,
+    "ech": 0
+   },
+   "f0:09:0d:c2:62:cb": {
+    "flows": 74274,
+    "ch": 111,
+    "ch_complete": 111,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b0:c5:54:54:ea:83": {
+    "flows": 85837,
+    "ch": 76,
+    "ch_complete": 76,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:68:e7:70:49:9f": {
+    "flows": 70503,
+    "ch": 71,
+    "ch_complete": 71,
+    "tls13": 0,
+    "ech": 0
+   },
+   "e8:68:e7:70:b3:9d": {
+    "flows": 69395,
+    "ch": 71,
+    "ch_complete": 71,
+    "tls13": 0,
+    "ech": 0
+   },
+   "74:fe:ce:1c:1a:71": {
+    "flows": 12462,
+    "ch": 62,
+    "ch_complete": 62,
+    "tls13": 0,
+    "ech": 0
+   },
+   "74:fe:ce:1c:21:8d": {
+    "flows": 12459,
+    "ch": 62,
+    "ch_complete": 62,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e3:76": {
+    "flows": 97932,
+    "ch": 37,
+    "ch_complete": 37,
+    "tls13": 0,
+    "ech": 0
+   },
+   "78:98:e8:de:e4:9b": {
+    "flows": 85861,
+    "ch": 35,
+    "ch_complete": 35,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:e9:4a:3a": {
+    "flows": 90924,
+    "ch": 29,
+    "ch_complete": 29,
+    "tls13": 0,
+    "ech": 0
+   },
+   "48:e1:e9:e9:4a:16": {
+    "flows": 91091,
+    "ch": 29,
+    "ch_complete": 29,
+    "tls13": 0,
+    "ech": 0
+   },
+   "b8:06:0d:76:90:90": {
+    "flows": 12,
+    "ch": 7,
+    "ch_complete": 7,
+    "tls13": 0,
+    "ech": 0
+   },
+   "68:3a:48:4c:bc:1c": {
+    "flows": 27,
+    "ch": 4,
+    "ch_complete": 4,
+    "tls13": 2,
+    "ech": 0
+   },
+   "6c:29:90:ab:15:89": {
+    "flows": 34580,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "6c:29:90:ab:bc:f8": {
+    "flows": 37643,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:56:d8:57": {
+    "flows": 103832,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "54:ef:44:6c:4a:16": {
+    "flows": 24413,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:56:ce:bf": {
+    "flows": 88645,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   },
+   "d0:73:d5:52:da:80": {
+    "flows": 88554,
+    "ch": 0,
+    "ch_complete": 0,
+    "tls13": 0,
+    "ech": 0
+   }
+  }
+ }
+}

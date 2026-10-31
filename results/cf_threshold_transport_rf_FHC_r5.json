@@ -1,0 +1,4969 @@
+{
+ "config": {
+  "T_minutes": 30,
+  "max_flows_per_window": 32,
+  "min_flows_per_window": 1,
+  "min_windows_per_class": 30,
+  "tail_classes_to_unknown": true,
+  "cf_exclude_days": [],
+  "cf_min_day_size_frac": 0.25,
+  "cf_cap_per_class": 0,
+  "cf_upstream_only": true,
+  "cf_upstream_packets": 5,
+  "group_block_hours": 3.0,
+  "cipher_vocab": 24,
+  "ext_vocab": 20,
+  "group_vocab": 8,
+  "prl_vocab": 16,
+  "dest_group_vocab": 32,
+  "hash_salt": "vaid-v1",
+  "backend": "auto",
+  "embed_dim": 64,
+  "tcn_channels": 64,
+  "tcn_dilations": [
+   1,
+   2,
+   4
+  ],
+  "dropout": 0.1,
+  "epochs": 40,
+  "batch_size": 128,
+  "lr": 0.003,
+  "weight_decay": 0.0001,
+  "supcon_lambda": 0.1,
+  "supcon_temperature": 0.1,
+  "balanced_sampling": true,
+  "early_stop_patience": 8,
+  "p_drop_H": 0.5,
+  "p_drop_C": 0.25,
+  "sample_dropout_rate": true,
+  "openset_metric": "cosine",
+  "target_known_tpr": 0.95,
+  "n_repeats": 5,
+  "n_bootstrap": 2000,
+  "seed": 20260906,
+  "allow_endpoint_upper_bound": false
+ },
+ "alpha": 0.95,
+ "methods": [
+  "rf"
+ ],
+ "scorers": [
+  "msp",
+  "entropy",
+  "energy",
+  "proto"
+ ],
+ "views": [
+  "F",
+  "H",
+  "C"
+ ],
+ "repeats": 5,
+ "runs": {
+  "network:DATA2025v2->DATA2025v1|rf|r0": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0033333333333332993,
+    "entropy": 0.01246840345352413
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 7277,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 21602,
+       "n_unknown": 82939,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.965049532450699,
+       "delta_A": -0.015049532450699066,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9996114108954592,
+       "oscr": 0.9995530166217146,
+       "known_macro_f1_after_rejection": 0.8285465893580362,
+       "known_macro_f1_after_rejection_at_oracle": 0.8285465893580362,
+       "closed_set_macro_f1": 0.8569290799023667,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.51
+      },
+      "entropy": {
+       "n_known": 21602,
+       "n_unknown": 82939,
+       "tau_used": 0.01246840345352413,
+       "known_acceptance": 0.9515322655309694,
+       "delta_A": -0.0015322655309694122,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.01246840345352413,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9995573210379858,
+       "oscr": 0.99950530413202,
+       "known_macro_f1_after_rejection": 0.8154971447100661,
+       "known_macro_f1_after_rejection_at_oracle": 0.8154971447100661,
+       "closed_set_macro_f1": 0.8569290799023667,
+       "score_median_known": 7.710583253630812e-11,
+       "score_median_unknown": 0.7904528109266789
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 29132,
+       "n_unknown": 42007,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.4579500205959083,
+       "delta_A": 0.4920499794040917,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6566666666666667,
+       "unknown_rejection_at_oracle": 0.0384221677339491,
+       "rejection_recoverable_by_recalibration": -0.9615778322660509,
+       "auroc_unknown": 0.7603672870459554,
+       "oscr": 0.7170871212852818,
+       "known_macro_f1_after_rejection": 0.5028494459626314,
+       "known_macro_f1_after_rejection_at_oracle": 0.7665489864105457,
+       "closed_set_macro_f1": 0.7466075584963701,
+       "score_median_known": 0.00833333333333336,
+       "score_median_unknown": 0.4866666666666667
+      },
+      "entropy": {
+       "n_known": 29132,
+       "n_unknown": 42007,
+       "tau_used": 0.01246840345352413,
+       "known_acceptance": 0.4337841548812303,
+       "delta_A": 0.5162158451187697,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.869373106463514,
+       "unknown_rejection_at_oracle": 0.10181636393934344,
+       "rejection_recoverable_by_recalibration": -0.8981836360606565,
+       "auroc_unknown": 0.786340225489118,
+       "oscr": 0.7342532974952773,
+       "known_macro_f1_after_rejection": 0.4844969757543239,
+       "known_macro_f1_after_rejection_at_oracle": 0.7674223393946159,
+       "closed_set_macro_f1": 0.7466075584963701,
+       "score_median_known": 0.028092818168780974,
+       "score_median_unknown": 0.7794485689231982
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v2",
+    "target": "DATA2025v1",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ]
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r0": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.00666666666666671,
+    "entropy": 0.02295563930656099
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 4628,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 5884,
+       "n_unknown": 42007,
+       "tau_used": 0.00666666666666671,
+       "known_acceptance": 0.9615907545887151,
+       "delta_A": -0.011590754588715169,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.00666666666666671,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9996136775753781,
+       "oscr": 0.9996080195076743,
+       "known_macro_f1_after_rejection": 0.9797504493074254,
+       "known_macro_f1_after_rejection_at_oracle": 0.9797504493074254,
+       "closed_set_macro_f1": 0.9998192258510006,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6
+      },
+      "entropy": {
+       "n_known": 5884,
+       "n_unknown": 42007,
+       "tau_used": 0.02295563930656099,
+       "known_acceptance": 0.9563222297756628,
+       "delta_A": -0.00632222977566288,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.020580924740040377,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9996645738869362,
+       "oscr": 0.9995947269932367,
+       "known_macro_f1_after_rejection": 0.9767507935008136,
+       "known_macro_f1_after_rejection_at_oracle": 0.9735146041553985,
+       "closed_set_macro_f1": 0.9998192258510006,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.7623985277590153
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 57949,
+       "n_unknown": 82939,
+       "tau_used": 0.00666666666666671,
+       "known_acceptance": 0.36865174550035373,
+       "delta_A": 0.5813482544996462,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6766666666666667,
+       "unknown_rejection_at_oracle": 0.018399064372611195,
+       "rejection_recoverable_by_recalibration": -0.9816009356273888,
+       "auroc_unknown": 0.8831703745196005,
+       "oscr": 0.8806198819056577,
+       "known_macro_f1_after_rejection": 0.39689332329784804,
+       "known_macro_f1_after_rejection_at_oracle": 0.820185914598121,
+       "closed_set_macro_f1": 0.8276211731592308,
+       "score_median_known": 0.013333333333333308,
+       "score_median_unknown": 0.6
+      },
+      "entropy": {
+       "n_known": 57949,
+       "n_unknown": 82939,
+       "tau_used": 0.02295563930656099,
+       "known_acceptance": 0.35776286044625444,
+       "delta_A": 0.5922371395537456,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.8933567854469484,
+       "unknown_rejection_at_oracle": 0.0014589035315111106,
+       "rejection_recoverable_by_recalibration": -0.9985410964684889,
+       "auroc_unknown": 0.8769649489780958,
+       "oscr": 0.8730265967381616,
+       "known_macro_f1_after_rejection": 0.38291300960713043,
+       "known_macro_f1_after_rejection_at_oracle": 0.8018020274964405,
+       "closed_set_macro_f1": 0.8276211731592308,
+       "score_median_known": 0.04588828514088394,
+       "score_median_unknown": 0.7840276889035273
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v1",
+    "target": "DATA2025v2",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ]
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r0": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 9.301398665684616e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 7592,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups in 25-02..25-06",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 9377,
+       "n_unknown": 27173,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9608616828409939,
+       "delta_A": -0.01086168284099398,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998715587002622,
+       "oscr": 0.9998156288269906,
+       "known_macro_f1_after_rejection": 0.9606083790521204,
+       "known_macro_f1_after_rejection_at_oracle": 0.9606083790521204,
+       "closed_set_macro_f1": 0.9998837214680232,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.64
+      },
+      "entropy": {
+       "n_known": 9377,
+       "n_unknown": 27173,
+       "tau_used": 9.301398665684616e-11,
+       "known_acceptance": 0.9608616828409939,
+       "delta_A": -0.01086168284099398,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 9.301398665684616e-11,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.999888709324513,
+       "oscr": 0.9998033094197771,
+       "known_macro_f1_after_rejection": 0.9606083790521204,
+       "known_macro_f1_after_rejection_at_oracle": 0.9606083790521204,
+       "closed_set_macro_f1": 0.9998837214680232,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.84824231020635
+      }
+     }
+    },
+    "later_months": {
+     "profile": "V2",
+     "note": "25-07..25-11",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 57539,
+       "n_unknown": 29495,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5123481464745651,
+       "delta_A": 0.4376518535254349,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.14,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9999616018453175,
+       "oscr": 0.9999178210195637,
+       "known_macro_f1_after_rejection": 0.5622134526729535,
+       "known_macro_f1_after_rejection_at_oracle": 0.9768576773785217,
+       "closed_set_macro_f1": 0.9999520816757597,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6433333333333333
+      },
+      "entropy": {
+       "n_known": 57539,
+       "n_unknown": 29495,
+       "tau_used": 9.301398665684616e-11,
+       "known_acceptance": 0.5123481464745651,
+       "delta_A": 0.4376518535254349,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.29319176397056884,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.999827819930921,
+       "oscr": 0.9997911782888234,
+       "known_macro_f1_after_rejection": 0.5622134526729535,
+       "known_macro_f1_after_rejection_at_oracle": 0.9749572393219932,
+       "closed_set_macro_f1": 0.9999520816757597,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.8393343047271858
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "early_months": [
+     "25-02",
+     "25-03",
+     "25-04",
+     "25-05",
+     "25-06"
+    ],
+    "late_months": [
+     "25-07",
+     "25-08",
+     "25-09",
+     "25-10",
+     "25-11"
+    ],
+    "classes_in_both": 14
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Echo Show 5",
+    "Meross Plug",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Arlec LED",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Rope light"
+   ]
+  },
+  "visibility|rf|r0": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.2633333333333333,
+    "entropy": 0.2518539590148596
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 15943,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "full visibility",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2633333333333333,
+       "known_acceptance": 0.9452980331314749,
+       "delta_A": 0.004701966868525087,
+       "unknown_rejection": 0.9798480676920416,
+       "tau_oracle": 0.2766666666666666,
+       "unknown_rejection_at_oracle": 0.9725253340636847,
+       "rejection_recoverable_by_recalibration": -0.007322733628356892,
+       "auroc_unknown": 0.9939627325156859,
+       "oscr": 0.967222577952594,
+       "known_macro_f1_after_rejection": 0.8374797127514277,
+       "known_macro_f1_after_rejection_at_oracle": 0.8412622466228146,
+       "closed_set_macro_f1": 0.8656396299683798,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.65
+      },
+      "entropy": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2518539590148596,
+       "known_acceptance": 0.9453480806766428,
+       "delta_A": 0.004651919323357179,
+       "unknown_rejection": 0.9900249376558603,
+       "tau_oracle": 0.25795370797027445,
+       "unknown_rejection_at_oracle": 0.9876897351995734,
+       "rejection_recoverable_by_recalibration": -0.0023352024562869333,
+       "auroc_unknown": 0.9972789063193128,
+       "oscr": 0.9691605768506907,
+       "known_macro_f1_after_rejection": 0.8379962099146566,
+       "known_macro_f1_after_rejection_at_oracle": 0.8410077848434736,
+       "closed_set_macro_f1": 0.8656396299683798,
+       "score_median_known": 1.0799999999999998e-10,
+       "score_median_unknown": 0.7727796683126844
+      }
+     }
+    },
+    "visibility_V4": {
+     "profile": "V4",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2633333333333333,
+       "known_acceptance": 0.7376007206846504,
+       "delta_A": 0.21239927931534952,
+       "unknown_rejection": 0.9997117034004583,
+       "tau_oracle": 0.43999999999999995,
+       "unknown_rejection_at_oracle": 0.9295835555619621,
+       "rejection_recoverable_by_recalibration": -0.07012814783849619,
+       "auroc_unknown": 0.9904719661990338,
+       "oscr": 0.9641931381379419,
+       "known_macro_f1_after_rejection": 0.6654993206910421,
+       "known_macro_f1_after_rejection_at_oracle": 0.8427231343671333,
+       "closed_set_macro_f1": 0.8654225768585146,
+       "score_median_known": 0.010000000000000009,
+       "score_median_unknown": 0.6233333333333333
+      },
+      "entropy": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2518539590148596,
+       "known_acceptance": 0.5144387167809419,
+       "delta_A": 0.43556128321905807,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.5381610155503589,
+       "unknown_rejection_at_oracle": 0.8634627304570942,
+       "rejection_recoverable_by_recalibration": -0.1365372695429058,
+       "auroc_unknown": 0.9863995988987889,
+       "oscr": 0.9589818445234475,
+       "known_macro_f1_after_rejection": 0.42944019719077686,
+       "known_macro_f1_after_rejection_at_oracle": 0.8426459616799984,
+       "closed_set_macro_f1": 0.8654225768585146,
+       "score_median_known": 0.027085503341862337,
+       "score_median_unknown": 0.7635286077111131
+      }
+     }
+    },
+    "visibility_V5": {
+     "profile": "V5",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2633333333333333,
+       "known_acceptance": 0.6779940943896702,
+       "delta_A": 0.2720059056103298,
+       "unknown_rejection": 0.9997693627203668,
+       "tau_oracle": 0.44333333333333336,
+       "unknown_rejection_at_oracle": 0.9322791287676762,
+       "rejection_recoverable_by_recalibration": -0.0674902339526906,
+       "auroc_unknown": 0.990446413981279,
+       "oscr": 0.9639237010792271,
+       "known_macro_f1_after_rejection": 0.615112592395135,
+       "known_macro_f1_after_rejection_at_oracle": 0.8421251239486307,
+       "closed_set_macro_f1": 0.8647296633099834,
+       "score_median_known": 0.00666666666666671,
+       "score_median_unknown": 0.6233333333333333
+      },
+      "entropy": {
+       "n_known": 19981,
+       "n_unknown": 69373,
+       "tau_used": 0.2518539590148596,
+       "known_acceptance": 0.5188429007557179,
+       "delta_A": 0.431157099244282,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.5372507239844989,
+       "unknown_rejection_at_oracle": 0.8690556844882015,
+       "rejection_recoverable_by_recalibration": -0.13094431551179853,
+       "auroc_unknown": 0.9873419710237128,
+       "oscr": 0.9595094506748387,
+       "known_macro_f1_after_rejection": 0.4448092295359205,
+       "known_macro_f1_after_rejection_at_oracle": 0.8429682436141797,
+       "closed_set_macro_f1": 0.8647296633099834,
+       "score_median_known": 0.019399765821248922,
+       "score_median_unknown": 0.7611415382909277
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "profiles": [
+     "V4",
+     "V5"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "DLink Smart Plug",
+    "Echo Show 5",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Arlec LED",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tuya Globe",
+    "vTech Baby monitor"
+   ]
+  },
+  "instance:DATA2025v2|rf|r0": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.2366666666666667,
+    "entropy": 0.21096360159513314
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 19250,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "seen units, same classes",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 5963,
+       "n_unknown": 13797,
+       "tau_used": 0.2366666666666667,
+       "known_acceptance": 0.9983229917826597,
+       "delta_A": -0.04832299178265975,
+       "unknown_rejection": 0.7371892440385591,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.2628107559614409,
+       "auroc_unknown": 0.999127298148201,
+       "oscr": 0.999127298148201,
+       "known_macro_f1_after_rejection": 0.9991042929458901,
+       "known_macro_f1_after_rejection_at_oracle": 0.9879200234527894,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.7533333333333333
+      },
+      "entropy": {
+       "n_known": 5963,
+       "n_unknown": 13797,
+       "tau_used": 0.21096360159513314,
+       "known_acceptance": 0.9974844876739896,
+       "delta_A": -0.047484487673989606,
+       "unknown_rejection": 0.7417554540842212,
+       "tau_oracle": 1.3611044764966834e-10,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.25824454591577883,
+       "auroc_unknown": 0.9991391369972529,
+       "oscr": 0.999139136997253,
+       "known_macro_f1_after_rejection": 0.9986644806710826,
+       "known_macro_f1_after_rejection_at_oracle": 0.9879200234527894,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.8383702776700865
+      }
+     }
+    },
+    "unseen_unit": {
+     "profile": "V2",
+     "note": "withheld physical units",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 21603,
+       "n_unknown": 13596,
+       "tau_used": 0.2366666666666667,
+       "known_acceptance": 0.8478452066842568,
+       "delta_A": 0.10215479331574318,
+       "unknown_rejection": 0.8454692556634305,
+       "tau_oracle": 0.7366666666666667,
+       "unknown_rejection_at_oracle": 0.6468078846719624,
+       "rejection_recoverable_by_recalibration": -0.19866137099146808,
+       "auroc_unknown": 0.9536537634649345,
+       "oscr": 0.8481515910619946,
+       "known_macro_f1_after_rejection": 0.6663574133567534,
+       "known_macro_f1_after_rejection_at_oracle": 0.6667068445478642,
+       "closed_set_macro_f1": 0.6648121799257218,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.7866666666666666
+      },
+      "entropy": {
+       "n_known": 21603,
+       "n_unknown": 13596,
+       "tau_used": 0.21096360159513314,
+       "known_acceptance": 0.8472897282784798,
+       "delta_A": 0.10271027172152014,
+       "unknown_rejection": 0.8481906443071492,
+       "tau_oracle": 0.8329280032017801,
+       "unknown_rejection_at_oracle": 0.6972639011473963,
+       "rejection_recoverable_by_recalibration": -0.15092674315975285,
+       "auroc_unknown": 0.9616640758504482,
+       "oscr": 0.8482508133037052,
+       "known_macro_f1_after_rejection": 0.6661389396556344,
+       "known_macro_f1_after_rejection_at_oracle": 0.6666925713993064,
+       "closed_set_macro_f1": 0.6648121799257218,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.8586475993608973
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "multi_unit_classes": [
+     "DLink Smart Plug",
+     "Meross Plug",
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "tested_classes": [
+     "Meross Plug",
+     "Tapo Plug",
+     "vTech Baby monitor"
+    ],
+    "held_units": [
+     "48:e1:e9:e9:4a:3a",
+     "74:fe:ce:1c:1a:71",
+     "a4:97:5c:b8:e7:58",
+     "78:98:e8:de:e3:76",
+     "b8:06:0d:8f:75:dd"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Arlec LED",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "DLink Smart Plug",
+    "Tuya Globe"
+   ]
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r1": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 8.519721569675556e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 12155,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 15263,
+       "n_unknown": 64604,
+       "tau_used": 0.0,
+       "known_acceptance": 0.949223612658062,
+       "delta_A": 0.0007763873419379674,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.999939986867939,
+       "oscr": 0.9999137103326594,
+       "known_macro_f1_after_rejection": 0.9485101672609685,
+       "known_macro_f1_after_rejection_at_oracle": 0.9731418178434098,
+       "closed_set_macro_f1": 0.9999359393395869,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6266666666666667
+      },
+      "entropy": {
+       "n_known": 15263,
+       "n_unknown": 64604,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.949223612658062,
+       "delta_A": 0.0007763873419379674,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.01148068424047447,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9999430313356699,
+       "oscr": 0.9999289012327732,
+       "known_macro_f1_after_rejection": 0.9485101672609685,
+       "known_macro_f1_after_rejection_at_oracle": 0.9529137987918598,
+       "closed_set_macro_f1": 0.9999359393395869,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.837491388994221
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 40808,
+       "n_unknown": 30331,
+       "tau_used": 0.0,
+       "known_acceptance": 0.4558910017643599,
+       "delta_A": 0.49410899823564003,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.69,
+       "unknown_rejection_at_oracle": 0.1891464178563186,
+       "rejection_recoverable_by_recalibration": -0.8108535821436814,
+       "auroc_unknown": 0.8893864796722246,
+       "oscr": 0.7211656670691029,
+       "known_macro_f1_after_rejection": 0.557206255877219,
+       "known_macro_f1_after_rejection_at_oracle": 0.8217570132285212,
+       "closed_set_macro_f1": 0.8026530476283484,
+       "score_median_known": 0.0033333333333332993,
+       "score_median_unknown": 0.6233333333333333
+      },
+      "entropy": {
+       "n_known": 40808,
+       "n_unknown": 30331,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.4558910017643599,
+       "delta_A": 0.49410899823564003,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.8618468458458012,
+       "unknown_rejection_at_oracle": 0.4453529392370842,
+       "rejection_recoverable_by_recalibration": -0.5546470607629158,
+       "auroc_unknown": 0.904864910293073,
+       "oscr": 0.7257334013909436,
+       "known_macro_f1_after_rejection": 0.557206255877219,
+       "known_macro_f1_after_rejection_at_oracle": 0.8248080390563152,
+       "closed_set_macro_f1": 0.8026530476283484,
+       "score_median_known": 0.011480684240474473,
+       "score_median_unknown": 0.7948140245727436
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v2",
+    "target": "DATA2025v1",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ]
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r1": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0033333333333332993,
+    "entropy": 0.011480684240474473
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 6547,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 8137,
+       "n_unknown": 30331,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.955511859407644,
+       "delta_A": -0.005511859407644093,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9994508684681656,
+       "oscr": 0.9993957476597753,
+       "known_macro_f1_after_rejection": 0.9722651189608279,
+       "known_macro_f1_after_rejection_at_oracle": 0.9722651189608279,
+       "closed_set_macro_f1": 0.9995147626434401,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6333333333333333
+      },
+      "entropy": {
+       "n_known": 8137,
+       "n_unknown": 30331,
+       "tau_used": 0.011480684240474473,
+       "known_acceptance": 0.955511859407644,
+       "delta_A": -0.005511859407644093,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.011480684240474473,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9994292986634414,
+       "oscr": 0.999398440086795,
+       "known_macro_f1_after_rejection": 0.9722651189608279,
+       "known_macro_f1_after_rejection_at_oracle": 0.9722651189608279,
+       "closed_set_macro_f1": 0.9995147626434401,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.816743865351558
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 76284,
+       "n_unknown": 64604,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.48002202296680824,
+       "delta_A": 0.4699779770331917,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.64,
+       "unknown_rejection_at_oracle": 0.295740201845087,
+       "rejection_recoverable_by_recalibration": -0.704259798154913,
+       "auroc_unknown": 0.9227605431217584,
+       "oscr": 0.8716819726264882,
+       "known_macro_f1_after_rejection": 0.5025241233799083,
+       "known_macro_f1_after_rejection_at_oracle": 0.8910085980533992,
+       "closed_set_macro_f1": 0.9225629305615727,
+       "score_median_known": 0.00666666666666671,
+       "score_median_unknown": 0.6166666666666667
+      },
+      "entropy": {
+       "n_known": 76284,
+       "n_unknown": 64604,
+       "tau_used": 0.011480684240474473,
+       "known_acceptance": 0.48002202296680824,
+       "delta_A": 0.4699779770331917,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.8250589639493863,
+       "unknown_rejection_at_oracle": 0.2614853569438425,
+       "rejection_recoverable_by_recalibration": -0.7385146430561575,
+       "auroc_unknown": 0.9355110290782852,
+       "oscr": 0.8811519237154457,
+       "known_macro_f1_after_rejection": 0.5025241233799083,
+       "known_macro_f1_after_rejection_at_oracle": 0.8927644208897055,
+       "closed_set_macro_f1": 0.9225629305615727,
+       "score_median_known": 0.020580924740040377,
+       "score_median_unknown": 0.8020431312872586
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v1",
+    "target": "DATA2025v2",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ]
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r1": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0033333333333332993,
+    "entropy": 0.010743451816982769
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 6772,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups in 25-02..25-06",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 8465,
+       "n_unknown": 32194,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.9559362079149439,
+       "delta_A": -0.005936207914943981,
+       "unknown_rejection": 0.8537615704789713,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 0.8537615704789713,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9282196137335008,
+       "oscr": 0.8742235577790155,
+       "known_macro_f1_after_rejection": 0.9585627802940541,
+       "known_macro_f1_after_rejection_at_oracle": 0.9585627802940541,
+       "closed_set_macro_f1": 0.9996018266908213,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.42333333333333334
+      },
+      "entropy": {
+       "n_known": 8465,
+       "n_unknown": 32194,
+       "tau_used": 0.010743451816982769,
+       "known_acceptance": 0.9559362079149439,
+       "delta_A": -0.005936207914943981,
+       "unknown_rejection": 0.8537615704789713,
+       "tau_oracle": 0.010743451816982769,
+       "unknown_rejection_at_oracle": 0.8537615704789713,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9281910802792916,
+       "oscr": 0.8741667605733859,
+       "known_macro_f1_after_rejection": 0.9585627802940541,
+       "known_macro_f1_after_rejection_at_oracle": 0.9585627802940541,
+       "closed_set_macro_f1": 0.9996018266908213,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.5709443474786018
+      }
+     }
+    },
+    "later_months": {
+     "profile": "V2",
+     "note": "25-07..25-11",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 46379,
+       "n_unknown": 40655,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.5593048578020224,
+       "delta_A": 0.3906951421979775,
+       "unknown_rejection": 0.8850817857582093,
+       "tau_oracle": 0.5033333333333334,
+       "unknown_rejection_at_oracle": 0.4436108719714672,
+       "rejection_recoverable_by_recalibration": -0.4414709137867421,
+       "auroc_unknown": 0.8583141992964455,
+       "oscr": 0.8331445443579427,
+       "known_macro_f1_after_rejection": 0.6072475383605196,
+       "known_macro_f1_after_rejection_at_oracle": 0.9676947551095273,
+       "closed_set_macro_f1": 0.9993773260559229,
+       "score_median_known": 0.0012460201823970563,
+       "score_median_unknown": 0.43333333333333335
+      },
+      "entropy": {
+       "n_known": 46379,
+       "n_unknown": 40655,
+       "tau_used": 0.010743451816982769,
+       "known_acceptance": 0.5593048578020224,
+       "delta_A": 0.3906951421979775,
+       "unknown_rejection": 0.8850817857582093,
+       "tau_oracle": 0.6435703345442852,
+       "unknown_rejection_at_oracle": 0.3754027794859181,
+       "rejection_recoverable_by_recalibration": -0.5096790062722911,
+       "auroc_unknown": 0.8561102946495789,
+       "oscr": 0.8308716445579176,
+       "known_macro_f1_after_rejection": 0.6072475383605196,
+       "known_macro_f1_after_rejection_at_oracle": 0.9669396453698562,
+       "closed_set_macro_f1": 0.9993773260559229,
+       "score_median_known": 0.004606226311188747,
+       "score_median_unknown": 0.5865997187400778
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "early_months": [
+     "25-02",
+     "25-03",
+     "25-04",
+     "25-05",
+     "25-06"
+    ],
+    "late_months": [
+     "25-07",
+     "25-08",
+     "25-09",
+     "25-10",
+     "25-11"
+    ],
+    "classes_in_both": 14
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Tapo Plug",
+    "Tuya Camera",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Dlink Camera",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Cabinet Lights",
+    "vTech Baby monitor"
+   ]
+  },
+  "visibility|rf|r1": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 1.0799999999999998e-10
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 19743,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "full visibility",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9742445751368891,
+       "delta_A": -0.024244575136889157,
+       "unknown_rejection": 0.9016716692592511,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 0.9016716692592511,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9467536054249562,
+       "oscr": 0.8987541398646145,
+       "known_macro_f1_after_rejection": 0.8923980812331518,
+       "known_macro_f1_after_rejection_at_oracle": 0.8923980812331518,
+       "closed_set_macro_f1": 0.9084999040970249,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.5700000000000001
+      },
+      "entropy": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 1.0799999999999998e-10,
+       "known_acceptance": 0.9742445751368891,
+       "delta_A": -0.024244575136889157,
+       "unknown_rejection": 0.9016716692592511,
+       "tau_oracle": 1.0799999999999998e-10,
+       "unknown_rejection_at_oracle": 0.9016716692592511,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9469256827851633,
+       "oscr": 0.898901694156033,
+       "known_macro_f1_after_rejection": 0.8923980812331518,
+       "known_macro_f1_after_rejection_at_oracle": 0.8923980812331518,
+       "closed_set_macro_f1": 0.9084999040970249,
+       "score_median_known": 1.0799999999999998e-10,
+       "score_median_unknown": 0.7227655172772312
+      }
+     }
+    },
+    "visibility_V4": {
+     "profile": "V4",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 0.0,
+       "known_acceptance": 0.6311904279050903,
+       "delta_A": 0.3188095720949097,
+       "unknown_rejection": 0.9997809083539645,
+       "tau_oracle": 0.27,
+       "unknown_rejection_at_oracle": 0.5751155708432838,
+       "rejection_recoverable_by_recalibration": -0.4246653375106807,
+       "auroc_unknown": 0.9433455977705846,
+       "oscr": 0.9431388754052912,
+       "known_macro_f1_after_rejection": 0.5698995455469819,
+       "known_macro_f1_after_rejection_at_oracle": 0.8780341560457974,
+       "closed_set_macro_f1": 0.9084649799268191,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6699999999999999
+      },
+      "entropy": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 1.0799999999999998e-10,
+       "known_acceptance": 0.6311904279050903,
+       "delta_A": 0.3188095720949097,
+       "unknown_rejection": 0.9997809083539645,
+       "tau_oracle": 0.440363773701933,
+       "unknown_rejection_at_oracle": 0.5763643932256863,
+       "rejection_recoverable_by_recalibration": -0.42341651512827816,
+       "auroc_unknown": 0.9445583493415896,
+       "oscr": 0.9443055448629956,
+       "known_macro_f1_after_rejection": 0.5698995455469819,
+       "known_macro_f1_after_rejection_at_oracle": 0.8776997579445738,
+       "closed_set_macro_f1": 0.9084649799268191,
+       "score_median_known": 1.0799999999999998e-10,
+       "score_median_unknown": 0.8108913468485515
+      }
+     }
+    },
+    "visibility_V5": {
+     "profile": "V5",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 0.0,
+       "known_acceptance": 0.6466031230987629,
+       "delta_A": 0.30339687690123707,
+       "unknown_rejection": 0.9997809083539645,
+       "tau_oracle": 0.2733333333333333,
+       "unknown_rejection_at_oracle": 0.5749183883618517,
+       "rejection_recoverable_by_recalibration": -0.4248625199921128,
+       "auroc_unknown": 0.9419265814785681,
+       "oscr": 0.9417174798073236,
+       "known_macro_f1_after_rejection": 0.5834420420526069,
+       "known_macro_f1_after_rejection_at_oracle": 0.8780088052724828,
+       "closed_set_macro_f1": 0.9084649799268191,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6733333333333333
+      },
+      "entropy": {
+       "n_known": 24655,
+       "n_unknown": 45643,
+       "tau_used": 1.0799999999999998e-10,
+       "known_acceptance": 0.6466031230987629,
+       "delta_A": 0.30339687690123707,
+       "unknown_rejection": 0.9997809083539645,
+       "tau_oracle": 0.4368420447743765,
+       "unknown_rejection_at_oracle": 0.5759481190982187,
+       "rejection_recoverable_by_recalibration": -0.42383278925574575,
+       "auroc_unknown": 0.9423039896099996,
+       "oscr": 0.9420496335839954,
+       "known_macro_f1_after_rejection": 0.5834420420526069,
+       "known_macro_f1_after_rejection_at_oracle": 0.8777229118486133,
+       "closed_set_macro_f1": 0.9084649799268191,
+       "score_median_known": 1.0799999999999998e-10,
+       "score_median_unknown": 0.8103339895648999
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "profiles": [
+     "V4",
+     "V5"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Aqara Hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera"
+   ],
+   "unknown_classes": [
+    "Apple Homepod",
+    "Arlec LED",
+    "Echo Show 5",
+    "Tuya Globe",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ]
+  },
+  "instance:DATA2025v2|rf|r1": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.35466666666666624,
+    "entropy": 0.26162973763926684
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 767,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "seen units, same classes",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24631,
+       "n_unknown": 18333,
+       "tau_used": 0.35466666666666624,
+       "known_acceptance": 0.9967114611668223,
+       "delta_A": -0.04671146116682234,
+       "unknown_rejection": 0.9372715867561229,
+       "tau_oracle": 0.013333333333333308,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.06272841324387712,
+       "auroc_unknown": 0.9976737748829074,
+       "oscr": 0.997653587094979,
+       "known_macro_f1_after_rejection": 0.9969982874754527,
+       "known_macro_f1_after_rejection_at_oracle": 0.9580105903197472,
+       "closed_set_macro_f1": 0.997827989315245,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6666666666666667
+      },
+      "entropy": {
+       "n_known": 24631,
+       "n_unknown": 18333,
+       "tau_used": 0.26162973763926684,
+       "known_acceptance": 0.9946814989241201,
+       "delta_A": -0.0446814989241201,
+       "unknown_rejection": 0.9997818142148039,
+       "tau_oracle": 0.03033375467871101,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0002181857851960567,
+       "auroc_unknown": 0.9976259418283485,
+       "oscr": 0.9975495023948339,
+       "known_macro_f1_after_rejection": 0.9955312065706886,
+       "known_macro_f1_after_rejection_at_oracle": 0.9565019657383842,
+       "closed_set_macro_f1": 0.997827989315245,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.7119028923840295
+      }
+     }
+    },
+    "unseen_unit": {
+     "profile": "V2",
+     "note": "withheld physical units",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 15947,
+       "n_unknown": 18331,
+       "tau_used": 0.35466666666666624,
+       "known_acceptance": 0.793691603436383,
+       "delta_A": 0.15630839656361695,
+       "unknown_rejection": 0.9298456167148547,
+       "tau_oracle": 0.6966666666666667,
+       "unknown_rejection_at_oracle": 0.4493480988489444,
+       "rejection_recoverable_by_recalibration": -0.4804975178659103,
+       "auroc_unknown": 0.8843309148779159,
+       "oscr": 0.7941399186452606,
+       "known_macro_f1_after_rejection": 0.6660394832381188,
+       "known_macro_f1_after_rejection_at_oracle": 0.6663040291914664,
+       "closed_set_macro_f1": 0.6637189962188198,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6666666666666667
+      },
+      "entropy": {
+       "n_known": 15947,
+       "n_unknown": 18331,
+       "tau_used": 0.26162973763926684,
+       "known_acceptance": 0.7909324637862921,
+       "delta_A": 0.15906753621370784,
+       "unknown_rejection": 0.9998363428072664,
+       "tau_oracle": 0.7775005474356944,
+       "unknown_rejection_at_oracle": 0.1996072227374393,
+       "rejection_recoverable_by_recalibration": -0.800229120069827,
+       "auroc_unknown": 0.8717910318396658,
+       "oscr": 0.7941032556164125,
+       "known_macro_f1_after_rejection": 0.6638084977152854,
+       "known_macro_f1_after_rejection_at_oracle": 0.6663532668277882,
+       "closed_set_macro_f1": 0.6637189962188198,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.7060648200934992
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "multi_unit_classes": [
+     "DLink Smart Plug",
+     "Meross Plug",
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "tested_classes": [
+     "DLink Smart Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "held_units": [
+     "78:98:e8:de:e4:9b",
+     "b8:06:0d:8f:63:6d",
+     "a4:97:5c:b8:e7:58",
+     "48:e1:e9:e9:4a:16",
+     "74:fe:ce:1c:21:8d"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Globe",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Meross Plug",
+    "Tapo Plug"
+   ]
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r2": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 8.519721569675556e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 10786,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 13518,
+       "n_unknown": 73445,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9571682201509099,
+       "delta_A": -0.007168220150909899,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998690162825639,
+       "oscr": 0.9998485671522797,
+       "known_macro_f1_after_rejection": 0.9466970024887527,
+       "known_macro_f1_after_rejection_at_oracle": 0.9466970024887527,
+       "closed_set_macro_f1": 0.9998894698892258,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6066666666666667
+      },
+      "entropy": {
+       "n_known": 13518,
+       "n_unknown": 73445,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.9571682201509099,
+       "delta_A": -0.007168220150909899,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 8.519721569675556e-11,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998836416536411,
+       "oscr": 0.999882206361896,
+       "known_macro_f1_after_rejection": 0.9466970024887527,
+       "known_macro_f1_after_rejection_at_oracle": 0.9466970024887527,
+       "closed_set_macro_f1": 0.9998894698892258,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.8152025289041016
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 39284,
+       "n_unknown": 31855,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5296303838712962,
+       "delta_A": 0.4203696161287037,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.61,
+       "unknown_rejection_at_oracle": 0.44514204991367134,
+       "rejection_recoverable_by_recalibration": -0.5548579500863287,
+       "auroc_unknown": 0.8935403809016427,
+       "oscr": 0.8769770326611213,
+       "known_macro_f1_after_rejection": 0.6806010814795748,
+       "known_macro_f1_after_rejection_at_oracle": 0.9695458555490407,
+       "closed_set_macro_f1": 0.9733508319677396,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6066666666666667
+      },
+      "entropy": {
+       "n_known": 39284,
+       "n_unknown": 31855,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.5296303838712962,
+       "delta_A": 0.4203696161287037,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.7661719267342937,
+       "unknown_rejection_at_oracle": 0.715805995919008,
+       "rejection_recoverable_by_recalibration": -0.28419400408099205,
+       "auroc_unknown": 0.9527912808316104,
+       "oscr": 0.9286031436580751,
+       "known_macro_f1_after_rejection": 0.6806010814795748,
+       "known_macro_f1_after_rejection_at_oracle": 0.9618873280801108,
+       "closed_set_macro_f1": 0.9733508319677396,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.824265716066211
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v2",
+    "target": "DATA2025v1",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Tapo Plug",
+    "Tuya Camera"
+   ]
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r2": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0033333333333332993,
+    "entropy": 0.011480684240474472
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 6271,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 7829,
+       "n_unknown": 31855,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.969217013667135,
+       "delta_A": -0.01921701366713502,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998479045876205,
+       "oscr": 0.9993724297448128,
+       "known_macro_f1_after_rejection": 0.9806686812251603,
+       "known_macro_f1_after_rejection_at_oracle": 0.9806686812251603,
+       "closed_set_macro_f1": 0.9995452061687345,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6266666666666667
+      },
+      "entropy": {
+       "n_known": 7829,
+       "n_unknown": 31855,
+       "tau_used": 0.011480684240474472,
+       "known_acceptance": 0.9559330693575169,
+       "delta_A": -0.005933069357516918,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.011480684240474472,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998813959320676,
+       "oscr": 0.9993963458326853,
+       "known_macro_f1_after_rejection": 0.9723720463487516,
+       "known_macro_f1_after_rejection_at_oracle": 0.9723720463487516,
+       "closed_set_macro_f1": 0.9995452061687345,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.7948229063669459
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 67443,
+       "n_unknown": 73445,
+       "tau_used": 0.0033333333333332993,
+       "known_acceptance": 0.603057396616402,
+       "delta_A": 0.34694260338359795,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.4066666666666666,
+       "unknown_rejection_at_oracle": 0.9714752535911226,
+       "rejection_recoverable_by_recalibration": -0.028524746408877366,
+       "auroc_unknown": 0.996253317099031,
+       "oscr": 0.9957163567811551,
+       "known_macro_f1_after_rejection": 0.6750773697042286,
+       "known_macro_f1_after_rejection_at_oracle": 0.9619963320971284,
+       "closed_set_macro_f1": 0.9980466016175565,
+       "score_median_known": 0.0033333333333332993,
+       "score_median_unknown": 0.6266666666666667
+      },
+      "entropy": {
+       "n_known": 67443,
+       "n_unknown": 73445,
+       "tau_used": 0.011480684240474472,
+       "known_acceptance": 0.5612294826742583,
+       "delta_A": 0.38877051732574164,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6079880480192138,
+       "unknown_rejection_at_oracle": 0.9709442439921029,
+       "rejection_recoverable_by_recalibration": -0.029055756007897116,
+       "auroc_unknown": 0.9963142930911961,
+       "oscr": 0.9957739039834897,
+       "known_macro_f1_after_rejection": 0.6247901782711666,
+       "known_macro_f1_after_rejection_at_oracle": 0.9675640815098385,
+       "closed_set_macro_f1": 0.9980466016175565,
+       "score_median_known": 0.01148068424047447,
+       "score_median_unknown": 0.7900916655381867
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v1",
+    "target": "DATA2025v2",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Tapo Plug",
+    "Tuya Camera"
+   ]
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r2": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.35,
+    "entropy": 0.3160260812776947
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 5726,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups in 25-02..25-06",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 7120,
+       "n_unknown": 38737,
+       "tau_used": 0.35,
+       "known_acceptance": 0.95,
+       "delta_A": 0.0,
+       "unknown_rejection": 0.9999741848878333,
+       "tau_oracle": 0.35005806212991625,
+       "unknown_rejection_at_oracle": 0.9999741848878333,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9994347414993591,
+       "oscr": 0.9495591145039453,
+       "known_macro_f1_after_rejection": 0.9270998091313563,
+       "known_macro_f1_after_rejection_at_oracle": 0.9270998091313563,
+       "closed_set_macro_f1": 0.9387509296406302,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6766666666666667
+      },
+      "entropy": {
+       "n_known": 7120,
+       "n_unknown": 38737,
+       "tau_used": 0.3160260812776947,
+       "known_acceptance": 0.9497191011235955,
+       "delta_A": 0.0002808988764044784,
+       "unknown_rejection": 0.9999741848878333,
+       "tau_oracle": 0.3165034144458567,
+       "unknown_rejection_at_oracle": 0.9999741848878333,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.999976846164846,
+       "oscr": 0.9498289857590498,
+       "known_macro_f1_after_rejection": 0.9251877929256398,
+       "known_macro_f1_after_rejection_at_oracle": 0.9252048256408403,
+       "closed_set_macro_f1": 0.9387509296406302,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.8510461743706996
+      }
+     }
+    },
+    "later_months": {
+     "profile": "V2",
+     "note": "25-07..25-11",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 40796,
+       "n_unknown": 46238,
+       "tau_used": 0.35,
+       "known_acceptance": 0.8450583390528483,
+       "delta_A": 0.10494166094715163,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.48,
+       "unknown_rejection_at_oracle": 0.9738743025217353,
+       "rejection_recoverable_by_recalibration": -0.026125697478264653,
+       "auroc_unknown": 0.9933952963879009,
+       "oscr": 0.9510754898642495,
+       "known_macro_f1_after_rejection": 0.8046622638811006,
+       "known_macro_f1_after_rejection_at_oracle": 0.8844501919947823,
+       "closed_set_macro_f1": 0.9088547004068226,
+       "score_median_known": 0.040000000000000036,
+       "score_median_unknown": 0.6833333333333333
+      },
+      "entropy": {
+       "n_known": 40796,
+       "n_unknown": 46238,
+       "tau_used": 0.3160260812776947,
+       "known_acceptance": 0.8278997940974605,
+       "delta_A": 0.12210020590253945,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6379665456469873,
+       "unknown_rejection_at_oracle": 0.9936632207275401,
+       "rejection_recoverable_by_recalibration": -0.006336779272459903,
+       "auroc_unknown": 0.9993699756310557,
+       "oscr": 0.9567409085815397,
+       "known_macro_f1_after_rejection": 0.7783633974318536,
+       "known_macro_f1_after_rejection_at_oracle": 0.8806872364221396,
+       "closed_set_macro_f1": 0.9088547004068226,
+       "score_median_known": 0.10454676102003001,
+       "score_median_unknown": 0.8396921010775595
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "early_months": [
+     "25-02",
+     "25-03",
+     "25-04",
+     "25-05",
+     "25-06"
+    ],
+    "late_months": [
+     "25-07",
+     "25-08",
+     "25-09",
+     "25-10",
+     "25-11"
+    ],
+    "classes_in_both": 14
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Arlec LED",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ]
+  },
+  "visibility|rf|r2": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.30499111606631496,
+    "entropy": 0.2688720023986693
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 13077,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "full visibility",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.30499111606631496,
+       "known_acceptance": 0.9499374217772215,
+       "delta_A": 6.257822277844216e-05,
+       "unknown_rejection": 0.9720924709049165,
+       "tau_oracle": 0.30532145892534435,
+       "unknown_rejection_at_oracle": 0.9720924709049165,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9920758555706009,
+       "oscr": 0.9656820175552523,
+       "known_macro_f1_after_rejection": 0.8461026149560653,
+       "known_macro_f1_after_rejection_at_oracle": 0.8461180901720975,
+       "closed_set_macro_f1": 0.8674146668627096,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.53
+      },
+      "entropy": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.2688720023986693,
+       "known_acceptance": 0.951188986232791,
+       "delta_A": -0.0011889862327910672,
+       "unknown_rejection": 0.9850104240888818,
+       "tau_oracle": 0.2677024088555108,
+       "unknown_rejection_at_oracle": 0.9855118359591482,
+       "rejection_recoverable_by_recalibration": 0.0005014118702663106,
+       "auroc_unknown": 0.9974743538659481,
+       "oscr": 0.9689028056826842,
+       "known_macro_f1_after_rejection": 0.8471718885383518,
+       "known_macro_f1_after_rejection_at_oracle": 0.8465687117241113,
+       "closed_set_macro_f1": 0.8674146668627096,
+       "score_median_known": 1.0799999999999998e-10,
+       "score_median_unknown": 0.7323909199746849
+      }
+     }
+    },
+    "visibility_V4": {
+     "profile": "V4",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.30499111606631496,
+       "known_acceptance": 0.6912211693187913,
+       "delta_A": 0.25877883068120866,
+       "unknown_rejection": 0.9999868049507825,
+       "tau_oracle": 0.5167287936530763,
+       "unknown_rejection_at_oracle": 0.9526957485551422,
+       "rejection_recoverable_by_recalibration": -0.04729105639564035,
+       "auroc_unknown": 0.9839255286992934,
+       "oscr": 0.9581121957034211,
+       "known_macro_f1_after_rejection": 0.6585415164352735,
+       "known_macro_f1_after_rejection_at_oracle": 0.8517051337493168,
+       "closed_set_macro_f1": 0.8678585705739491,
+       "score_median_known": 0.01666666666666672,
+       "score_median_unknown": 0.6166666666666667
+      },
+      "entropy": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.2688720023986693,
+       "known_acceptance": 0.5418916502771322,
+       "delta_A": 0.4081083497228678,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6311911300426906,
+       "unknown_rejection_at_oracle": 0.859736626817618,
+       "rejection_recoverable_by_recalibration": -0.14026337318238202,
+       "auroc_unknown": 0.9751434767557566,
+       "oscr": 0.9466281647728669,
+       "known_macro_f1_after_rejection": 0.5095863137930715,
+       "known_macro_f1_after_rejection_at_oracle": 0.8468197248199133,
+       "closed_set_macro_f1": 0.8678585705739491,
+       "score_median_known": 0.04369172653260556,
+       "score_median_unknown": 0.7751114057387535
+      }
+     }
+    },
+    "visibility_V5": {
+     "profile": "V5",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.30499111606631496,
+       "known_acceptance": 0.662149114965135,
+       "delta_A": 0.287850885034865,
+       "unknown_rejection": 0.9999868049507825,
+       "tau_oracle": 0.5233333333333333,
+       "unknown_rejection_at_oracle": 0.7937349906315151,
+       "rejection_recoverable_by_recalibration": -0.20625181431926742,
+       "auroc_unknown": 0.9824395616140831,
+       "oscr": 0.9564588086163874,
+       "known_macro_f1_after_rejection": 0.6191167582530659,
+       "known_macro_f1_after_rejection_at_oracle": 0.8528685269648363,
+       "closed_set_macro_f1": 0.867068102872013,
+       "score_median_known": 0.00666666666666671,
+       "score_median_unknown": 0.63
+      },
+      "entropy": {
+       "n_known": 27965,
+       "n_unknown": 75786,
+       "tau_used": 0.2688720023986693,
+       "known_acceptance": 0.5426068299660289,
+       "delta_A": 0.407393170033971,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6569254443037864,
+       "unknown_rejection_at_oracle": 0.8201382841157997,
+       "rejection_recoverable_by_recalibration": -0.1798617158842003,
+       "auroc_unknown": 0.9620175020755958,
+       "oscr": 0.9331791333883301,
+       "known_macro_f1_after_rejection": 0.5233941820398811,
+       "known_macro_f1_after_rejection_at_oracle": 0.8462231208666297,
+       "closed_set_macro_f1": 0.867068102872013,
+       "score_median_known": 0.019399765821248922,
+       "score_median_unknown": 0.788495817503398
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "profiles": [
+     "V4",
+     "V5"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Meross Plug",
+    "Tapo Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Globe"
+   ]
+  },
+  "instance:DATA2025v2|rf|r2": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.30333333333333334,
+    "entropy": 0.24205601500786583
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 5686,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "seen units, same classes",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 22875,
+       "n_unknown": 12430,
+       "tau_used": 0.30333333333333334,
+       "known_acceptance": 0.9991693989071039,
+       "delta_A": -0.04916939890710392,
+       "unknown_rejection": 0.7378921962992759,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.26210780370072406,
+       "auroc_unknown": 0.9986181132374081,
+       "oscr": 0.9986180815847432,
+       "known_macro_f1_after_rejection": 0.9995798277440956,
+       "known_macro_f1_after_rejection_at_oracle": 0.9884703075348269,
+       "closed_set_macro_f1": 0.9999784515267093,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.37
+      },
+      "entropy": {
+       "n_known": 22875,
+       "n_unknown": 12430,
+       "tau_used": 0.24205601500786583,
+       "known_acceptance": 0.9979453551912568,
+       "delta_A": -0.047945355191256867,
+       "unknown_rejection": 0.7466613032984715,
+       "tau_oracle": 1.3611044764966834e-10,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.25333869670152853,
+       "auroc_unknown": 0.998439499008656,
+       "oscr": 0.9984394427372522,
+       "known_macro_f1_after_rejection": 0.998977102792602,
+       "known_macro_f1_after_rejection_at_oracle": 0.9884703075348269,
+       "closed_set_macro_f1": 0.9999784515267093,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.5000670387248245
+      }
+     }
+    },
+    "unseen_unit": {
+     "profile": "V2",
+     "note": "withheld physical units",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 23887,
+       "n_unknown": 11688,
+       "tau_used": 0.30333333333333334,
+       "known_acceptance": 0.8617239502658349,
+       "delta_A": 0.08827604973416503,
+       "unknown_rejection": 0.7818275154004107,
+       "tau_oracle": 0.7833333333333333,
+       "unknown_rejection_at_oracle": 0.0,
+       "rejection_recoverable_by_recalibration": -0.7818275154004107,
+       "auroc_unknown": 0.8613512290657126,
+       "oscr": 0.8613443162417664,
+       "known_macro_f1_after_rejection": 0.6660838220354334,
+       "known_macro_f1_after_rejection_at_oracle": 0.6635559864954171,
+       "closed_set_macro_f1": 0.6632625752265868,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.3766666666666667
+      },
+      "entropy": {
+       "n_known": 23887,
+       "n_unknown": 11688,
+       "tau_used": 0.24205601500786583,
+       "known_acceptance": 0.8605099007828526,
+       "delta_A": 0.08949009921714735,
+       "unknown_rejection": 0.7904688569472964,
+       "tau_oracle": 0.8625253957073414,
+       "unknown_rejection_at_oracle": 0.0,
+       "rejection_recoverable_by_recalibration": -0.7904688569472964,
+       "auroc_unknown": 0.861214897790352,
+       "oscr": 0.8612090021902405,
+       "known_macro_f1_after_rejection": 0.665653817126887,
+       "known_macro_f1_after_rejection_at_oracle": 0.663291666981152,
+       "closed_set_macro_f1": 0.6632625752265868,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.5065682472957469
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "multi_unit_classes": [
+     "DLink Smart Plug",
+     "Meross Plug",
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "tested_classes": [
+     "DLink Smart Plug",
+     "Tapo Plug",
+     "vTech Baby monitor"
+    ],
+    "held_units": [
+     "78:98:e8:de:e3:76",
+     "74:fe:ce:1c:21:8d",
+     "a4:97:5c:b8:e7:58",
+     "48:e1:e9:e9:4a:3a",
+     "b8:06:0d:8f:63:6d"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Meross Plug",
+    "Tuya Globe"
+   ]
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r3": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 7.710583253630812e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 6812,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 50685,
+       "n_unknown": 56021,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9661438295353655,
+       "delta_A": -0.016143829535365528,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998343250475394,
+       "oscr": 0.9996557578693893,
+       "known_macro_f1_after_rejection": 0.8399458669888551,
+       "known_macro_f1_after_rejection_at_oracle": 0.8399458669888551,
+       "closed_set_macro_f1": 0.8568673172172501,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6
+      },
+      "entropy": {
+       "n_known": 50685,
+       "n_unknown": 56021,
+       "tau_used": 7.710583253630812e-11,
+       "known_acceptance": 0.9661438295353655,
+       "delta_A": -0.016143829535365528,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 7.710583253630812e-11,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998245845169776,
+       "oscr": 0.9996335341749204,
+       "known_macro_f1_after_rejection": 0.8399458669888551,
+       "known_macro_f1_after_rejection_at_oracle": 0.8399458669888551,
+       "closed_set_macro_f1": 0.8568673172172501,
+       "score_median_known": 7.710583253630812e-11,
+       "score_median_unknown": 0.8152072636023237
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 45984,
+       "n_unknown": 25155,
+       "tau_used": 0.0,
+       "known_acceptance": 0.4192980167014614,
+       "delta_A": 0.5307019832985386,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.5700000000000001,
+       "unknown_rejection_at_oracle": 0.610176903200159,
+       "rejection_recoverable_by_recalibration": -0.38982309679984095,
+       "auroc_unknown": 0.9307195332397727,
+       "oscr": 0.7060589982332225,
+       "known_macro_f1_after_rejection": 0.4754735364621791,
+       "known_macro_f1_after_rejection_at_oracle": 0.7186974003751505,
+       "closed_set_macro_f1": 0.7113739337828414,
+       "score_median_known": 0.010000000000000009,
+       "score_median_unknown": 0.6
+      },
+      "entropy": {
+       "n_known": 45984,
+       "n_unknown": 25155,
+       "tau_used": 7.710583253630812e-11,
+       "known_acceptance": 0.4192980167014614,
+       "delta_A": 0.5307019832985386,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.7261907147548416,
+       "unknown_rejection_at_oracle": 0.858238918704035,
+       "rejection_recoverable_by_recalibration": -0.14176108129596499,
+       "auroc_unknown": 0.9740537758624432,
+       "oscr": 0.7139403275371194,
+       "known_macro_f1_after_rejection": 0.4754735364621791,
+       "known_macro_f1_after_rejection_at_oracle": 0.6998628993344423,
+       "closed_set_macro_f1": 0.7113739337828414,
+       "score_median_known": 0.0348075046856362,
+       "score_median_unknown": 0.8167527045488466
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v2",
+    "target": "DATA2025v1",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ]
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r3": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 8.519721569675556e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 7363,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 9191,
+       "n_unknown": 25155,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9558263518659559,
+       "delta_A": -0.0058263518659559255,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9999775194252601,
+       "oscr": 0.9999775194252601,
+       "known_macro_f1_after_rejection": 0.9756697983284234,
+       "known_macro_f1_after_rejection_at_oracle": 0.9756697983284234,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6966666666666667
+      },
+      "entropy": {
+       "n_known": 9191,
+       "n_unknown": 25155,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.9558263518659559,
+       "delta_A": -0.0058263518659559255,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 8.519721569675556e-11,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9999885120910997,
+       "oscr": 0.9999885120910998,
+       "known_macro_f1_after_rejection": 0.9756697983284234,
+       "known_macro_f1_after_rejection_at_oracle": 0.9756697983284234,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.8814823499196897
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 84867,
+       "n_unknown": 56021,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5696442669117561,
+       "delta_A": 0.3803557330882439,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.64,
+       "unknown_rejection_at_oracle": 0.7823851769872012,
+       "rejection_recoverable_by_recalibration": -0.21761482301279877,
+       "auroc_unknown": 0.9640047415581277,
+       "oscr": 0.8921728273234958,
+       "known_macro_f1_after_rejection": 0.5387652582850021,
+       "known_macro_f1_after_rejection_at_oracle": 0.7510420128434555,
+       "closed_set_macro_f1": 0.7385722771720816,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6966666666666667
+      },
+      "entropy": {
+       "n_known": 84867,
+       "n_unknown": 56021,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.5696442669117561,
+       "delta_A": 0.3803557330882439,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.7614370098271241,
+       "unknown_rejection_at_oracle": 0.9478052873029756,
+       "rejection_recoverable_by_recalibration": -0.05219471269702436,
+       "auroc_unknown": 0.9872905970911692,
+       "oscr": 0.8965093767965311,
+       "known_macro_f1_after_rejection": 0.5387652582850021,
+       "known_macro_f1_after_rejection_at_oracle": 0.7515757277282826,
+       "closed_set_macro_f1": 0.7385722771720816,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.8878183185477537
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v1",
+    "target": "DATA2025v2",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Apple Homepod",
+    "Echo Show 5",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ]
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r3": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 9.301398665684616e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 7240,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups in 25-02..25-06",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 9027,
+       "n_unknown": 29384,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9557992688600864,
+       "delta_A": -0.005799268860086415,
+       "unknown_rejection": 0.7749795807242037,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 0.7749795807242037,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.8814082263901944,
+       "oscr": 0.7737562413343808,
+       "known_macro_f1_after_rejection": 0.9663062640575546,
+       "known_macro_f1_after_rejection_at_oracle": 0.9663062640575546,
+       "closed_set_macro_f1": 0.9998425328047861,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6666666666666667
+      },
+      "entropy": {
+       "n_known": 9027,
+       "n_unknown": 29384,
+       "tau_used": 9.301398665684616e-11,
+       "known_acceptance": 0.9557992688600864,
+       "delta_A": -0.005799268860086415,
+       "unknown_rejection": 0.7749795807242037,
+       "tau_oracle": 9.301398665684616e-11,
+       "unknown_rejection_at_oracle": 0.7749795807242037,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.8813206446546558,
+       "oscr": 0.7736647689203919,
+       "known_macro_f1_after_rejection": 0.9663062640575546,
+       "known_macro_f1_after_rejection_at_oracle": 0.9663062640575546,
+       "closed_set_macro_f1": 0.9998425328047861,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.8399319226313819
+      }
+     }
+    },
+    "later_months": {
+     "profile": "V2",
+     "note": "25-07..25-11",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 51963,
+       "n_unknown": 35071,
+       "tau_used": 0.0,
+       "known_acceptance": 0.42418644035178876,
+       "delta_A": 0.5258135596482112,
+       "unknown_rejection": 0.8042542271392319,
+       "tau_oracle": 0.5033333333333334,
+       "unknown_rejection_at_oracle": 0.674517407544695,
+       "rejection_recoverable_by_recalibration": -0.12973681959453687,
+       "auroc_unknown": 0.7769023634381031,
+       "oscr": 0.7352625281618997,
+       "known_macro_f1_after_rejection": 0.4910996101190125,
+       "known_macro_f1_after_rejection_at_oracle": 0.9634902639738233,
+       "closed_set_macro_f1": 0.9997586516716339,
+       "score_median_known": 0.023333333333333317,
+       "score_median_unknown": 0.6366666666666667
+      },
+      "entropy": {
+       "n_known": 51963,
+       "n_unknown": 35071,
+       "tau_used": 9.301398665684616e-11,
+       "known_acceptance": 0.42418644035178876,
+       "delta_A": 0.5258135596482112,
+       "unknown_rejection": 0.8042542271392319,
+       "tau_oracle": 0.6961030510571002,
+       "unknown_rejection_at_oracle": 0.5166947050269454,
+       "rejection_recoverable_by_recalibration": -0.2875595221122865,
+       "auroc_unknown": 0.7683440641308433,
+       "oscr": 0.7266993037406618,
+       "known_macro_f1_after_rejection": 0.4910996101190125,
+       "known_macro_f1_after_rejection_at_oracle": 0.9622060998112534,
+       "closed_set_macro_f1": 0.9997586516716339,
+       "score_median_known": 0.06397983205653489,
+       "score_median_unknown": 0.8348496055051867
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "early_months": [
+     "25-02",
+     "25-03",
+     "25-04",
+     "25-05",
+     "25-06"
+    ],
+    "late_months": [
+     "25-07",
+     "25-08",
+     "25-09",
+     "25-10",
+     "25-11"
+    ],
+    "classes_in_both": 14
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Plug",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Arlec LED",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "vTech Baby monitor"
+   ]
+  },
+  "visibility|rf|r3": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 1.1523030813469528e-10
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 18903,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "full visibility",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 0.0,
+       "known_acceptance": 0.949170520599092,
+       "delta_A": 0.0008294794009079398,
+       "unknown_rejection": 0.8407421799106275,
+       "tau_oracle": 0.0033333333333332993,
+       "unknown_rejection_at_oracle": 0.8185544977656888,
+       "rejection_recoverable_by_recalibration": -0.022187682144938714,
+       "auroc_unknown": 0.9143770969633469,
+       "oscr": 0.8387386689448918,
+       "known_macro_f1_after_rejection": 0.9541448486259104,
+       "known_macro_f1_after_rejection_at_oracle": 0.9717996188269628,
+       "closed_set_macro_f1": 0.999627137841395,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.41000000000000003
+      },
+      "entropy": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 1.1523030813469528e-10,
+       "known_acceptance": 0.949170520599092,
+       "delta_A": 0.0008294794009079398,
+       "unknown_rejection": 0.8407421799106275,
+       "tau_oracle": 0.009316662135161254,
+       "unknown_rejection_at_oracle": 0.8185544977656888,
+       "rejection_recoverable_by_recalibration": -0.022187682144938714,
+       "auroc_unknown": 0.9144013316402225,
+       "oscr": 0.8387088465011804,
+       "known_macro_f1_after_rejection": 0.9541448486259104,
+       "known_macro_f1_after_rejection_at_oracle": 0.9644993810095829,
+       "closed_set_macro_f1": 0.999627137841395,
+       "score_median_known": 1.1523030813469528e-10,
+       "score_median_unknown": 0.6274474503951853
+      }
+     }
+    },
+    "visibility_V4": {
+     "profile": "V4",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5843268700411558,
+       "delta_A": 0.36567312995884416,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.5566666666666666,
+       "unknown_rejection_at_oracle": 0.3219739654167476,
+       "rejection_recoverable_by_recalibration": -0.6780260345832524,
+       "auroc_unknown": 0.9137051248267213,
+       "oscr": 0.8926240047545108,
+       "known_macro_f1_after_rejection": 0.46851420360834234,
+       "known_macro_f1_after_rejection_at_oracle": 0.8853590448209373,
+       "closed_set_macro_f1": 0.8685089864329057,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.43666666666666665
+      },
+      "entropy": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 1.1523030813469528e-10,
+       "known_acceptance": 0.5843268700411558,
+       "delta_A": 0.36567312995884416,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6716104359507008,
+       "unknown_rejection_at_oracle": 0.4557994948513697,
+       "rejection_recoverable_by_recalibration": -0.5442005051486303,
+       "auroc_unknown": 0.9419967565974947,
+       "oscr": 0.8986815759568264,
+       "known_macro_f1_after_rejection": 0.46851420360834234,
+       "known_macro_f1_after_rejection_at_oracle": 0.8560477533448598,
+       "closed_set_macro_f1": 0.8685089864329057,
+       "score_median_known": 1.1523030813469528e-10,
+       "score_median_unknown": 0.6372855955277167
+      }
+     }
+    },
+    "visibility_V5": {
+     "profile": "V5",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5964190249904535,
+       "delta_A": 0.35358097500954644,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.56,
+       "unknown_rejection_at_oracle": 0.31863221293957644,
+       "rejection_recoverable_by_recalibration": -0.6813677870604236,
+       "auroc_unknown": 0.9105292849637683,
+       "oscr": 0.8929134541266436,
+       "known_macro_f1_after_rejection": 0.4778264712422817,
+       "known_macro_f1_after_rejection_at_oracle": 0.8862547519116752,
+       "closed_set_macro_f1": 0.8812687432549041,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.45666666666666667
+      },
+      "entropy": {
+       "n_known": 23569,
+       "n_unknown": 51470,
+       "tau_used": 1.1523030813469528e-10,
+       "known_acceptance": 0.5964190249904535,
+       "delta_A": 0.35358097500954644,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.6791012224224949,
+       "unknown_rejection_at_oracle": 0.44859141247328543,
+       "rejection_recoverable_by_recalibration": -0.5514085875267145,
+       "auroc_unknown": 0.940569055586125,
+       "oscr": 0.9002789802950784,
+       "known_macro_f1_after_rejection": 0.4778264712422817,
+       "known_macro_f1_after_rejection_at_oracle": 0.8672632698295316,
+       "closed_set_macro_f1": 0.8812687432549041,
+       "score_median_known": 1.1523030813469528e-10,
+       "score_median_unknown": 0.6452231949403386
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "profiles": [
+     "V4",
+     "V5"
+    ]
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Meross Plug",
+    "Tapo Hub",
+    "Tuya Camera",
+    "Tuya Globe",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "Aqara Hub",
+    "Echo Show 5",
+    "Nest Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights"
+   ]
+  },
+  "instance:DATA2025v2|rf|r3": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.2666666666666667,
+    "entropy": 0.22348036215483208
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 15548,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "seen units, same classes",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 7649,
+       "n_unknown": 12438,
+       "tau_used": 0.2666666666666667,
+       "known_acceptance": 0.9988233756046542,
+       "delta_A": -0.04882337560465422,
+       "unknown_rejection": 0.9988744171088599,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0011255828911400645,
+       "auroc_unknown": 0.999481097310775,
+       "oscr": 0.9994123710185077,
+       "known_macro_f1_after_rejection": 0.9992974640378067,
+       "known_macro_f1_after_rejection_at_oracle": 0.987059271129119,
+       "closed_set_macro_f1": 0.9998480247500684,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.47
+      },
+      "entropy": {
+       "n_known": 7649,
+       "n_unknown": 12438,
+       "tau_used": 0.22348036215483208,
+       "known_acceptance": 0.9976467512093085,
+       "delta_A": -0.0476467512093085,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 1.3611044764966834e-10,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9995159360804804,
+       "oscr": 0.9994469627792865,
+       "known_macro_f1_after_rejection": 0.9987515162280877,
+       "known_macro_f1_after_rejection_at_oracle": 0.987059271129119,
+       "closed_set_macro_f1": 0.9998480247500684,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.5613373789091954
+      }
+     }
+    },
+    "unseen_unit": {
+     "profile": "V2",
+     "note": "withheld physical units",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 21464,
+       "n_unknown": 19916,
+       "tau_used": 0.2666666666666667,
+       "known_acceptance": 0.9974375698844576,
+       "delta_A": -0.047437569884457687,
+       "unknown_rejection": 0.9994978911427997,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0005021088572002563,
+       "auroc_unknown": 0.9992390784024922,
+       "oscr": 0.998240283201747,
+       "known_macro_f1_after_rejection": 0.9967341083550654,
+       "known_macro_f1_after_rejection_at_oracle": 0.986387885176196,
+       "closed_set_macro_f1": 0.9969764457889605,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.5933333333333333
+      },
+      "entropy": {
+       "n_known": 21464,
+       "n_unknown": 19916,
+       "tau_used": 0.22348036215483208,
+       "known_acceptance": 0.9959467014535968,
+       "delta_A": -0.045946701453596805,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 1.3611044764966834e-10,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9990761655531689,
+       "oscr": 0.9982176913442722,
+       "known_macro_f1_after_rejection": 0.9957500657237804,
+       "known_macro_f1_after_rejection_at_oracle": 0.986387885176196,
+       "closed_set_macro_f1": 0.9969764457889605,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.7834529707384633
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "multi_unit_classes": [
+     "DLink Smart Plug",
+     "Meross Plug",
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "tested_classes": [
+     "DLink Smart Plug",
+     "Tapo Plug",
+     "Tuya Globe"
+    ],
+    "held_units": [
+     "78:98:e8:de:e4:9b",
+     "74:fe:ce:1c:1a:71",
+     "b8:06:0d:8f:75:dd",
+     "48:e1:e9:e9:4a:16",
+     "a4:97:5c:b8:e7:4f"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Globe",
+    "Tuya Rope light"
+   ],
+   "unknown_classes": [
+    "Meross Plug",
+    "vTech Baby monitor"
+   ]
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r4": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.010000000000000009,
+    "entropy": 0.03125505148829971
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 597,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 65102,
+       "n_unknown": 72796,
+       "tau_used": 0.010000000000000009,
+       "known_acceptance": 0.9528585911339129,
+       "delta_A": -0.0028585911339129577,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.010000000000000009,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9990695541680117,
+       "oscr": 0.9989239336901343,
+       "known_macro_f1_after_rejection": 0.8341702258619531,
+       "known_macro_f1_after_rejection_at_oracle": 0.8341702258619531,
+       "closed_set_macro_f1": 0.8566519841696911,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.5666666666666667
+      },
+      "entropy": {
+       "n_known": 65102,
+       "n_unknown": 72796,
+       "tau_used": 0.03125505148829971,
+       "known_acceptance": 0.9417990230714878,
+       "delta_A": 0.008200976928512183,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0348075046856362,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9992717908407527,
+       "oscr": 0.9991003171809252,
+       "known_macro_f1_after_rejection": 0.8288721190924534,
+       "known_macro_f1_after_rejection_at_oracle": 0.8330922124668738,
+       "closed_set_macro_f1": 0.8566519841696911,
+       "score_median_known": 7.710583253630812e-11,
+       "score_median_unknown": 0.8259047489749672
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 39402,
+       "n_unknown": 31737,
+       "tau_used": 0.010000000000000009,
+       "known_acceptance": 0.561951169991371,
+       "delta_A": 0.388048830008629,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.5633333333333334,
+       "unknown_rejection_at_oracle": 0.550556133219901,
+       "rejection_recoverable_by_recalibration": -0.44944386678009896,
+       "auroc_unknown": 0.9476063144738548,
+       "oscr": 0.8526983491901663,
+       "known_macro_f1_after_rejection": 0.7160942143576394,
+       "known_macro_f1_after_rejection_at_oracle": 0.8006142982386331,
+       "closed_set_macro_f1": 0.8013785542669879,
+       "score_median_known": 0.0033333333333332993,
+       "score_median_unknown": 0.5833333333333333
+      },
+      "entropy": {
+       "n_known": 39402,
+       "n_unknown": 31737,
+       "tau_used": 0.03125505148829971,
+       "known_acceptance": 0.5411400436526065,
+       "delta_A": 0.40885995634739347,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.7861916222270874,
+       "unknown_rejection_at_oracle": 0.744493808488515,
+       "rejection_recoverable_by_recalibration": -0.255506191511485,
+       "auroc_unknown": 0.9705694510152092,
+       "oscr": 0.8736744997510495,
+       "known_macro_f1_after_rejection": 0.6970290804387994,
+       "known_macro_f1_after_rejection_at_oracle": 0.8080062401922369,
+       "closed_set_macro_f1": 0.8013785542669879,
+       "score_median_known": 0.012468403453524131,
+       "score_median_unknown": 0.8363881203818248
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v2",
+    "target": "DATA2025v1",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Echo Show 5",
+    "Meross Plug",
+    "Nest Hub",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Tapo Hub",
+    "Tapo Plug"
+   ]
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r4": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.0,
+    "entropy": 8.519721569675556e-11
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 6347,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups inside DATA2025v1",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 7909,
+       "n_unknown": 31737,
+       "tau_used": 0.0,
+       "known_acceptance": 0.9643444177519281,
+       "delta_A": -0.014344417751928185,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.999914936951415,
+       "oscr": 0.999914936951415,
+       "known_macro_f1_after_rejection": 0.9787799670033646,
+       "known_macro_f1_after_rejection_at_oracle": 0.9787799670033646,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.64
+      },
+      "entropy": {
+       "n_known": 7909,
+       "n_unknown": 31737,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.9643444177519281,
+       "delta_A": -0.014344417751928185,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 8.519721569675556e-11,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9999279504843379,
+       "oscr": 0.9999279504843379,
+       "known_macro_f1_after_rejection": 0.9787799670033646,
+       "known_macro_f1_after_rejection_at_oracle": 0.9787799670033646,
+       "closed_set_macro_f1": 1.0,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.765253653589948
+      }
+     }
+    },
+    "target_network": {
+     "profile": "V2",
+     "note": "all of DATA2025v2",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 68092,
+       "n_unknown": 72796,
+       "tau_used": 0.0,
+       "known_acceptance": 0.5468777536274452,
+       "delta_A": 0.4031222463725548,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.24,
+       "unknown_rejection_at_oracle": 0.9759052695203033,
+       "rejection_recoverable_by_recalibration": -0.02409473047969668,
+       "auroc_unknown": 0.9961798031776967,
+       "oscr": 0.9960072179119347,
+       "known_macro_f1_after_rejection": 0.5528873431540798,
+       "known_macro_f1_after_rejection_at_oracle": 0.8352089476813658,
+       "closed_set_macro_f1": 0.8976794586796778,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.6133333333333333
+      },
+      "entropy": {
+       "n_known": 68092,
+       "n_unknown": 72796,
+       "tau_used": 8.519721569675556e-11,
+       "known_acceptance": 0.5468777536274452,
+       "delta_A": 0.4031222463725548,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.4431445972234645,
+       "unknown_rejection_at_oracle": 0.9767294906313534,
+       "rejection_recoverable_by_recalibration": -0.023270509368646608,
+       "auroc_unknown": 0.9961620632946292,
+       "oscr": 0.9959978686817659,
+       "known_macro_f1_after_rejection": 0.5528873431540798,
+       "known_macro_f1_after_rejection_at_oracle": 0.8318799257091617,
+       "closed_set_macro_f1": 0.8976794586796778,
+       "score_median_known": 8.519721569675556e-11,
+       "score_median_unknown": 0.7341755638534556
+      }
+     }
+    }
+   },
+   "meta": {
+    "source": "DATA2025v1",
+    "target": "DATA2025v2",
+    "n_shared_classes": 13
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Echo Show 5",
+    "Meross Plug",
+    "Nest Hub",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Ikea Hub",
+    "Tapo Hub",
+    "Tapo Plug"
+   ]
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r4": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.3466666666666667,
+    "entropy": 0.3113560185382233
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 7277,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "held-out groups in 25-02..25-06",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 9112,
+       "n_unknown": 28906,
+       "tau_used": 0.3466666666666667,
+       "known_acceptance": 0.956540825285338,
+       "delta_A": -0.006540825285338059,
+       "unknown_rejection": 0.6959800733411748,
+       "tau_oracle": 0.32333333333333336,
+       "unknown_rejection_at_oracle": 0.7129315713000761,
+       "rejection_recoverable_by_recalibration": 0.016951497958901274,
+       "auroc_unknown": 0.9718583903126522,
+       "oscr": 0.9551651182540944,
+       "known_macro_f1_after_rejection": 0.9425009692480786,
+       "known_macro_f1_after_rejection_at_oracle": 0.9387212061144674,
+       "closed_set_macro_f1": 0.9589103797829925,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.43666666666666665
+      },
+      "entropy": {
+       "n_known": 9112,
+       "n_unknown": 28906,
+       "tau_used": 0.3113560185382233,
+       "known_acceptance": 0.9558823529411765,
+       "delta_A": -0.005882352941176561,
+       "unknown_rejection": 0.9646786134366567,
+       "tau_oracle": 0.3049754576729688,
+       "unknown_rejection_at_oracle": 0.969348924098803,
+       "rejection_recoverable_by_recalibration": 0.004670310662146293,
+       "auroc_unknown": 0.9953756494439576,
+       "oscr": 0.9707167436309404,
+       "known_macro_f1_after_rejection": 0.9419402171815816,
+       "known_macro_f1_after_rejection_at_oracle": 0.9388885485383753,
+       "closed_set_macro_f1": 0.9589103797829925,
+       "score_median_known": 9.301398665684616e-11,
+       "score_median_unknown": 0.5908244235503717
+      }
+     }
+    },
+    "later_months": {
+     "profile": "V2",
+     "note": "25-07..25-11",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 47934,
+       "n_unknown": 39100,
+       "tau_used": 0.3466666666666667,
+       "known_acceptance": 0.8554470730587892,
+       "delta_A": 0.09455292694121076,
+       "unknown_rejection": 0.9351918158567775,
+       "tau_oracle": 0.45999999999999996,
+       "unknown_rejection_at_oracle": 0.450690537084399,
+       "rejection_recoverable_by_recalibration": -0.4845012787723785,
+       "auroc_unknown": 0.9394607256226246,
+       "oscr": 0.9060982140084561,
+       "known_macro_f1_after_rejection": 0.7868804233736991,
+       "known_macro_f1_after_rejection_at_oracle": 0.8818625085509163,
+       "closed_set_macro_f1": 0.825635193178778,
+       "score_median_known": 0.050000000000000044,
+       "score_median_unknown": 0.43333333333333335
+      },
+      "entropy": {
+       "n_known": 47934,
+       "n_unknown": 39100,
+       "tau_used": 0.3113560185382233,
+       "known_acceptance": 0.8280969666624942,
+       "delta_A": 0.12190303333750574,
+       "unknown_rejection": 0.9683631713554988,
+       "tau_oracle": 0.5740472750829816,
+       "unknown_rejection_at_oracle": 0.7150383631713555,
+       "rejection_recoverable_by_recalibration": -0.25332480818414327,
+       "auroc_unknown": 0.959662058508198,
+       "oscr": 0.9169238387992356,
+       "known_macro_f1_after_rejection": 0.7603810639104316,
+       "known_macro_f1_after_rejection_at_oracle": 0.7954722171957745,
+       "closed_set_macro_f1": 0.825635193178778,
+       "score_median_known": 0.10468939577537714,
+       "score_median_unknown": 0.6248343992879627
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "early_months": [
+     "25-02",
+     "25-03",
+     "25-04",
+     "25-05",
+     "25-06"
+    ],
+    "late_months": [
+     "25-07",
+     "25-08",
+     "25-09",
+     "25-10",
+     "25-11"
+    ],
+    "classes_in_both": 14
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Arlec LED",
+    "Dlink Camera",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tuya Camera"
+   ]
+  },
+  "visibility|rf|r4": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.2466666666666667,
+    "entropy": 0.23700000120119197
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 19743,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "full visibility",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.2466666666666667,
+       "known_acceptance": 0.9526574723768045,
+       "delta_A": -0.0026574723768045816,
+       "unknown_rejection": 0.8749013763478566,
+       "tau_oracle": 0.23333333333333328,
+       "unknown_rejection_at_oracle": 0.8750767072850004,
+       "rejection_recoverable_by_recalibration": 0.00017533093714383607,
+       "auroc_unknown": 0.9857981269228699,
+       "oscr": 0.9673924413318525,
+       "known_macro_f1_after_rejection": 0.9251493631491308,
+       "known_macro_f1_after_rejection_at_oracle": 0.922579989632321,
+       "closed_set_macro_f1": 0.9561785487438557,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.69
+      },
+      "entropy": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.23700000120119197,
+       "known_acceptance": 0.9524961690458909,
+       "delta_A": -0.0024961690458908947,
+       "unknown_rejection": 0.8764793547821513,
+       "tau_oracle": 0.23178602991979003,
+       "unknown_rejection_at_oracle": 0.8766985184535812,
+       "rejection_recoverable_by_recalibration": 0.00021916367142982285,
+       "auroc_unknown": 0.9868993505748592,
+       "oscr": 0.9683024416314239,
+       "known_macro_f1_after_rejection": 0.9253687064908026,
+       "known_macro_f1_after_rejection_at_oracle": 0.9228629740467233,
+       "closed_set_macro_f1": 0.9561785487438557,
+       "score_median_known": 1.1523030813469528e-10,
+       "score_median_unknown": 0.8233387863277575
+      }
+     }
+    },
+    "visibility_V4": {
+     "profile": "V4",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.2466666666666667,
+       "known_acceptance": 0.6547705460117751,
+       "delta_A": 0.29522945398822487,
+       "unknown_rejection": 0.999978083632857,
+       "tau_oracle": 0.6166666666666667,
+       "unknown_rejection_at_oracle": 0.9184491978609626,
+       "rejection_recoverable_by_recalibration": -0.08152888577189443,
+       "auroc_unknown": 0.9825835142975846,
+       "oscr": 0.9091987083105854,
+       "known_macro_f1_after_rejection": 0.596914221433799,
+       "known_macro_f1_after_rejection_at_oracle": 0.8527714678534124,
+       "closed_set_macro_f1": 0.8537942624993063,
+       "score_median_known": 0.11333333333333329,
+       "score_median_unknown": 0.69
+      },
+      "entropy": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.23700000120119197,
+       "known_acceptance": 0.5161303330913783,
+       "delta_A": 0.4338696669086216,
+       "unknown_rejection": 0.999978083632857,
+       "tau_oracle": 0.6613690304509688,
+       "unknown_rejection_at_oracle": 0.9447269220653984,
+       "rejection_recoverable_by_recalibration": -0.05525116156745857,
+       "auroc_unknown": 0.9887412366082936,
+       "oscr": 0.9064751617722728,
+       "known_macro_f1_after_rejection": 0.43498462390774145,
+       "known_macro_f1_after_rejection_at_oracle": 0.8326574266070902,
+       "closed_set_macro_f1": 0.8537942624993063,
+       "score_median_known": 0.22307458952048126,
+       "score_median_unknown": 0.8233387863277575
+      }
+     }
+    },
+    "visibility_V5": {
+     "profile": "V5",
+     "note": "same windows, handshake view suppressed",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.2466666666666667,
+       "known_acceptance": 0.612428421646907,
+       "delta_A": 0.3375715783530929,
+       "unknown_rejection": 0.999978083632857,
+       "tau_oracle": 0.63,
+       "unknown_rejection_at_oracle": 0.9025379153151574,
+       "rejection_recoverable_by_recalibration": -0.09744016831769964,
+       "auroc_unknown": 0.9808705630174195,
+       "oscr": 0.9114025621755086,
+       "known_macro_f1_after_rejection": 0.5416042510560399,
+       "known_macro_f1_after_rejection_at_oracle": 0.8523770150314678,
+       "closed_set_macro_f1": 0.8632620686553719,
+       "score_median_known": 0.10999999999999999,
+       "score_median_unknown": 0.69
+      },
+      "entropy": {
+       "n_known": 24798,
+       "n_unknown": 45628,
+       "tau_used": 0.23700000120119197,
+       "known_acceptance": 0.5108073231712235,
+       "delta_A": 0.4391926768287765,
+       "unknown_rejection": 0.999978083632857,
+       "tau_oracle": 0.6692818755295321,
+       "unknown_rejection_at_oracle": 0.9430831945296747,
+       "rejection_recoverable_by_recalibration": -0.0568948891031823,
+       "auroc_unknown": 0.9908590472117541,
+       "oscr": 0.9123288539241377,
+       "known_macro_f1_after_rejection": 0.43453269445044723,
+       "known_macro_f1_after_rejection_at_oracle": 0.8404124384667839,
+       "closed_set_macro_f1": 0.8632620686553719,
+       "score_median_known": 0.22001828597208767,
+       "score_median_unknown": 0.8233387863277575
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "profiles": [
+     "V4",
+     "V5"
+    ]
+   },
+   "known_classes": [
+    "Apple Homepod",
+    "Arlec LED",
+    "DLink Smart Plug",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "Aeotec hub",
+    "Aqara Hub",
+    "Dlink Camera",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Globe"
+   ]
+  },
+  "instance:DATA2025v2|rf|r4": {
+   "alpha": 0.95,
+   "tau": {
+    "msp": 0.2733333333333333,
+    "entropy": 0.2258662687878246
+   },
+   "scorers_used": [
+    "msp",
+    "entropy"
+   ],
+   "scorers_skipped": {
+    "energy": "model emits normalised log-probabilities, so -logsumexp(logits) is identically 0",
+    "proto": "model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism"
+   },
+   "n_calibration_known": 9830,
+   "conditions": {
+    "source_control": {
+     "profile": "V2",
+     "note": "seen units, same classes",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 8555,
+       "n_unknown": 20622,
+       "tau_used": 0.2733333333333333,
+       "known_acceptance": 0.9991817650496786,
+       "delta_A": -0.04918176504967864,
+       "unknown_rejection": 0.9992726214722142,
+       "tau_oracle": 0.0,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0007273785277858158,
+       "auroc_unknown": 0.9998143193780386,
+       "oscr": 0.9997493356949542,
+       "known_macro_f1_after_rejection": 0.99958263234647,
+       "known_macro_f1_after_rejection_at_oracle": 0.9713016086297399,
+       "closed_set_macro_f1": 0.999904789107874,
+       "score_median_known": 0.0,
+       "score_median_unknown": 0.7533333333333333
+      },
+      "entropy": {
+       "n_known": 8555,
+       "n_unknown": 20622,
+       "tau_used": 0.2258662687878246,
+       "known_acceptance": 0.9976621858562245,
+       "delta_A": -0.047662185856224504,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 1.3611044764966834e-10,
+       "unknown_rejection_at_oracle": 1.0,
+       "rejection_recoverable_by_recalibration": 0.0,
+       "auroc_unknown": 0.9998345437036738,
+       "oscr": 0.9997686956120525,
+       "known_macro_f1_after_rejection": 0.9984090722359884,
+       "known_macro_f1_after_rejection_at_oracle": 0.9713016086297399,
+       "closed_set_macro_f1": 0.999904789107874,
+       "score_median_known": 1.3611044764966834e-10,
+       "score_median_unknown": 0.8605808762576189
+      }
+     }
+    },
+    "unseen_unit": {
+     "profile": "V2",
+     "note": "withheld physical units",
+     "shared_unknown_pool": false,
+     "scorers": {
+      "msp": {
+       "n_known": 22431,
+       "n_unknown": 19325,
+       "tau_used": 0.2733333333333333,
+       "known_acceptance": 0.5195488386607819,
+       "delta_A": 0.430451161339218,
+       "unknown_rejection": 0.9995342820181112,
+       "tau_oracle": 0.7166666666666667,
+       "unknown_rejection_at_oracle": 0.5253816300129366,
+       "rejection_recoverable_by_recalibration": -0.47415265200517465,
+       "auroc_unknown": 0.7723134075156914,
+       "oscr": 0.5205782459049494,
+       "known_macro_f1_after_rejection": 0.6659465577510612,
+       "known_macro_f1_after_rejection_at_oracle": 0.6666005159753919,
+       "closed_set_macro_f1": 0.6666625372486886,
+       "score_median_known": 0.0033333333333332993,
+       "score_median_unknown": 0.75
+      },
+      "entropy": {
+       "n_known": 22431,
+       "n_unknown": 19325,
+       "tau_used": 0.2258662687878246,
+       "known_acceptance": 0.5192367705407694,
+       "delta_A": 0.4307632294592305,
+       "unknown_rejection": 1.0,
+       "tau_oracle": 0.7925176224623713,
+       "unknown_rejection_at_oracle": 0.5254851228978008,
+       "rejection_recoverable_by_recalibration": -0.4745148771021992,
+       "auroc_unknown": 0.7721539753677845,
+       "oscr": 0.520581331405674,
+       "known_macro_f1_after_rejection": 0.6656747400443043,
+       "known_macro_f1_after_rejection_at_oracle": 0.6666005159753919,
+       "closed_set_macro_f1": 0.6666625372486886,
+       "score_median_known": 0.008465287936095257,
+       "score_median_unknown": 0.8587738657749006
+      }
+     }
+    }
+   },
+   "meta": {
+    "network": "DATA2025v2",
+    "multi_unit_classes": [
+     "DLink Smart Plug",
+     "Meross Plug",
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "tested_classes": [
+     "Tapo Plug",
+     "Tuya Globe",
+     "vTech Baby monitor"
+    ],
+    "held_units": [
+     "74:fe:ce:1c:21:8d",
+     "b8:06:0d:8f:63:6d",
+     "a4:97:5c:b8:e7:4f",
+     "78:98:e8:de:e4:9b",
+     "48:e1:e9:e9:4a:16"
+    ]
+   },
+   "known_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "Aqara Hub",
+    "Arlec LED",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Cabinet Lights",
+    "Tuya Camera",
+    "Tuya Globe",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "unknown_classes": [
+    "DLink Smart Plug",
+    "Meross Plug"
+   ]
+  }
+ },
+ "verdicts": {
+  "network:DATA2025v2->DATA2025v1|rf|r0|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.0451485973520972,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.015049532450699066,
+   "delta_A_shifted": 0.4920499794040917,
+   "auroc_control": 0.9996114108954592,
+   "auroc_shifted": 0.7603672870459554,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.0384221677339491,
+   "closed_set_f1_control": 0.8569290799023667,
+   "closed_set_f1_shifted": 0.7466075584963701,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r0|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0015322655309694122,
+   "delta_A_shifted": 0.5162158451187697,
+   "auroc_control": 0.9995573210379858,
+   "auroc_shifted": 0.786340225489118,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.10181636393934344,
+   "closed_set_f1_control": 0.8569290799023667,
+   "closed_set_f1_shifted": 0.7466075584963701,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r0|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.034772263766145506,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.011590754588715169,
+   "delta_A_shifted": 0.5813482544996462,
+   "auroc_control": 0.9996136775753781,
+   "auroc_shifted": 0.8831703745196005,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.018399064372611195,
+   "closed_set_f1_control": 0.9998192258510006,
+   "closed_set_f1_shifted": 0.8276211731592308,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r0|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.00632222977566288,
+   "delta_A_shifted": 0.5922371395537456,
+   "auroc_control": 0.9996645738869362,
+   "auroc_shifted": 0.8769649489780958,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.0014589035315111106,
+   "closed_set_f1_control": 0.9998192258510006,
+   "closed_set_f1_shifted": 0.8276211731592308,
+   "recoverable_by_recalibration": false
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r0|msp|later_months": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.03258504852298194,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.01086168284099398,
+   "delta_A_shifted": 0.4376518535254349,
+   "auroc_control": 0.9998715587002622,
+   "auroc_shifted": 0.9999616018453175,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 1.0,
+   "closed_set_f1_control": 0.9998837214680232,
+   "closed_set_f1_shifted": 0.9999520816757597,
+   "recoverable_by_recalibration": true
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r0|entropy|later_months": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.03258504852298194,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.01086168284099398,
+   "delta_A_shifted": 0.4376518535254349,
+   "auroc_control": 0.999888709324513,
+   "auroc_shifted": 0.999827819930921,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 1.0,
+   "closed_set_f1_control": 0.9998837214680232,
+   "closed_set_f1_shifted": 0.9999520816757597,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r0|msp|visibility_V4": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.004701966868525087,
+   "delta_A_shifted": 0.21239927931534952,
+   "auroc_control": 0.9939627325156859,
+   "auroc_shifted": 0.9904719661990338,
+   "rejection_control": 0.9798480676920416,
+   "rejection_shifted_at_stale_tau": 0.9997117034004583,
+   "rejection_shifted_at_oracle_tau": 0.9295835555619621,
+   "closed_set_f1_control": 0.8656396299683798,
+   "closed_set_f1_shifted": 0.8654225768585146,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r0|msp|visibility_V5": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.004701966868525087,
+   "delta_A_shifted": 0.2720059056103298,
+   "auroc_control": 0.9939627325156859,
+   "auroc_shifted": 0.990446413981279,
+   "rejection_control": 0.9798480676920416,
+   "rejection_shifted_at_stale_tau": 0.9997693627203668,
+   "rejection_shifted_at_oracle_tau": 0.9322791287676762,
+   "closed_set_f1_control": 0.8656396299683798,
+   "closed_set_f1_shifted": 0.8647296633099834,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r0|entropy|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.004651919323357179,
+   "delta_A_shifted": 0.43556128321905807,
+   "auroc_control": 0.9972789063193128,
+   "auroc_shifted": 0.9863995988987889,
+   "rejection_control": 0.9900249376558603,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.8634627304570942,
+   "closed_set_f1_control": 0.8656396299683798,
+   "closed_set_f1_shifted": 0.8654225768585146,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r0|entropy|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.004651919323357179,
+   "delta_A_shifted": 0.431157099244282,
+   "auroc_control": 0.9972789063193128,
+   "auroc_shifted": 0.9873419710237128,
+   "rejection_control": 0.9900249376558603,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.8690556844882015,
+   "closed_set_f1_control": 0.8656396299683798,
+   "closed_set_f1_shifted": 0.8647296633099834,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r0|msp|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.14496897534797926,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.04832299178265975,
+   "delta_A_shifted": 0.10215479331574318,
+   "auroc_control": 0.999127298148201,
+   "auroc_shifted": 0.9536537634649345,
+   "rejection_control": 0.7371892440385591,
+   "rejection_shifted_at_stale_tau": 0.8454692556634305,
+   "rejection_shifted_at_oracle_tau": 0.6468078846719624,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.6648121799257218,
+   "recoverable_by_recalibration": true
+  },
+  "instance:DATA2025v2|rf|r0|entropy|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.14245346302196882,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.047484487673989606,
+   "delta_A_shifted": 0.10271027172152014,
+   "auroc_control": 0.9991391369972529,
+   "auroc_shifted": 0.9616640758504482,
+   "rejection_control": 0.7417554540842212,
+   "rejection_shifted_at_stale_tau": 0.8481906443071492,
+   "rejection_shifted_at_oracle_tau": 0.6972639011473963,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.6648121799257218,
+   "recoverable_by_recalibration": true
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r1|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0007763873419379674,
+   "delta_A_shifted": 0.49410899823564003,
+   "auroc_control": 0.999939986867939,
+   "auroc_shifted": 0.8893864796722246,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.1891464178563186,
+   "closed_set_f1_control": 0.9999359393395869,
+   "closed_set_f1_shifted": 0.8026530476283484,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r1|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0007763873419379674,
+   "delta_A_shifted": 0.49410899823564003,
+   "auroc_control": 0.9999430313356699,
+   "auroc_shifted": 0.904864910293073,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.4453529392370842,
+   "closed_set_f1_control": 0.9999359393395869,
+   "closed_set_f1_shifted": 0.8026530476283484,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r1|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005511859407644093,
+   "delta_A_shifted": 0.4699779770331917,
+   "auroc_control": 0.9994508684681656,
+   "auroc_shifted": 0.9227605431217584,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.295740201845087,
+   "closed_set_f1_control": 0.9995147626434401,
+   "closed_set_f1_shifted": 0.9225629305615727,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r1|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005511859407644093,
+   "delta_A_shifted": 0.4699779770331917,
+   "auroc_control": 0.9994292986634414,
+   "auroc_shifted": 0.9355110290782852,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.2614853569438425,
+   "closed_set_f1_control": 0.9995147626434401,
+   "closed_set_f1_shifted": 0.9225629305615727,
+   "recoverable_by_recalibration": false
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r1|msp|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005936207914943981,
+   "delta_A_shifted": 0.3906951421979775,
+   "auroc_control": 0.9282196137335008,
+   "auroc_shifted": 0.8583141992964455,
+   "rejection_control": 0.8537615704789713,
+   "rejection_shifted_at_stale_tau": 0.8850817857582093,
+   "rejection_shifted_at_oracle_tau": 0.4436108719714672,
+   "closed_set_f1_control": 0.9996018266908213,
+   "closed_set_f1_shifted": 0.9993773260559229,
+   "recoverable_by_recalibration": false
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r1|entropy|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005936207914943981,
+   "delta_A_shifted": 0.3906951421979775,
+   "auroc_control": 0.9281910802792916,
+   "auroc_shifted": 0.8561102946495789,
+   "rejection_control": 0.8537615704789713,
+   "rejection_shifted_at_stale_tau": 0.8850817857582093,
+   "rejection_shifted_at_oracle_tau": 0.3754027794859181,
+   "closed_set_f1_control": 0.9996018266908213,
+   "closed_set_f1_shifted": 0.9993773260559229,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r1|msp|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.07273372541066747,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.024244575136889157,
+   "delta_A_shifted": 0.3188095720949097,
+   "auroc_control": 0.9467536054249562,
+   "auroc_shifted": 0.9433455977705846,
+   "rejection_control": 0.9016716692592511,
+   "rejection_shifted_at_stale_tau": 0.9997809083539645,
+   "rejection_shifted_at_oracle_tau": 0.5751155708432838,
+   "closed_set_f1_control": 0.9084999040970249,
+   "closed_set_f1_shifted": 0.9084649799268191,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r1|msp|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.07273372541066747,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.024244575136889157,
+   "delta_A_shifted": 0.30339687690123707,
+   "auroc_control": 0.9467536054249562,
+   "auroc_shifted": 0.9419265814785681,
+   "rejection_control": 0.9016716692592511,
+   "rejection_shifted_at_stale_tau": 0.9997809083539645,
+   "rejection_shifted_at_oracle_tau": 0.5749183883618517,
+   "closed_set_f1_control": 0.9084999040970249,
+   "closed_set_f1_shifted": 0.9084649799268191,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r1|entropy|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.07273372541066747,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.024244575136889157,
+   "delta_A_shifted": 0.3188095720949097,
+   "auroc_control": 0.9469256827851633,
+   "auroc_shifted": 0.9445583493415896,
+   "rejection_control": 0.9016716692592511,
+   "rejection_shifted_at_stale_tau": 0.9997809083539645,
+   "rejection_shifted_at_oracle_tau": 0.5763643932256863,
+   "closed_set_f1_control": 0.9084999040970249,
+   "closed_set_f1_shifted": 0.9084649799268191,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r1|entropy|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.07273372541066747,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.024244575136889157,
+   "delta_A_shifted": 0.30339687690123707,
+   "auroc_control": 0.9469256827851633,
+   "auroc_shifted": 0.9423039896099996,
+   "rejection_control": 0.9016716692592511,
+   "rejection_shifted_at_stale_tau": 0.9997809083539645,
+   "rejection_shifted_at_oracle_tau": 0.5759481190982187,
+   "closed_set_f1_control": 0.9084999040970249,
+   "closed_set_f1_shifted": 0.9084649799268191,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r1|msp|unseen_unit": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.14013438350046703,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.04671146116682234,
+   "delta_A_shifted": 0.15630839656361695,
+   "auroc_control": 0.9976737748829074,
+   "auroc_shifted": 0.8843309148779159,
+   "rejection_control": 0.9372715867561229,
+   "rejection_shifted_at_stale_tau": 0.9298456167148547,
+   "rejection_shifted_at_oracle_tau": 0.4493480988489444,
+   "closed_set_f1_control": 0.997827989315245,
+   "closed_set_f1_shifted": 0.6637189962188198,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r1|entropy|unseen_unit": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.1340444967723603,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0446814989241201,
+   "delta_A_shifted": 0.15906753621370784,
+   "auroc_control": 0.9976259418283485,
+   "auroc_shifted": 0.8717910318396658,
+   "rejection_control": 0.9997818142148039,
+   "rejection_shifted_at_stale_tau": 0.9998363428072664,
+   "rejection_shifted_at_oracle_tau": 0.1996072227374393,
+   "closed_set_f1_control": 0.997827989315245,
+   "closed_set_f1_shifted": 0.6637189962188198,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r2|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.021504660452729696,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.007168220150909899,
+   "delta_A_shifted": 0.4203696161287037,
+   "auroc_control": 0.9998690162825639,
+   "auroc_shifted": 0.8935403809016427,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.44514204991367134,
+   "closed_set_f1_control": 0.9998894698892258,
+   "closed_set_f1_shifted": 0.9733508319677396,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r2|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.021504660452729696,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.007168220150909899,
+   "delta_A_shifted": 0.4203696161287037,
+   "auroc_control": 0.9998836416536411,
+   "auroc_shifted": 0.9527912808316104,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.715805995919008,
+   "closed_set_f1_control": 0.9998894698892258,
+   "closed_set_f1_shifted": 0.9733508319677396,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r2|msp|target_network": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.05765104100140506,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.01921701366713502,
+   "delta_A_shifted": 0.34694260338359795,
+   "auroc_control": 0.9998479045876205,
+   "auroc_shifted": 0.996253317099031,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9714752535911226,
+   "closed_set_f1_control": 0.9995452061687345,
+   "closed_set_f1_shifted": 0.9980466016175565,
+   "recoverable_by_recalibration": true
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r2|entropy|target_network": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005933069357516918,
+   "delta_A_shifted": 0.38877051732574164,
+   "auroc_control": 0.9998813959320676,
+   "auroc_shifted": 0.9963142930911961,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9709442439921029,
+   "closed_set_f1_control": 0.9995452061687345,
+   "closed_set_f1_shifted": 0.9980466016175565,
+   "recoverable_by_recalibration": true
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r2|msp|later_months": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0,
+   "delta_A_shifted": 0.10494166094715163,
+   "auroc_control": 0.9994347414993591,
+   "auroc_shifted": 0.9933952963879009,
+   "rejection_control": 0.9999741848878333,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9738743025217353,
+   "closed_set_f1_control": 0.9387509296406302,
+   "closed_set_f1_shifted": 0.9088547004068226,
+   "recoverable_by_recalibration": true
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r2|entropy|later_months": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0002808988764044784,
+   "delta_A_shifted": 0.12210020590253945,
+   "auroc_control": 0.999976846164846,
+   "auroc_shifted": 0.9993699756310557,
+   "rejection_control": 0.9999741848878333,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9936632207275401,
+   "closed_set_f1_control": 0.9387509296406302,
+   "closed_set_f1_shifted": 0.9088547004068226,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r2|msp|visibility_V4": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 6.257822277844216e-05,
+   "delta_A_shifted": 0.25877883068120866,
+   "auroc_control": 0.9920758555706009,
+   "auroc_shifted": 0.9839255286992934,
+   "rejection_control": 0.9720924709049165,
+   "rejection_shifted_at_stale_tau": 0.9999868049507825,
+   "rejection_shifted_at_oracle_tau": 0.9526957485551422,
+   "closed_set_f1_control": 0.8674146668627096,
+   "closed_set_f1_shifted": 0.8678585705739491,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r2|msp|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 6.257822277844216e-05,
+   "delta_A_shifted": 0.287850885034865,
+   "auroc_control": 0.9920758555706009,
+   "auroc_shifted": 0.9824395616140831,
+   "rejection_control": 0.9720924709049165,
+   "rejection_shifted_at_stale_tau": 0.9999868049507825,
+   "rejection_shifted_at_oracle_tau": 0.7937349906315151,
+   "closed_set_f1_control": 0.8674146668627096,
+   "closed_set_f1_shifted": 0.867068102872013,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r2|entropy|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0011889862327910672,
+   "delta_A_shifted": 0.4081083497228678,
+   "auroc_control": 0.9974743538659481,
+   "auroc_shifted": 0.9751434767557566,
+   "rejection_control": 0.9850104240888818,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.859736626817618,
+   "closed_set_f1_control": 0.8674146668627096,
+   "closed_set_f1_shifted": 0.8678585705739491,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r2|entropy|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0011889862327910672,
+   "delta_A_shifted": 0.407393170033971,
+   "auroc_control": 0.9974743538659481,
+   "auroc_shifted": 0.9620175020755958,
+   "rejection_control": 0.9850104240888818,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.8201382841157997,
+   "closed_set_f1_control": 0.8674146668627096,
+   "closed_set_f1_shifted": 0.867068102872013,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r2|msp|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.14750819672131177,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.04916939890710392,
+   "delta_A_shifted": 0.08827604973416503,
+   "auroc_control": 0.9986181132374081,
+   "auroc_shifted": 0.8613512290657126,
+   "rejection_control": 0.7378921962992759,
+   "rejection_shifted_at_stale_tau": 0.7818275154004107,
+   "rejection_shifted_at_oracle_tau": 0.0,
+   "closed_set_f1_control": 0.9999784515267093,
+   "closed_set_f1_shifted": 0.6632625752265868,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r2|entropy|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.1438360655737706,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.047945355191256867,
+   "delta_A_shifted": 0.08949009921714735,
+   "auroc_control": 0.998439499008656,
+   "auroc_shifted": 0.861214897790352,
+   "rejection_control": 0.7466613032984715,
+   "rejection_shifted_at_stale_tau": 0.7904688569472964,
+   "rejection_shifted_at_oracle_tau": 0.0,
+   "closed_set_f1_control": 0.9999784515267093,
+   "closed_set_f1_shifted": 0.6632625752265868,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r3|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.048431488606096584,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.016143829535365528,
+   "delta_A_shifted": 0.5307019832985386,
+   "auroc_control": 0.9998343250475394,
+   "auroc_shifted": 0.9307195332397727,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.610176903200159,
+   "closed_set_f1_control": 0.8568673172172501,
+   "closed_set_f1_shifted": 0.7113739337828414,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r3|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.048431488606096584,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.016143829535365528,
+   "delta_A_shifted": 0.5307019832985386,
+   "auroc_control": 0.9998245845169776,
+   "auroc_shifted": 0.9740537758624432,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.858238918704035,
+   "closed_set_f1_control": 0.8568673172172501,
+   "closed_set_f1_shifted": 0.7113739337828414,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r3|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0058263518659559255,
+   "delta_A_shifted": 0.3803557330882439,
+   "auroc_control": 0.9999775194252601,
+   "auroc_shifted": 0.9640047415581277,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.7823851769872012,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.7385722771720816,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r3|entropy|target_network": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0058263518659559255,
+   "delta_A_shifted": 0.3803557330882439,
+   "auroc_control": 0.9999885120910997,
+   "auroc_shifted": 0.9872905970911692,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9478052873029756,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.7385722771720816,
+   "recoverable_by_recalibration": true
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r3|msp|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005799268860086415,
+   "delta_A_shifted": 0.5258135596482112,
+   "auroc_control": 0.8814082263901944,
+   "auroc_shifted": 0.7769023634381031,
+   "rejection_control": 0.7749795807242037,
+   "rejection_shifted_at_stale_tau": 0.8042542271392319,
+   "rejection_shifted_at_oracle_tau": 0.674517407544695,
+   "closed_set_f1_control": 0.9998425328047861,
+   "closed_set_f1_shifted": 0.9997586516716339,
+   "recoverable_by_recalibration": false
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r3|entropy|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005799268860086415,
+   "delta_A_shifted": 0.5258135596482112,
+   "auroc_control": 0.8813206446546558,
+   "auroc_shifted": 0.7683440641308433,
+   "rejection_control": 0.7749795807242037,
+   "rejection_shifted_at_stale_tau": 0.8042542271392319,
+   "rejection_shifted_at_oracle_tau": 0.5166947050269454,
+   "closed_set_f1_control": 0.9998425328047861,
+   "closed_set_f1_shifted": 0.9997586516716339,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r3|msp|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0008294794009079398,
+   "delta_A_shifted": 0.36567312995884416,
+   "auroc_control": 0.9143770969633469,
+   "auroc_shifted": 0.9137051248267213,
+   "rejection_control": 0.8407421799106275,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.3219739654167476,
+   "closed_set_f1_control": 0.999627137841395,
+   "closed_set_f1_shifted": 0.8685089864329057,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r3|msp|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0008294794009079398,
+   "delta_A_shifted": 0.35358097500954644,
+   "auroc_control": 0.9143770969633469,
+   "auroc_shifted": 0.9105292849637683,
+   "rejection_control": 0.8407421799106275,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.31863221293957644,
+   "closed_set_f1_control": 0.999627137841395,
+   "closed_set_f1_shifted": 0.8812687432549041,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r3|entropy|visibility_V4": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0008294794009079398,
+   "delta_A_shifted": 0.36567312995884416,
+   "auroc_control": 0.9144013316402225,
+   "auroc_shifted": 0.9419967565974947,
+   "rejection_control": 0.8407421799106275,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.4557994948513697,
+   "closed_set_f1_control": 0.999627137841395,
+   "closed_set_f1_shifted": 0.8685089864329057,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r3|entropy|visibility_V5": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.0008294794009079398,
+   "delta_A_shifted": 0.35358097500954644,
+   "auroc_control": 0.9144013316402225,
+   "auroc_shifted": 0.940569055586125,
+   "rejection_control": 0.8407421799106275,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.44859141247328543,
+   "closed_set_f1_control": 0.999627137841395,
+   "closed_set_f1_shifted": 0.8812687432549041,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r3|msp|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.14647012681396265,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.04882337560465422,
+   "delta_A_shifted": -0.047437569884457687,
+   "auroc_control": 0.999481097310775,
+   "auroc_shifted": 0.9992390784024922,
+   "rejection_control": 0.9988744171088599,
+   "rejection_shifted_at_stale_tau": 0.9994978911427997,
+   "rejection_shifted_at_oracle_tau": 1.0,
+   "closed_set_f1_control": 0.9998480247500684,
+   "closed_set_f1_shifted": 0.9969764457889605,
+   "recoverable_by_recalibration": true
+  },
+  "instance:DATA2025v2|rf|r3|entropy|unseen_unit": {
+   "verdict": "transports",
+   "noise_floor": 0.1429402536279255,
+   "moved": false,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0476467512093085,
+   "delta_A_shifted": -0.045946701453596805,
+   "auroc_control": 0.9995159360804804,
+   "auroc_shifted": 0.9990761655531689,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 1.0,
+   "closed_set_f1_control": 0.9998480247500684,
+   "closed_set_f1_shifted": 0.9969764457889605,
+   "recoverable_by_recalibration": true
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r4|msp|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0028585911339129577,
+   "delta_A_shifted": 0.388048830008629,
+   "auroc_control": 0.9990695541680117,
+   "auroc_shifted": 0.9476063144738548,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.550556133219901,
+   "closed_set_f1_control": 0.8566519841696911,
+   "closed_set_f1_shifted": 0.8013785542669879,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v2->DATA2025v1|rf|r4|entropy|target_network": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.024602930785536548,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": 0.008200976928512183,
+   "delta_A_shifted": 0.40885995634739347,
+   "auroc_control": 0.9992717908407527,
+   "auroc_shifted": 0.9705694510152092,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.744493808488515,
+   "closed_set_f1_control": 0.8566519841696911,
+   "closed_set_f1_shifted": 0.8013785542669879,
+   "recoverable_by_recalibration": false
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r4|msp|target_network": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.043033253255784554,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.014344417751928185,
+   "delta_A_shifted": 0.4031222463725548,
+   "auroc_control": 0.999914936951415,
+   "auroc_shifted": 0.9961798031776967,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9759052695203033,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.8976794586796778,
+   "recoverable_by_recalibration": true
+  },
+  "network:DATA2025v1->DATA2025v2|rf|r4|entropy|target_network": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.043033253255784554,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.014344417751928185,
+   "delta_A_shifted": 0.4031222463725548,
+   "auroc_control": 0.9999279504843379,
+   "auroc_shifted": 0.9961620632946292,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.9767294906313534,
+   "closed_set_f1_control": 1.0,
+   "closed_set_f1_shifted": 0.8976794586796778,
+   "recoverable_by_recalibration": true
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r4|msp|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.006540825285338059,
+   "delta_A_shifted": 0.09455292694121076,
+   "auroc_control": 0.9718583903126522,
+   "auroc_shifted": 0.9394607256226246,
+   "rejection_control": 0.6959800733411748,
+   "rejection_shifted_at_stale_tau": 0.9351918158567775,
+   "rejection_shifted_at_oracle_tau": 0.450690537084399,
+   "closed_set_f1_control": 0.9589103797829925,
+   "closed_set_f1_shifted": 0.825635193178778,
+   "recoverable_by_recalibration": false
+  },
+  "time:25-02..25-06 -> 25-07..25-11|rf|r4|entropy|later_months": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.005882352941176561,
+   "delta_A_shifted": 0.12190303333750574,
+   "auroc_control": 0.9953756494439576,
+   "auroc_shifted": 0.959662058508198,
+   "rejection_control": 0.9646786134366567,
+   "rejection_shifted_at_stale_tau": 0.9683631713554988,
+   "rejection_shifted_at_oracle_tau": 0.7150383631713555,
+   "closed_set_f1_control": 0.9589103797829925,
+   "closed_set_f1_shifted": 0.825635193178778,
+   "recoverable_by_recalibration": false
+  },
+  "visibility|rf|r4|msp|visibility_V4": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0026574723768045816,
+   "delta_A_shifted": 0.29522945398822487,
+   "auroc_control": 0.9857981269228699,
+   "auroc_shifted": 0.9825835142975846,
+   "rejection_control": 0.8749013763478566,
+   "rejection_shifted_at_stale_tau": 0.999978083632857,
+   "rejection_shifted_at_oracle_tau": 0.9184491978609626,
+   "closed_set_f1_control": 0.9561785487438557,
+   "closed_set_f1_shifted": 0.8537942624993063,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r4|msp|visibility_V5": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0026574723768045816,
+   "delta_A_shifted": 0.3375715783530929,
+   "auroc_control": 0.9857981269228699,
+   "auroc_shifted": 0.9808705630174195,
+   "rejection_control": 0.8749013763478566,
+   "rejection_shifted_at_stale_tau": 0.999978083632857,
+   "rejection_shifted_at_oracle_tau": 0.9025379153151574,
+   "closed_set_f1_control": 0.9561785487438557,
+   "closed_set_f1_shifted": 0.8632620686553719,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r4|entropy|visibility_V4": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0024961690458908947,
+   "delta_A_shifted": 0.4338696669086216,
+   "auroc_control": 0.9868993505748592,
+   "auroc_shifted": 0.9887412366082936,
+   "rejection_control": 0.8764793547821513,
+   "rejection_shifted_at_stale_tau": 0.999978083632857,
+   "rejection_shifted_at_oracle_tau": 0.9447269220653984,
+   "closed_set_f1_control": 0.9561785487438557,
+   "closed_set_f1_shifted": 0.8537942624993063,
+   "recoverable_by_recalibration": true
+  },
+  "visibility|rf|r4|entropy|visibility_V5": {
+   "verdict": "calibration-only failure (recalibration recovers it)",
+   "noise_floor": 0.02,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.0024961690458908947,
+   "delta_A_shifted": 0.4391926768287765,
+   "auroc_control": 0.9868993505748592,
+   "auroc_shifted": 0.9908590472117541,
+   "rejection_control": 0.8764793547821513,
+   "rejection_shifted_at_stale_tau": 0.999978083632857,
+   "rejection_shifted_at_oracle_tau": 0.9430831945296747,
+   "closed_set_f1_control": 0.9561785487438557,
+   "closed_set_f1_shifted": 0.8632620686553719,
+   "recoverable_by_recalibration": true
+  },
+  "instance:DATA2025v2|rf|r4|msp|unseen_unit": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.14754529514903592,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.04918176504967864,
+   "delta_A_shifted": 0.430451161339218,
+   "auroc_control": 0.9998143193780386,
+   "auroc_shifted": 0.7723134075156914,
+   "rejection_control": 0.9992726214722142,
+   "rejection_shifted_at_stale_tau": 0.9995342820181112,
+   "rejection_shifted_at_oracle_tau": 0.5253816300129366,
+   "closed_set_f1_control": 0.999904789107874,
+   "closed_set_f1_shifted": 0.6666625372486886,
+   "recoverable_by_recalibration": false
+  },
+  "instance:DATA2025v2|rf|r4|entropy|unseen_unit": {
+   "verdict": "operating point unreachable (recalibration does not recover it)",
+   "noise_floor": 0.1429865575686735,
+   "moved": true,
+   "source_operating_point_useful": true,
+   "delta_A_control": -0.047662185856224504,
+   "delta_A_shifted": 0.4307632294592305,
+   "auroc_control": 0.9998345437036738,
+   "auroc_shifted": 0.7721539753677845,
+   "rejection_control": 1.0,
+   "rejection_shifted_at_stale_tau": 1.0,
+   "rejection_shifted_at_oracle_tau": 0.5254851228978008,
+   "closed_set_f1_control": 0.999904789107874,
+   "closed_set_f1_shifted": 0.6666625372486886,
+   "recoverable_by_recalibration": false
+  }
+ },
+ "across_seeds": {
+  "network|rf|msp|target_network": {
+   "n": 10,
+   "delta_A": {
+    "mean": 0.4507026221452837,
+    "std": 0.07472746271697193,
+    "ci95": 0.046316561246385377,
+    "n": 10
+   },
+   "rejection_control": {
+    "mean": 1.0,
+    "std": 0.0,
+    "ci95": 0.0,
+    "n": 10
+   },
+   "rejection_at_oracle": {
+    "mean": 0.4877348638240324,
+    "std": 0.3540341526584053,
+    "ci95": 0.21943264121011008,
+    "n": 10
+   },
+   "auroc": {
+    "mean": 0.9183988774809665,
+    "std": 0.06903274033626303,
+    "ci95": 0.042786935746771546,
+    "n": 10
+   },
+   "closed_set_f1": {
+    "mean": 0.8419846367332406,
+    "std": 0.10080750885320024,
+    "ci95": 0.062481141311845435,
+    "n": 10
+   },
+   "verdicts": {
+    "operating point unreachable": 8,
+    "calibration-only failure": 2
+   }
+  },
+  "network|rf|entropy|target_network": {
+   "n": 10,
+   "delta_A": {
+    "mean": 0.4604720012502523,
+    "std": 0.07129298500543545,
+    "ci95": 0.04418784990664392,
+    "n": 10
+   },
+   "rejection_control": {
+    "mean": 1.0,
+    "std": 0.0,
+    "ci95": 0.0,
+    "n": 10
+   },
+   "rejection_at_oracle": {
+    "mean": 0.6024131308689771,
+    "std": 0.37213469962939366,
+    "ci95": 0.2306514764534543,
+    "n": 10
+   },
+   "auroc": {
+    "mean": 0.938086257502483,
+    "std": 0.06635124601487254,
+    "ci95": 0.041124928347444856,
+    "n": 10
+   },
+   "closed_set_f1": {
+    "mean": 0.8419846367332406,
+    "std": 0.10080750885320024,
+    "ci95": 0.062481141311845435,
+    "n": 10
+   },
+   "verdicts": {
+    "operating point unreachable": 7,
+    "calibration-only failure": 3
+   }
+  },
+  "time|rf|msp|later_months": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.3107310286519972,
+    "std": 0.1986491164724405,
+    "ci95": 0.17412362781623886,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.8649390818864365,
+    "std": 0.1353151190956651,
+    "ci95": 0.11860893143510372,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.7085386238244593,
+    "std": 0.2707316701488897,
+    "ci95": 0.23730677190106741,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9136068373180783,
+    "std": 0.09518029745691564,
+    "ci95": 0.08342920917106698,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.9467155905977833,
+    "std": 0.07828610722382202,
+    "ci95": 0.06862079851895093,
+    "n": 5
+   },
+   "verdicts": {
+    "calibration-only failure": 2,
+    "operating point unreachable": 3
+   }
+  },
+  "time|rf|entropy|later_months": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.3196327589223338,
+    "std": 0.18681879287031286,
+    "ci95": 0.16375389197032925,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.9186787899055329,
+    "std": 0.10025189813523107,
+    "ci95": 0.08787466316867433,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.7201598136823518,
+    "std": 0.2799090637452796,
+    "ci95": 0.24535111206868468,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9166628425701193,
+    "std": 0.10157618690822666,
+    "ci95": 0.08903545345823144,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.9467155905977833,
+    "std": 0.07828610722382202,
+    "ci95": 0.06862079851895093,
+    "n": 5
+   },
+   "verdicts": {
+    "calibration-only failure": 2,
+    "operating point unreachable": 3
+   }
+  },
+  "visibility|rf|msp|visibility_V4": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.29017805320770734,
+    "std": 0.058267134777593065,
+    "ci95": 0.05107339549300135,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.9138511528229387,
+    "std": 0.060741235441411155,
+    "ci95": 0.0532420403418514,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.7395636076476196,
+    "std": 0.280605243441065,
+    "ci95": 0.24596134047742255,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9628063463586436,
+    "std": 0.03313681278846169,
+    "ci95": 0.0290456970534524,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.8728098752582989,
+    "std": 0.020799430628842947,
+    "ci95": 0.018231504785518538,
+    "n": 5
+   },
+   "verdicts": {
+    "calibration-only failure": 3,
+    "operating point unreachable": 2
+   }
+  },
+  "visibility|rf|msp|visibility_V5": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.31088124418181423,
+    "std": 0.034034343302063653,
+    "ci95": 0.02983241723564776,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.9138511528229387,
+    "std": 0.060741235441411155,
+    "ci95": 0.0532420403418514,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.7044205272031554,
+    "std": 0.2572695777504419,
+    "ci95": 0.22550672764192098,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9612424810110236,
+    "std": 0.034030793989961644,
+    "ci95": 0.029829306126419444,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.8769587116038183,
+    "std": 0.019014422866538185,
+    "ci95": 0.01666687649634227,
+    "n": 5
+   },
+   "verdicts": {
+    "calibration-only failure": 2,
+    "operating point unreachable": 3
+   }
+  },
+  "visibility|rf|entropy|visibility_V4": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.3924044003808603,
+    "std": 0.049898042191748516,
+    "ci95": 0.04373756239968169,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.9187857131393544,
+    "std": 0.06639700856262876,
+    "ci95": 0.058199544062280006,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.7400180334834333,
+    "std": 0.21156533006204972,
+    "ci95": 0.1854451882027618,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9673678836403848,
+    "std": 0.022602296307112205,
+    "ci95": 0.019811786228195776,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.8728098752582989,
+    "std": 0.020799430628842947,
+    "ci95": 0.018231504785518538,
+    "n": 5
+   },
+   "verdicts": {
+    "operating point unreachable": 4,
+    "calibration-only failure": 1
+   }
+  },
+  "visibility|rf|entropy|visibility_V5": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.38694415960356265,
+    "std": 0.05743714857278133,
+    "ci95": 0.050345880507857675,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.9187857131393544,
+    "std": 0.06639700856262876,
+    "ci95": 0.058199544062280006,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.731363338941036,
+    "std": 0.20963022391857675,
+    "ci95": 0.18374899288161245,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.9646183131014375,
+    "std": 0.02391652563567401,
+    "ci95": 0.020963759025937515,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.8769587116038183,
+    "std": 0.019014422866538185,
+    "ci95": 0.01666687649634227,
+    "n": 5
+   },
+   "verdicts": {
+    "operating point unreachable": 4,
+    "calibration-only failure": 1
+   }
+  },
+  "instance|rf|msp|unseen_unit": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.1459505662136571,
+    "std": 0.1758488442062733,
+    "ci95": 0.1541383080087189,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.8821000131350065,
+    "std": 0.13435457709032017,
+    "ci95": 0.11776697924517918,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.5243075227067686,
+    "std": 0.36118143603093916,
+    "ci95": 0.31658948732505937,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.8941776786653494,
+    "std": 0.0874653324338499,
+    "ci95": 0.07666674416670856,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.7310865468817556,
+    "std": 0.14864274375740016,
+    "ci95": 0.13029110952622266,
+    "n": 5
+   },
+   "verdicts": {
+    "transports": 3,
+    "operating point unreachable": 2
+   }
+  },
+  "instance|rf|entropy|unseen_unit": {
+   "n": 5,
+   "delta_A": {
+    "mean": 0.1472168870316018,
+    "std": 0.17547390044130295,
+    "ci95": 0.15380965530820323,
+    "n": 5
+   },
+   "rejection_control": {
+    "mean": 0.8976397143194994,
+    "std": 0.14007377335153087,
+    "ci95": 0.12278007579893727,
+    "n": 5
+   },
+   "rejection_at_oracle": {
+    "mean": 0.48447124935652736,
+    "std": 0.39641917471717497,
+    "ci95": 0.3474767271227719,
+    "n": 5
+   },
+   "auroc": {
+    "mean": 0.8931800292802838,
+    "std": 0.08948550284887559,
+    "ci95": 0.07843750160936806,
+    "n": 5
+   },
+   "closed_set_f1": {
+    "mean": 0.7310865468817556,
+    "std": 0.14864274375740016,
+    "ci95": 0.13029110952622266,
+    "n": 5
+   },
+   "verdicts": {
+    "transports": 3,
+    "operating point unreachable": 2
+   }
+  }
+ }
+}

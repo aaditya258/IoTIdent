@@ -1,0 +1,109 @@
+{
+ "config": {
+  "T_minutes": 30,
+  "max_flows_per_window": 32,
+  "min_flows_per_window": 1,
+  "min_windows_per_class": 30,
+  "tail_classes_to_unknown": true,
+  "cf_exclude_days": [],
+  "cf_min_day_size_frac": 0.25,
+  "cf_cap_per_class": 0,
+  "cf_upstream_only": true,
+  "cf_upstream_packets": 5,
+  "group_block_hours": 3.0,
+  "cipher_vocab": 24,
+  "ext_vocab": 20,
+  "group_vocab": 8,
+  "prl_vocab": 16,
+  "dest_group_vocab": 32,
+  "hash_salt": "vaid-v1",
+  "backend": "auto",
+  "embed_dim": 64,
+  "tcn_channels": 64,
+  "tcn_dilations": [
+   1,
+   2,
+   4
+  ],
+  "dropout": 0.1,
+  "epochs": 40,
+  "batch_size": 128,
+  "lr": 0.003,
+  "weight_decay": 0.0001,
+  "supcon_lambda": 0.1,
+  "supcon_temperature": 0.1,
+  "balanced_sampling": true,
+  "early_stop_patience": 8,
+  "p_drop_H": 0.5,
+  "p_drop_C": 0.25,
+  "sample_dropout_rate": true,
+  "openset_metric": "cosine",
+  "target_known_tpr": 0.95,
+  "n_repeats": 5,
+  "n_bootstrap": 2000,
+  "seed": 20260906,
+  "allow_endpoint_upper_bound": false
+ },
+ "runs": {
+  "DATA2025v1->DATA2025v2": {
+   "shared_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "gap": 0.1437170514976326,
+   "source_control": {
+    "n_windows": 15081,
+    "n_classes_present": 13,
+    "macro_f1": 1.0,
+    "accuracy": 1.0
+   },
+   "target": {
+    "n_windows": 140888,
+    "n_classes_present": 13,
+    "macro_f1": 0.8562829485023674,
+    "accuracy": 0.9407614559082391
+   }
+  },
+  "DATA2025v2->DATA2025v1": {
+   "shared_classes": [
+    "Aeotec hub",
+    "Apple Homepod",
+    "DLink Smart Plug",
+    "Dlink Camera",
+    "Echo Show 5",
+    "Ikea Hub",
+    "Meross Plug",
+    "Nest Hub",
+    "Tapo Hub",
+    "Tapo Plug",
+    "Tuya Camera",
+    "Tuya Rope light",
+    "vTech Baby monitor"
+   ],
+   "gap": 0.19937207002848645,
+   "source_control": {
+    "n_windows": 15374,
+    "n_classes_present": 12,
+    "macro_f1": 1.0,
+    "accuracy": 1.0
+   },
+   "target": {
+    "n_windows": 71139,
+    "n_classes_present": 13,
+    "macro_f1": 0.8006279299715136,
+    "accuracy": 0.7966797396646003
+   }
+  }
+ }
+}
