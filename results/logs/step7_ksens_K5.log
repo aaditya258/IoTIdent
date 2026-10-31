@@ -1,0 +1,19 @@
+﻿  DATA2025v1: 103,840 windows from cache
+  DATA2025v2: 169,197 windows from cache
+
+windows=273,037 classes=28 trainable=27 tail=1
+  tail: Tuya Air Detector(3)
+
+DATA2025v1 -> DATA2025v2  (13 shared classes, method=rf, views=FC, K=5)
+  source control : macro-F1 1.000 (n=15081, 13 classes)
+  target network : macro-F1 0.808 (n=140888, 13 classes)
+  cross-network gap: +0.192
+
+DATA2025v2 -> DATA2025v1  (13 shared classes, method=rf, views=FC, K=5)
+  source control : macro-F1 1.000 (n=15374, 12 classes)
+  target network : macro-F1 0.738 (n=71139, 13 classes)
+  cross-network gap: +0.262
+
+written: <REPO_ROOT>\results\cf_cross_network_rf_FC_K5.json
+
+CAVEAT: a class shared between the networks is usually a DIFFERENT physical unit in each, so this gap mixes the network effect with the unit effect. Run `instance` to size the latter.

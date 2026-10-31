@@ -1,0 +1,1308 @@
+﻿  DATA2025v1: 103,840 windows from cache
+  DATA2025v2: 169,197 windows from cache
+
+windows=273,037 classes=28 trainable=27 tail=1
+  tail: Tuya Air Detector(3)
+
+========================================================================
+axis: network:DATA2025v2->DATA2025v1
+  known classes   7
+  unknown classes 6: DLink Smart Plug, Dlink Camera, Meross Plug, Nest Hub, Tapo Plug, Tuya Rope light
+  fit 29,070 windows   calibration 7,277 windows   alpha 0.95
+  {'source': 'DATA2025v2', 'target': 'DATA2025v1', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0033 ---
+  source_control
+      n = 21,602 known / 82,939 unknown
+      known acceptance  0.965   (nominal 0.95,  displacement -0.015)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0033 vs needed 0.0033
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 29,132 known / 42,007 unknown
+      known acceptance  0.458   (nominal 0.95,  displacement +0.492)
+      unknown rejection 1.000   -> 0.038 if recalibrated (-0.962)
+      AUROC 0.760   OSCR 0.717   tau used 0.0033 vs needed 0.6567
+      closed-set macro-F1 0.747  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.015, shifted +0.492, floor 0.045)
+
+  --- rf, scorer=entropy, tau=0.0125 ---
+  source_control
+      n = 21,602 known / 82,939 unknown
+      known acceptance  0.952   (nominal 0.95,  displacement -0.002)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0125 vs needed 0.0125
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 29,132 known / 42,007 unknown
+      known acceptance  0.434   (nominal 0.95,  displacement +0.516)
+      unknown rejection 1.000   -> 0.102 if recalibrated (-0.898)
+      AUROC 0.786   OSCR 0.734   tau used 0.0125 vs needed 0.8694
+      closed-set macro-F1 0.747  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.002, shifted +0.516, floor 0.020)
+
+========================================================================
+axis: network:DATA2025v1->DATA2025v2
+  known classes   7
+  unknown classes 6: DLink Smart Plug, Dlink Camera, Meross Plug, Nest Hub, Tapo Plug, Tuya Rope light
+  fit 18,620 windows   calibration 4,628 windows   alpha 0.95
+  {'source': 'DATA2025v1', 'target': 'DATA2025v2', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0067 ---
+  source_control
+      n = 5,884 known / 42,007 unknown
+      known acceptance  0.962   (nominal 0.95,  displacement -0.012)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0067 vs needed 0.0067
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 57,949 known / 82,939 unknown
+      known acceptance  0.369   (nominal 0.95,  displacement +0.581)
+      unknown rejection 1.000   -> 0.018 if recalibrated (-0.982)
+      AUROC 0.883   OSCR 0.881   tau used 0.0067 vs needed 0.6767
+      closed-set macro-F1 0.828  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.012, shifted +0.581, floor 0.035)
+
+  --- rf, scorer=entropy, tau=0.0230 ---
+  source_control
+      n = 5,884 known / 42,007 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0230 vs needed 0.0206
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 57,949 known / 82,939 unknown
+      known acceptance  0.358   (nominal 0.95,  displacement +0.592)
+      unknown rejection 1.000   -> 0.001 if recalibrated (-0.999)
+      AUROC 0.877   OSCR 0.873   tau used 0.0230 vs needed 0.8934
+      closed-set macro-F1 0.828  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.592, floor 0.020)
+
+========================================================================
+axis: time:25-02..25-06 -> 25-07..25-11
+  known classes   8
+  unknown classes 6: Arlec LED, Dlink Camera, Ikea Hub, Nest Hub, Tuya Cabinet Lights, Tuya Rope light
+  fit 30,302 windows   calibration 7,592 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'early_months': ['25-02', '25-03', '25-04', '25-05', '25-06'], 'late_months': ['25-07', '25-08', '25-09', '25-10', '25-11'], 'classes_in_both': 14}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 9,377 known / 27,173 unknown
+      known acceptance  0.961   (nominal 0.95,  displacement -0.011)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 57,539 known / 29,495 unknown
+      known acceptance  0.512   (nominal 0.95,  displacement +0.438)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.1400
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+      => later_months: calibration-only failure (recalibration recovers it)  (control -0.011, shifted +0.438, floor 0.033)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 9,377 known / 27,173 unknown
+      known acceptance  0.961   (nominal 0.95,  displacement -0.011)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 57,539 known / 29,495 unknown
+      known acceptance  0.512   (nominal 0.95,  displacement +0.438)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.2932
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+      => later_months: calibration-only failure (recalibration recovers it)  (control -0.011, shifted +0.438, floor 0.033)
+
+========================================================================
+axis: visibility
+  known classes   11
+  unknown classes 6: Arlec LED, Dlink Camera, Ikea Hub, Meross Plug, Tuya Globe, vTech Baby monitor
+  fit 63,897 windows   calibration 15,943 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'profiles': ['V4', 'V5']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.2633 ---
+  source_control
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.945   (nominal 0.95,  displacement +0.005)
+      unknown rejection 0.980   -> 0.973 if recalibrated (-0.007)
+      AUROC 0.994   OSCR 0.967   tau used 0.2633 vs needed 0.2767
+      closed-set macro-F1 0.866  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.738   (nominal 0.95,  displacement +0.212)
+      unknown rejection 1.000   -> 0.930 if recalibrated (-0.070)
+      AUROC 0.990   OSCR 0.964   tau used 0.2633 vs needed 0.4400
+      closed-set macro-F1 0.865  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.678   (nominal 0.95,  displacement +0.272)
+      unknown rejection 1.000   -> 0.932 if recalibrated (-0.067)
+      AUROC 0.990   OSCR 0.964   tau used 0.2633 vs needed 0.4433
+      closed-set macro-F1 0.865  (the number a closed-set paper would report)
+      => visibility_V4: calibration-only failure (recalibration recovers it)  (control +0.005, shifted +0.212, floor 0.020)
+      => visibility_V5: calibration-only failure (recalibration recovers it)  (control +0.005, shifted +0.272, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.2519 ---
+  source_control
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.945   (nominal 0.95,  displacement +0.005)
+      unknown rejection 0.990   -> 0.988 if recalibrated (-0.002)
+      AUROC 0.997   OSCR 0.969   tau used 0.2519 vs needed 0.2580
+      closed-set macro-F1 0.866  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.514   (nominal 0.95,  displacement +0.436)
+      unknown rejection 1.000   -> 0.863 if recalibrated (-0.137)
+      AUROC 0.986   OSCR 0.959   tau used 0.2519 vs needed 0.5382
+      closed-set macro-F1 0.865  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 19,981 known / 69,373 unknown
+      known acceptance  0.519   (nominal 0.95,  displacement +0.431)
+      unknown rejection 1.000   -> 0.869 if recalibrated (-0.131)
+      AUROC 0.987   OSCR 0.960   tau used 0.2519 vs needed 0.5373
+      closed-set macro-F1 0.865  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control +0.005, shifted +0.436, floor 0.020)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control +0.005, shifted +0.431, floor 0.020)
+
+========================================================================
+axis: instance:DATA2025v2
+  known classes   15
+  unknown classes 2: DLink Smart Plug, Tuya Globe
+  fit 76,869 windows   calibration 19,250 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'multi_unit_classes': ['DLink Smart Plug', 'Meross Plug', 'Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'tested_classes': ['Meross Plug', 'Tapo Plug', 'vTech Baby monitor'], 'held_units': ['48:e1:e9:e9:4a:3a', '74:fe:ce:1c:1a:71', 'a4:97:5c:b8:e7:58', '78:98:e8:de:e3:76', 'b8:06:0d:8f:75:dd']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.2367 ---
+  source_control
+      n = 5,963 known / 13,797 unknown
+      known acceptance  0.998   (nominal 0.95,  displacement -0.048)
+      unknown rejection 0.737   -> 1.000 if recalibrated (+0.263)
+      AUROC 0.999   OSCR 0.999   tau used 0.2367 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 21,603 known / 13,596 unknown
+      known acceptance  0.848   (nominal 0.95,  displacement +0.102)
+      unknown rejection 0.845   -> 0.647 if recalibrated (-0.199)
+      AUROC 0.954   OSCR 0.848   tau used 0.2367 vs needed 0.7367
+      closed-set macro-F1 0.665  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.048, shifted +0.102, floor 0.145)
+
+  --- rf, scorer=entropy, tau=0.2110 ---
+  source_control
+      n = 5,963 known / 13,797 unknown
+      known acceptance  0.997   (nominal 0.95,  displacement -0.047)
+      unknown rejection 0.742   -> 1.000 if recalibrated (+0.258)
+      AUROC 0.999   OSCR 0.999   tau used 0.2110 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 21,603 known / 13,596 unknown
+      known acceptance  0.847   (nominal 0.95,  displacement +0.103)
+      unknown rejection 0.848   -> 0.697 if recalibrated (-0.151)
+      AUROC 0.962   OSCR 0.848   tau used 0.2110 vs needed 0.8329
+      closed-set macro-F1 0.665  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.047, shifted +0.103, floor 0.142)
+
+========================================================================
+axis: network:DATA2025v2->DATA2025v1
+  known classes   7
+  unknown classes 6: Aeotec hub, DLink Smart Plug, Dlink Camera, Nest Hub, Tapo Plug, Tuya Rope light
+  fit 48,866 windows   calibration 12,155 windows   alpha 0.95
+  {'source': 'DATA2025v2', 'target': 'DATA2025v1', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 15,263 known / 64,604 unknown
+      known acceptance  0.949   (nominal 0.95,  displacement +0.001)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 40,808 known / 30,331 unknown
+      known acceptance  0.456   (nominal 0.95,  displacement +0.494)
+      unknown rejection 1.000   -> 0.189 if recalibrated (-0.811)
+      AUROC 0.889   OSCR 0.721   tau used 0.0000 vs needed 0.6900
+      closed-set macro-F1 0.803  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.494, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 15,263 known / 64,604 unknown
+      known acceptance  0.949   (nominal 0.95,  displacement +0.001)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0115
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 40,808 known / 30,331 unknown
+      known acceptance  0.456   (nominal 0.95,  displacement +0.494)
+      unknown rejection 1.000   -> 0.445 if recalibrated (-0.555)
+      AUROC 0.905   OSCR 0.726   tau used 0.0000 vs needed 0.8618
+      closed-set macro-F1 0.803  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.494, floor 0.020)
+
+========================================================================
+axis: network:DATA2025v1->DATA2025v2
+  known classes   7
+  unknown classes 6: Aeotec hub, DLink Smart Plug, Dlink Camera, Nest Hub, Tapo Plug, Tuya Rope light
+  fit 26,124 windows   calibration 6,547 windows   alpha 0.95
+  {'source': 'DATA2025v1', 'target': 'DATA2025v2', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0033 ---
+  source_control
+      n = 8,137 known / 30,331 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.999   tau used 0.0033 vs needed 0.0033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 76,284 known / 64,604 unknown
+      known acceptance  0.480   (nominal 0.95,  displacement +0.470)
+      unknown rejection 1.000   -> 0.296 if recalibrated (-0.704)
+      AUROC 0.923   OSCR 0.872   tau used 0.0033 vs needed 0.6400
+      closed-set macro-F1 0.923  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.470, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0115 ---
+  source_control
+      n = 8,137 known / 30,331 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.999   tau used 0.0115 vs needed 0.0115
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 76,284 known / 64,604 unknown
+      known acceptance  0.480   (nominal 0.95,  displacement +0.470)
+      unknown rejection 1.000   -> 0.261 if recalibrated (-0.739)
+      AUROC 0.936   OSCR 0.881   tau used 0.0115 vs needed 0.8251
+      closed-set macro-F1 0.923  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.470, floor 0.020)
+
+========================================================================
+axis: time:25-02..25-06 -> 25-07..25-11
+  known classes   8
+  unknown classes 6: Dlink Camera, Meross Plug, Nest Hub, Tapo Hub, Tuya Cabinet Lights, vTech Baby monitor
+  fit 27,013 windows   calibration 6,772 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'early_months': ['25-02', '25-03', '25-04', '25-05', '25-06'], 'late_months': ['25-07', '25-08', '25-09', '25-10', '25-11'], 'classes_in_both': 14}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0033 ---
+  source_control
+      n = 8,465 known / 32,194 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 0.854   -> 0.854 if recalibrated (+0.000)
+      AUROC 0.928   OSCR 0.874   tau used 0.0033 vs needed 0.0033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 46,379 known / 40,655 unknown
+      known acceptance  0.559   (nominal 0.95,  displacement +0.391)
+      unknown rejection 0.885   -> 0.444 if recalibrated (-0.441)
+      AUROC 0.858   OSCR 0.833   tau used 0.0033 vs needed 0.5033
+      closed-set macro-F1 0.999  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.391, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0107 ---
+  source_control
+      n = 8,465 known / 32,194 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 0.854   -> 0.854 if recalibrated (+0.000)
+      AUROC 0.928   OSCR 0.874   tau used 0.0107 vs needed 0.0107
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 46,379 known / 40,655 unknown
+      known acceptance  0.559   (nominal 0.95,  displacement +0.391)
+      unknown rejection 0.885   -> 0.375 if recalibrated (-0.510)
+      AUROC 0.856   OSCR 0.831   tau used 0.0107 vs needed 0.6436
+      closed-set macro-F1 0.999  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.391, floor 0.020)
+
+========================================================================
+axis: visibility
+  known classes   11
+  unknown classes 6: Apple Homepod, Arlec LED, Echo Show 5, Tuya Globe, Tuya Rope light, vTech Baby monitor
+  fit 79,153 windows   calibration 19,743 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'profiles': ['V4', 'V5']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.974   (nominal 0.95,  displacement -0.024)
+      unknown rejection 0.902   -> 0.902 if recalibrated (+0.000)
+      AUROC 0.947   OSCR 0.899   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.631   (nominal 0.95,  displacement +0.319)
+      unknown rejection 1.000   -> 0.575 if recalibrated (-0.425)
+      AUROC 0.943   OSCR 0.943   tau used 0.0000 vs needed 0.2700
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.647   (nominal 0.95,  displacement +0.303)
+      unknown rejection 1.000   -> 0.575 if recalibrated (-0.425)
+      AUROC 0.942   OSCR 0.942   tau used 0.0000 vs needed 0.2733
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control -0.024, shifted +0.319, floor 0.073)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control -0.024, shifted +0.303, floor 0.073)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.974   (nominal 0.95,  displacement -0.024)
+      unknown rejection 0.902   -> 0.902 if recalibrated (+0.000)
+      AUROC 0.947   OSCR 0.899   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.631   (nominal 0.95,  displacement +0.319)
+      unknown rejection 1.000   -> 0.576 if recalibrated (-0.423)
+      AUROC 0.945   OSCR 0.944   tau used 0.0000 vs needed 0.4404
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 24,655 known / 45,643 unknown
+      known acceptance  0.647   (nominal 0.95,  displacement +0.303)
+      unknown rejection 1.000   -> 0.576 if recalibrated (-0.424)
+      AUROC 0.942   OSCR 0.942   tau used 0.0000 vs needed 0.4368
+      closed-set macro-F1 0.908  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control -0.024, shifted +0.319, floor 0.073)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control -0.024, shifted +0.303, floor 0.073)
+
+========================================================================
+axis: instance:DATA2025v2
+  known classes   15
+  unknown classes 2: Meross Plug, Tapo Plug
+  fit 3,126 windows   calibration 767 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'multi_unit_classes': ['DLink Smart Plug', 'Meross Plug', 'Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'tested_classes': ['DLink Smart Plug', 'Tuya Globe', 'vTech Baby monitor'], 'held_units': ['78:98:e8:de:e4:9b', 'b8:06:0d:8f:63:6d', 'a4:97:5c:b8:e7:58', '48:e1:e9:e9:4a:16', '74:fe:ce:1c:21:8d']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.3547 ---
+  source_control
+      n = 24,631 known / 18,333 unknown
+      known acceptance  0.997   (nominal 0.95,  displacement -0.047)
+      unknown rejection 0.937   -> 1.000 if recalibrated (+0.063)
+      AUROC 0.998   OSCR 0.998   tau used 0.3547 vs needed 0.0133
+      closed-set macro-F1 0.998  (the number a closed-set paper would report)
+  unseen_unit
+      n = 15,947 known / 18,331 unknown
+      known acceptance  0.794   (nominal 0.95,  displacement +0.156)
+      unknown rejection 0.930   -> 0.449 if recalibrated (-0.480)
+      AUROC 0.884   OSCR 0.794   tau used 0.3547 vs needed 0.6967
+      closed-set macro-F1 0.664  (the number a closed-set paper would report)
+      => unseen_unit: operating point unreachable (recalibration does not recover it)  (control -0.047, shifted +0.156, floor 0.140)
+
+  --- rf, scorer=entropy, tau=0.2616 ---
+  source_control
+      n = 24,631 known / 18,333 unknown
+      known acceptance  0.995   (nominal 0.95,  displacement -0.045)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.998   OSCR 0.998   tau used 0.2616 vs needed 0.0303
+      closed-set macro-F1 0.998  (the number a closed-set paper would report)
+  unseen_unit
+      n = 15,947 known / 18,331 unknown
+      known acceptance  0.791   (nominal 0.95,  displacement +0.159)
+      unknown rejection 1.000   -> 0.200 if recalibrated (-0.800)
+      AUROC 0.872   OSCR 0.794   tau used 0.2616 vs needed 0.7775
+      closed-set macro-F1 0.664  (the number a closed-set paper would report)
+      => unseen_unit: operating point unreachable (recalibration does not recover it)  (control -0.045, shifted +0.159, floor 0.134)
+
+========================================================================
+axis: network:DATA2025v2->DATA2025v1
+  known classes   7
+  unknown classes 6: Aeotec hub, DLink Smart Plug, Dlink Camera, Ikea Hub, Tapo Plug, Tuya Camera
+  fit 43,139 windows   calibration 10,786 windows   alpha 0.95
+  {'source': 'DATA2025v2', 'target': 'DATA2025v1', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 13,518 known / 73,445 unknown
+      known acceptance  0.957   (nominal 0.95,  displacement -0.007)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 39,284 known / 31,855 unknown
+      known acceptance  0.530   (nominal 0.95,  displacement +0.420)
+      unknown rejection 1.000   -> 0.445 if recalibrated (-0.555)
+      AUROC 0.894   OSCR 0.877   tau used 0.0000 vs needed 0.6100
+      closed-set macro-F1 0.973  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.007, shifted +0.420, floor 0.022)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 13,518 known / 73,445 unknown
+      known acceptance  0.957   (nominal 0.95,  displacement -0.007)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 39,284 known / 31,855 unknown
+      known acceptance  0.530   (nominal 0.95,  displacement +0.420)
+      unknown rejection 1.000   -> 0.716 if recalibrated (-0.284)
+      AUROC 0.953   OSCR 0.929   tau used 0.0000 vs needed 0.7662
+      closed-set macro-F1 0.973  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.007, shifted +0.420, floor 0.022)
+
+========================================================================
+axis: network:DATA2025v1->DATA2025v2
+  known classes   7
+  unknown classes 6: Aeotec hub, DLink Smart Plug, Dlink Camera, Ikea Hub, Tapo Plug, Tuya Camera
+  fit 25,184 windows   calibration 6,271 windows   alpha 0.95
+  {'source': 'DATA2025v1', 'target': 'DATA2025v2', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0033 ---
+  source_control
+      n = 7,829 known / 31,855 unknown
+      known acceptance  0.969   (nominal 0.95,  displacement -0.019)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 0.999   tau used 0.0033 vs needed 0.0033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 67,443 known / 73,445 unknown
+      known acceptance  0.603   (nominal 0.95,  displacement +0.347)
+      unknown rejection 1.000   -> 0.971 if recalibrated (-0.029)
+      AUROC 0.996   OSCR 0.996   tau used 0.0033 vs needed 0.4067
+      closed-set macro-F1 0.998  (the number a closed-set paper would report)
+      => target_network: calibration-only failure (recalibration recovers it)  (control -0.019, shifted +0.347, floor 0.058)
+
+  --- rf, scorer=entropy, tau=0.0115 ---
+  source_control
+      n = 7,829 known / 31,855 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 0.999   tau used 0.0115 vs needed 0.0115
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 67,443 known / 73,445 unknown
+      known acceptance  0.561   (nominal 0.95,  displacement +0.389)
+      unknown rejection 1.000   -> 0.971 if recalibrated (-0.029)
+      AUROC 0.996   OSCR 0.996   tau used 0.0115 vs needed 0.6080
+      closed-set macro-F1 0.998  (the number a closed-set paper would report)
+      => target_network: calibration-only failure (recalibration recovers it)  (control -0.006, shifted +0.389, floor 0.020)
+
+========================================================================
+axis: time:25-02..25-06 -> 25-07..25-11
+  known classes   8
+  unknown classes 6: DLink Smart Plug, Dlink Camera, Tapo Hub, Tapo Plug, Tuya Camera, vTech Baby monitor
+  fit 22,861 windows   calibration 5,726 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'early_months': ['25-02', '25-03', '25-04', '25-05', '25-06'], 'late_months': ['25-07', '25-08', '25-09', '25-10', '25-11'], 'classes_in_both': 14}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.3500 ---
+  source_control
+      n = 7,120 known / 38,737 unknown
+      known acceptance  0.950   (nominal 0.95,  displacement +0.000)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.950   tau used 0.3500 vs needed 0.3501
+      closed-set macro-F1 0.939  (the number a closed-set paper would report)
+  later_months
+      n = 40,796 known / 46,238 unknown
+      known acceptance  0.845   (nominal 0.95,  displacement +0.105)
+      unknown rejection 1.000   -> 0.974 if recalibrated (-0.026)
+      AUROC 0.993   OSCR 0.951   tau used 0.3500 vs needed 0.4800
+      closed-set macro-F1 0.909  (the number a closed-set paper would report)
+      => later_months: calibration-only failure (recalibration recovers it)  (control +0.000, shifted +0.105, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.3160 ---
+  source_control
+      n = 7,120 known / 38,737 unknown
+      known acceptance  0.950   (nominal 0.95,  displacement +0.000)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 0.950   tau used 0.3160 vs needed 0.3165
+      closed-set macro-F1 0.939  (the number a closed-set paper would report)
+  later_months
+      n = 40,796 known / 46,238 unknown
+      known acceptance  0.828   (nominal 0.95,  displacement +0.122)
+      unknown rejection 1.000   -> 0.994 if recalibrated (-0.006)
+      AUROC 0.999   OSCR 0.957   tau used 0.3160 vs needed 0.6380
+      closed-set macro-F1 0.909  (the number a closed-set paper would report)
+      => later_months: calibration-only failure (recalibration recovers it)  (control +0.000, shifted +0.122, floor 0.020)
+
+========================================================================
+axis: visibility
+  known classes   11
+  unknown classes 6: Arlec LED, DLink Smart Plug, Ikea Hub, Nest Hub, Tapo Plug, Tuya Globe
+  fit 52,366 windows   calibration 13,077 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'profiles': ['V4', 'V5']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.3050 ---
+  source_control
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.950   (nominal 0.95,  displacement +0.000)
+      unknown rejection 0.972   -> 0.972 if recalibrated (+0.000)
+      AUROC 0.992   OSCR 0.966   tau used 0.3050 vs needed 0.3053
+      closed-set macro-F1 0.867  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.691   (nominal 0.95,  displacement +0.259)
+      unknown rejection 1.000   -> 0.953 if recalibrated (-0.047)
+      AUROC 0.984   OSCR 0.958   tau used 0.3050 vs needed 0.5167
+      closed-set macro-F1 0.868  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.662   (nominal 0.95,  displacement +0.288)
+      unknown rejection 1.000   -> 0.794 if recalibrated (-0.206)
+      AUROC 0.982   OSCR 0.956   tau used 0.3050 vs needed 0.5233
+      closed-set macro-F1 0.867  (the number a closed-set paper would report)
+      => visibility_V4: calibration-only failure (recalibration recovers it)  (control +0.000, shifted +0.259, floor 0.020)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control +0.000, shifted +0.288, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.2689 ---
+  source_control
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.951   (nominal 0.95,  displacement -0.001)
+      unknown rejection 0.985   -> 0.986 if recalibrated (+0.001)
+      AUROC 0.997   OSCR 0.969   tau used 0.2689 vs needed 0.2677
+      closed-set macro-F1 0.867  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.542   (nominal 0.95,  displacement +0.408)
+      unknown rejection 1.000   -> 0.860 if recalibrated (-0.140)
+      AUROC 0.975   OSCR 0.947   tau used 0.2689 vs needed 0.6312
+      closed-set macro-F1 0.868  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 27,965 known / 75,786 unknown
+      known acceptance  0.543   (nominal 0.95,  displacement +0.407)
+      unknown rejection 1.000   -> 0.820 if recalibrated (-0.180)
+      AUROC 0.962   OSCR 0.933   tau used 0.2689 vs needed 0.6569
+      closed-set macro-F1 0.867  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control -0.001, shifted +0.408, floor 0.020)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control -0.001, shifted +0.407, floor 0.020)
+
+========================================================================
+axis: instance:DATA2025v2
+  known classes   15
+  unknown classes 2: Meross Plug, Tuya Globe
+  fit 22,803 windows   calibration 5,686 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'multi_unit_classes': ['DLink Smart Plug', 'Meross Plug', 'Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'tested_classes': ['DLink Smart Plug', 'Tapo Plug', 'vTech Baby monitor'], 'held_units': ['78:98:e8:de:e3:76', '74:fe:ce:1c:21:8d', 'a4:97:5c:b8:e7:58', '48:e1:e9:e9:4a:3a', 'b8:06:0d:8f:63:6d']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.3033 ---
+  source_control
+      n = 22,875 known / 12,430 unknown
+      known acceptance  0.999   (nominal 0.95,  displacement -0.049)
+      unknown rejection 0.738   -> 1.000 if recalibrated (+0.262)
+      AUROC 0.999   OSCR 0.999   tau used 0.3033 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 23,887 known / 11,688 unknown
+      known acceptance  0.862   (nominal 0.95,  displacement +0.088)
+      unknown rejection 0.782   -> 0.000 if recalibrated (-0.782)
+      AUROC 0.861   OSCR 0.861   tau used 0.3033 vs needed 0.7833
+      closed-set macro-F1 0.663  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.049, shifted +0.088, floor 0.148)
+
+  --- rf, scorer=entropy, tau=0.2421 ---
+  source_control
+      n = 22,875 known / 12,430 unknown
+      known acceptance  0.998   (nominal 0.95,  displacement -0.048)
+      unknown rejection 0.747   -> 1.000 if recalibrated (+0.253)
+      AUROC 0.998   OSCR 0.998   tau used 0.2421 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 23,887 known / 11,688 unknown
+      known acceptance  0.861   (nominal 0.95,  displacement +0.089)
+      unknown rejection 0.790   -> 0.000 if recalibrated (-0.790)
+      AUROC 0.861   OSCR 0.861   tau used 0.2421 vs needed 0.8625
+      closed-set macro-F1 0.663  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.048, shifted +0.089, floor 0.144)
+
+========================================================================
+axis: network:DATA2025v2->DATA2025v1
+  known classes   7
+  unknown classes 6: Apple Homepod, Echo Show 5, Nest Hub, Tapo Hub, Tuya Camera, vTech Baby monitor
+  fit 27,370 windows   calibration 6,812 windows   alpha 0.95
+  {'source': 'DATA2025v2', 'target': 'DATA2025v1', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 50,685 known / 56,021 unknown
+      known acceptance  0.966   (nominal 0.95,  displacement -0.016)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 45,984 known / 25,155 unknown
+      known acceptance  0.419   (nominal 0.95,  displacement +0.531)
+      unknown rejection 1.000   -> 0.610 if recalibrated (-0.390)
+      AUROC 0.931   OSCR 0.706   tau used 0.0000 vs needed 0.5700
+      closed-set macro-F1 0.711  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.016, shifted +0.531, floor 0.048)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 50,685 known / 56,021 unknown
+      known acceptance  0.966   (nominal 0.95,  displacement -0.016)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 45,984 known / 25,155 unknown
+      known acceptance  0.419   (nominal 0.95,  displacement +0.531)
+      unknown rejection 1.000   -> 0.858 if recalibrated (-0.142)
+      AUROC 0.974   OSCR 0.714   tau used 0.0000 vs needed 0.7262
+      closed-set macro-F1 0.711  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.016, shifted +0.531, floor 0.048)
+
+========================================================================
+axis: network:DATA2025v1->DATA2025v2
+  known classes   7
+  unknown classes 6: Apple Homepod, Echo Show 5, Nest Hub, Tapo Hub, Tuya Camera, vTech Baby monitor
+  fit 29,430 windows   calibration 7,363 windows   alpha 0.95
+  {'source': 'DATA2025v1', 'target': 'DATA2025v2', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 9,191 known / 25,155 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 84,867 known / 56,021 unknown
+      known acceptance  0.570   (nominal 0.95,  displacement +0.380)
+      unknown rejection 1.000   -> 0.782 if recalibrated (-0.218)
+      AUROC 0.964   OSCR 0.892   tau used 0.0000 vs needed 0.6400
+      closed-set macro-F1 0.739  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.380, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 9,191 known / 25,155 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 84,867 known / 56,021 unknown
+      known acceptance  0.570   (nominal 0.95,  displacement +0.380)
+      unknown rejection 1.000   -> 0.948 if recalibrated (-0.052)
+      AUROC 0.987   OSCR 0.897   tau used 0.0000 vs needed 0.7614
+      closed-set macro-F1 0.739  (the number a closed-set paper would report)
+      => target_network: calibration-only failure (recalibration recovers it)  (control -0.006, shifted +0.380, floor 0.020)
+
+========================================================================
+axis: time:25-02..25-06 -> 25-07..25-11
+  known classes   8
+  unknown classes 6: Arlec LED, Nest Hub, Tapo Hub, Tuya Cabinet Lights, Tuya Camera, vTech Baby monitor
+  fit 28,793 windows   calibration 7,240 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'early_months': ['25-02', '25-03', '25-04', '25-05', '25-06'], 'late_months': ['25-07', '25-08', '25-09', '25-10', '25-11'], 'classes_in_both': 14}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 9,027 known / 29,384 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 0.775   -> 0.775 if recalibrated (+0.000)
+      AUROC 0.881   OSCR 0.774   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 51,963 known / 35,071 unknown
+      known acceptance  0.424   (nominal 0.95,  displacement +0.526)
+      unknown rejection 0.804   -> 0.675 if recalibrated (-0.130)
+      AUROC 0.777   OSCR 0.735   tau used 0.0000 vs needed 0.5033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.526, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 9,027 known / 29,384 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 0.775   -> 0.775 if recalibrated (+0.000)
+      AUROC 0.881   OSCR 0.774   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  later_months
+      n = 51,963 known / 35,071 unknown
+      known acceptance  0.424   (nominal 0.95,  displacement +0.526)
+      unknown rejection 0.804   -> 0.517 if recalibrated (-0.288)
+      AUROC 0.768   OSCR 0.727   tau used 0.0000 vs needed 0.6961
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.526, floor 0.020)
+
+========================================================================
+axis: visibility
+  known classes   11
+  unknown classes 6: Aeotec hub, Aqara Hub, Echo Show 5, Nest Hub, Tapo Plug, Tuya Cabinet Lights
+  fit 75,252 windows   calibration 18,903 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'profiles': ['V4', 'V5']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.949   (nominal 0.95,  displacement +0.001)
+      unknown rejection 0.841   -> 0.819 if recalibrated (-0.022)
+      AUROC 0.914   OSCR 0.839   tau used 0.0000 vs needed 0.0033
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.584   (nominal 0.95,  displacement +0.366)
+      unknown rejection 1.000   -> 0.322 if recalibrated (-0.678)
+      AUROC 0.914   OSCR 0.893   tau used 0.0000 vs needed 0.5567
+      closed-set macro-F1 0.869  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.596   (nominal 0.95,  displacement +0.354)
+      unknown rejection 1.000   -> 0.319 if recalibrated (-0.681)
+      AUROC 0.911   OSCR 0.893   tau used 0.0000 vs needed 0.5600
+      closed-set macro-F1 0.881  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.366, floor 0.020)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.354, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.949   (nominal 0.95,  displacement +0.001)
+      unknown rejection 0.841   -> 0.819 if recalibrated (-0.022)
+      AUROC 0.914   OSCR 0.839   tau used 0.0000 vs needed 0.0093
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.584   (nominal 0.95,  displacement +0.366)
+      unknown rejection 1.000   -> 0.456 if recalibrated (-0.544)
+      AUROC 0.942   OSCR 0.899   tau used 0.0000 vs needed 0.6716
+      closed-set macro-F1 0.869  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 23,569 known / 51,470 unknown
+      known acceptance  0.596   (nominal 0.95,  displacement +0.354)
+      unknown rejection 1.000   -> 0.449 if recalibrated (-0.551)
+      AUROC 0.941   OSCR 0.900   tau used 0.0000 vs needed 0.6791
+      closed-set macro-F1 0.881  (the number a closed-set paper would report)
+      => visibility_V4: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.366, floor 0.020)
+      => visibility_V5: operating point unreachable (recalibration does not recover it)  (control +0.001, shifted +0.354, floor 0.020)
+
+========================================================================
+axis: instance:DATA2025v2
+  known classes   15
+  unknown classes 2: Meross Plug, vTech Baby monitor
+  fit 62,278 windows   calibration 15,548 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'multi_unit_classes': ['DLink Smart Plug', 'Meross Plug', 'Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'tested_classes': ['DLink Smart Plug', 'Tapo Plug', 'Tuya Globe'], 'held_units': ['78:98:e8:de:e4:9b', '74:fe:ce:1c:1a:71', 'b8:06:0d:8f:75:dd', '48:e1:e9:e9:4a:16', 'a4:97:5c:b8:e7:4f']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.2667 ---
+  source_control
+      n = 7,649 known / 12,438 unknown
+      known acceptance  0.999   (nominal 0.95,  displacement -0.049)
+      unknown rejection 0.999   -> 1.000 if recalibrated (+0.001)
+      AUROC 0.999   OSCR 0.999   tau used 0.2667 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 21,464 known / 19,916 unknown
+      known acceptance  0.997   (nominal 0.95,  displacement -0.047)
+      unknown rejection 0.999   -> 1.000 if recalibrated (+0.001)
+      AUROC 0.999   OSCR 0.998   tau used 0.2667 vs needed 0.0000
+      closed-set macro-F1 0.997  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.049, shifted -0.047, floor 0.146)
+
+  --- rf, scorer=entropy, tau=0.2235 ---
+  source_control
+      n = 7,649 known / 12,438 unknown
+      known acceptance  0.998   (nominal 0.95,  displacement -0.048)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 0.999   tau used 0.2235 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 21,464 known / 19,916 unknown
+      known acceptance  0.996   (nominal 0.95,  displacement -0.046)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.998   tau used 0.2235 vs needed 0.0000
+      closed-set macro-F1 0.997  (the number a closed-set paper would report)
+      => unseen_unit: transports  (control -0.048, shifted -0.046, floor 0.143)
+
+========================================================================
+axis: network:DATA2025v2->DATA2025v1
+  known classes   7
+  unknown classes 6: Apple Homepod, DLink Smart Plug, Dlink Camera, Ikea Hub, Tapo Hub, Tapo Plug
+  fit 2,393 windows   calibration 597 windows   alpha 0.95
+  {'source': 'DATA2025v2', 'target': 'DATA2025v1', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0100 ---
+  source_control
+      n = 65,102 known / 72,796 unknown
+      known acceptance  0.953   (nominal 0.95,  displacement -0.003)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.999   tau used 0.0100 vs needed 0.0100
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 39,402 known / 31,737 unknown
+      known acceptance  0.562   (nominal 0.95,  displacement +0.388)
+      unknown rejection 1.000   -> 0.551 if recalibrated (-0.449)
+      AUROC 0.948   OSCR 0.853   tau used 0.0100 vs needed 0.5633
+      closed-set macro-F1 0.801  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control -0.003, shifted +0.388, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.0313 ---
+  source_control
+      n = 65,102 known / 72,796 unknown
+      known acceptance  0.942   (nominal 0.95,  displacement +0.008)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 0.999   OSCR 0.999   tau used 0.0313 vs needed 0.0348
+      closed-set macro-F1 0.857  (the number a closed-set paper would report)
+  target_network
+      n = 39,402 known / 31,737 unknown
+      known acceptance  0.541   (nominal 0.95,  displacement +0.409)
+      unknown rejection 1.000   -> 0.744 if recalibrated (-0.256)
+      AUROC 0.971   OSCR 0.874   tau used 0.0313 vs needed 0.7862
+      closed-set macro-F1 0.801  (the number a closed-set paper would report)
+      => target_network: operating point unreachable (recalibration does not recover it)  (control +0.008, shifted +0.409, floor 0.025)
+
+========================================================================
+axis: network:DATA2025v1->DATA2025v2
+  known classes   7
+  unknown classes 6: Apple Homepod, DLink Smart Plug, Dlink Camera, Ikea Hub, Tapo Hub, Tapo Plug
+  fit 25,146 windows   calibration 6,347 windows   alpha 0.95
+  {'source': 'DATA2025v1', 'target': 'DATA2025v2', 'n_shared_classes': 13}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.0000 ---
+  source_control
+      n = 7,909 known / 31,737 unknown
+      known acceptance  0.964   (nominal 0.95,  displacement -0.014)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 68,092 known / 72,796 unknown
+      known acceptance  0.547   (nominal 0.95,  displacement +0.403)
+      unknown rejection 1.000   -> 0.976 if recalibrated (-0.024)
+      AUROC 0.996   OSCR 0.996   tau used 0.0000 vs needed 0.2400
+      closed-set macro-F1 0.898  (the number a closed-set paper would report)
+      => target_network: calibration-only failure (recalibration recovers it)  (control -0.014, shifted +0.403, floor 0.043)
+
+  --- rf, scorer=entropy, tau=0.0000 ---
+  source_control
+      n = 7,909 known / 31,737 unknown
+      known acceptance  0.964   (nominal 0.95,  displacement -0.014)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.0000 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  target_network
+      n = 68,092 known / 72,796 unknown
+      known acceptance  0.547   (nominal 0.95,  displacement +0.403)
+      unknown rejection 1.000   -> 0.977 if recalibrated (-0.023)
+      AUROC 0.996   OSCR 0.996   tau used 0.0000 vs needed 0.4431
+      closed-set macro-F1 0.898  (the number a closed-set paper would report)
+      => target_network: calibration-only failure (recalibration recovers it)  (control -0.014, shifted +0.403, floor 0.043)
+
+========================================================================
+axis: time:25-02..25-06 -> 25-07..25-11
+  known classes   8
+  unknown classes 6: Arlec LED, Dlink Camera, Meross Plug, Nest Hub, Tapo Hub, Tuya Camera
+  fit 29,149 windows   calibration 7,277 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'early_months': ['25-02', '25-03', '25-04', '25-05', '25-06'], 'late_months': ['25-07', '25-08', '25-09', '25-10', '25-11'], 'classes_in_both': 14}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.3467 ---
+  source_control
+      n = 9,112 known / 28,906 unknown
+      known acceptance  0.957   (nominal 0.95,  displacement -0.007)
+      unknown rejection 0.696   -> 0.713 if recalibrated (+0.017)
+      AUROC 0.972   OSCR 0.955   tau used 0.3467 vs needed 0.3233
+      closed-set macro-F1 0.959  (the number a closed-set paper would report)
+  later_months
+      n = 47,934 known / 39,100 unknown
+      known acceptance  0.855   (nominal 0.95,  displacement +0.095)
+      unknown rejection 0.935   -> 0.451 if recalibrated (-0.485)
+      AUROC 0.939   OSCR 0.906   tau used 0.3467 vs needed 0.4600
+      closed-set macro-F1 0.826  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.007, shifted +0.095, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.3114 ---
+  source_control
+      n = 9,112 known / 28,906 unknown
+      known acceptance  0.956   (nominal 0.95,  displacement -0.006)
+      unknown rejection 0.965   -> 0.969 if recalibrated (+0.005)
+      AUROC 0.995   OSCR 0.971   tau used 0.3114 vs needed 0.3050
+      closed-set macro-F1 0.959  (the number a closed-set paper would report)
+  later_months
+      n = 47,934 known / 39,100 unknown
+      known acceptance  0.828   (nominal 0.95,  displacement +0.122)
+      unknown rejection 0.968   -> 0.715 if recalibrated (-0.253)
+      AUROC 0.960   OSCR 0.917   tau used 0.3114 vs needed 0.5740
+      closed-set macro-F1 0.826  (the number a closed-set paper would report)
+      => later_months: operating point unreachable (recalibration does not recover it)  (control -0.006, shifted +0.122, floor 0.020)
+
+========================================================================
+axis: visibility
+  known classes   11
+  unknown classes 6: Aeotec hub, Aqara Hub, Dlink Camera, Tapo Hub, Tapo Plug, Tuya Globe
+  fit 79,025 windows   calibration 19,743 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'profiles': ['V4', 'V5']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.2467 ---
+  source_control
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.953   (nominal 0.95,  displacement -0.003)
+      unknown rejection 0.875   -> 0.875 if recalibrated (+0.000)
+      AUROC 0.986   OSCR 0.967   tau used 0.2467 vs needed 0.2333
+      closed-set macro-F1 0.956  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.655   (nominal 0.95,  displacement +0.295)
+      unknown rejection 1.000   -> 0.918 if recalibrated (-0.082)
+      AUROC 0.983   OSCR 0.909   tau used 0.2467 vs needed 0.6167
+      closed-set macro-F1 0.854  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.612   (nominal 0.95,  displacement +0.338)
+      unknown rejection 1.000   -> 0.903 if recalibrated (-0.097)
+      AUROC 0.981   OSCR 0.911   tau used 0.2467 vs needed 0.6300
+      closed-set macro-F1 0.863  (the number a closed-set paper would report)
+      => visibility_V4: calibration-only failure (recalibration recovers it)  (control -0.003, shifted +0.295, floor 0.020)
+      => visibility_V5: calibration-only failure (recalibration recovers it)  (control -0.003, shifted +0.338, floor 0.020)
+
+  --- rf, scorer=entropy, tau=0.2370 ---
+  source_control
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.952   (nominal 0.95,  displacement -0.002)
+      unknown rejection 0.876   -> 0.877 if recalibrated (+0.000)
+      AUROC 0.987   OSCR 0.968   tau used 0.2370 vs needed 0.2318
+      closed-set macro-F1 0.956  (the number a closed-set paper would report)
+  visibility_V4 [V4]
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.516   (nominal 0.95,  displacement +0.434)
+      unknown rejection 1.000   -> 0.945 if recalibrated (-0.055)
+      AUROC 0.989   OSCR 0.906   tau used 0.2370 vs needed 0.6614
+      closed-set macro-F1 0.854  (the number a closed-set paper would report)
+  visibility_V5 [V5]
+      n = 24,798 known / 45,628 unknown
+      known acceptance  0.511   (nominal 0.95,  displacement +0.439)
+      unknown rejection 1.000   -> 0.943 if recalibrated (-0.057)
+      AUROC 0.991   OSCR 0.912   tau used 0.2370 vs needed 0.6693
+      closed-set macro-F1 0.863  (the number a closed-set paper would report)
+      => visibility_V4: calibration-only failure (recalibration recovers it)  (control -0.002, shifted +0.434, floor 0.020)
+      => visibility_V5: calibration-only failure (recalibration recovers it)  (control -0.002, shifted +0.439, floor 0.020)
+
+========================================================================
+axis: instance:DATA2025v2
+  known classes   15
+  unknown classes 2: DLink Smart Plug, Meross Plug
+  fit 39,497 windows   calibration 9,830 windows   alpha 0.95
+  {'network': 'DATA2025v2', 'multi_unit_classes': ['DLink Smart Plug', 'Meross Plug', 'Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'tested_classes': ['Tapo Plug', 'Tuya Globe', 'vTech Baby monitor'], 'held_units': ['74:fe:ce:1c:21:8d', 'b8:06:0d:8f:63:6d', 'a4:97:5c:b8:e7:4f', '78:98:e8:de:e4:9b', '48:e1:e9:e9:4a:16']}
+
+  --- rf: scorer 'energy' NOT APPLICABLE: model emits normalised log-probabilities, so -logsumexp(logits) is identically 0
+
+  --- rf: scorer 'proto' NOT APPLICABLE: model has no learned embedding; z is the posterior, so prototype distance is not the proposed mechanism
+
+  --- rf, scorer=msp, tau=0.2733 ---
+  source_control
+      n = 8,555 known / 20,622 unknown
+      known acceptance  0.999   (nominal 0.95,  displacement -0.049)
+      unknown rejection 0.999   -> 1.000 if recalibrated (+0.001)
+      AUROC 1.000   OSCR 1.000   tau used 0.2733 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 22,431 known / 19,325 unknown
+      known acceptance  0.520   (nominal 0.95,  displacement +0.430)
+      unknown rejection 1.000   -> 0.525 if recalibrated (-0.474)
+      AUROC 0.772   OSCR 0.521   tau used 0.2733 vs needed 0.7167
+      closed-set macro-F1 0.667  (the number a closed-set paper would report)
+      => unseen_unit: operating point unreachable (recalibration does not recover it)  (control -0.049, shifted +0.430, floor 0.148)
+
+  --- rf, scorer=entropy, tau=0.2259 ---
+  source_control
+      n = 8,555 known / 20,622 unknown
+      known acceptance  0.998   (nominal 0.95,  displacement -0.048)
+      unknown rejection 1.000   -> 1.000 if recalibrated (+0.000)
+      AUROC 1.000   OSCR 1.000   tau used 0.2259 vs needed 0.0000
+      closed-set macro-F1 1.000  (the number a closed-set paper would report)
+  unseen_unit
+      n = 22,431 known / 19,325 unknown
+      known acceptance  0.519   (nominal 0.95,  displacement +0.431)
+      unknown rejection 1.000   -> 0.525 if recalibrated (-0.475)
+      AUROC 0.772   OSCR 0.521   tau used 0.2259 vs needed 0.7925
+      closed-set macro-F1 0.667  (the number a closed-set paper would report)
+      => unseen_unit: operating point unreachable (recalibration does not recover it)  (control -0.048, shifted +0.431, floor 0.143)
+
+========================================================================
+across 5 seeds (each reseeds the split AND the unknown class choice)
+axis / condition                   method scorer       dA mean+-ci  R_ctrl      R*  AUROC  modal verdict
+network / target_network           rf     msp       +0.451 +-0.046   1.000   0.488  0.918  operating point unreachable (8/10)
+network / target_network           rf     entropy   +0.460 +-0.044   1.000   0.602  0.938  operating point unreachable (7/10)
+time / later_months                rf     msp       +0.311 +-0.174   0.865   0.709  0.914  operating point unreachable (3/5)
+time / later_months                rf     entropy   +0.320 +-0.164   0.919   0.720  0.917  operating point unreachable (3/5)
+visibility / visibility_V4         rf     msp       +0.290 +-0.051   0.914   0.740  0.963  calibration-only failure (3/5)
+visibility / visibility_V5         rf     msp       +0.311 +-0.030   0.914   0.704  0.961  operating point unreachable (3/5)
+visibility / visibility_V4         rf     entropy   +0.392 +-0.044   0.919   0.740  0.967  operating point unreachable (4/5)
+visibility / visibility_V5         rf     entropy   +0.387 +-0.050   0.919   0.731  0.965  operating point unreachable (4/5)
+instance / unseen_unit             rf     msp       +0.146 +-0.154   0.882   0.524  0.894  transports (3/5)
+instance / unseen_unit             rf     entropy   +0.147 +-0.154   0.898   0.484  0.893  transports (3/5)
+
+========================================================================
+summary: displacement of the realised known-acceptance
+axis / condition                               method scorer       dA  R@tau  R@tau*  AUROC   csF1  verdict
+network:DATA2025v2->DATA2025v1 / target_networ rf     msp      +0.492  1.000   0.038  0.760  0.747  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     entropy  +0.516  1.000   0.102  0.786  0.747  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     msp      +0.581  1.000   0.018  0.883  0.828  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     entropy  +0.592  1.000   0.001  0.877  0.828  operating point unreachable (recalibration does not recover it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     msp      +0.438  1.000   1.000  1.000  1.000  calibration-only failure (recalibration recovers it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     entropy  +0.438  1.000   1.000  1.000  1.000  calibration-only failure (recalibration recovers it)
+visibility / visibility_V4                     rf     msp      +0.212  1.000   0.930  0.990  0.865  calibration-only failure (recalibration recovers it)
+visibility / visibility_V5                     rf     msp      +0.272  1.000   0.932  0.990  0.865  calibration-only failure (recalibration recovers it)
+visibility / visibility_V4                     rf     entropy  +0.436  1.000   0.863  0.986  0.865  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     entropy  +0.431  1.000   0.869  0.987  0.865  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     msp      +0.102  0.845   0.647  0.954  0.665  transports
+instance:DATA2025v2 / unseen_unit              rf     entropy  +0.103  0.848   0.697  0.962  0.665  transports
+network:DATA2025v2->DATA2025v1 / target_networ rf     msp      +0.494  1.000   0.189  0.889  0.803  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     entropy  +0.494  1.000   0.445  0.905  0.803  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     msp      +0.470  1.000   0.296  0.923  0.923  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     entropy  +0.470  1.000   0.261  0.936  0.923  operating point unreachable (recalibration does not recover it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     msp      +0.391  0.885   0.444  0.858  0.999  operating point unreachable (recalibration does not recover it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     entropy  +0.391  0.885   0.375  0.856  0.999  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     msp      +0.319  1.000   0.575  0.943  0.908  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     msp      +0.303  1.000   0.575  0.942  0.908  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     entropy  +0.319  1.000   0.576  0.945  0.908  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     entropy  +0.303  1.000   0.576  0.942  0.908  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     msp      +0.156  0.930   0.449  0.884  0.664  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     entropy  +0.159  1.000   0.200  0.872  0.664  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     msp      +0.420  1.000   0.445  0.894  0.973  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     entropy  +0.420  1.000   0.716  0.953  0.973  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     msp      +0.347  1.000   0.971  0.996  0.998  calibration-only failure (recalibration recovers it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     entropy  +0.389  1.000   0.971  0.996  0.998  calibration-only failure (recalibration recovers it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     msp      +0.105  1.000   0.974  0.993  0.909  calibration-only failure (recalibration recovers it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     entropy  +0.122  1.000   0.994  0.999  0.909  calibration-only failure (recalibration recovers it)
+visibility / visibility_V4                     rf     msp      +0.259  1.000   0.953  0.984  0.868  calibration-only failure (recalibration recovers it)
+visibility / visibility_V5                     rf     msp      +0.288  1.000   0.794  0.982  0.867  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     entropy  +0.408  1.000   0.860  0.975  0.868  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     entropy  +0.407  1.000   0.820  0.962  0.867  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     msp      +0.088  0.782   0.000  0.861  0.663  transports
+instance:DATA2025v2 / unseen_unit              rf     entropy  +0.089  0.790   0.000  0.861  0.663  transports
+network:DATA2025v2->DATA2025v1 / target_networ rf     msp      +0.531  1.000   0.610  0.931  0.711  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     entropy  +0.531  1.000   0.858  0.974  0.711  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     msp      +0.380  1.000   0.782  0.964  0.739  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     entropy  +0.380  1.000   0.948  0.987  0.739  calibration-only failure (recalibration recovers it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     msp      +0.526  0.804   0.675  0.777  1.000  operating point unreachable (recalibration does not recover it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     entropy  +0.526  0.804   0.517  0.768  1.000  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     msp      +0.366  1.000   0.322  0.914  0.869  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     msp      +0.354  1.000   0.319  0.911  0.881  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     entropy  +0.366  1.000   0.456  0.942  0.869  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V5                     rf     entropy  +0.354  1.000   0.449  0.941  0.881  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     msp      -0.047  0.999   1.000  0.999  0.997  transports
+instance:DATA2025v2 / unseen_unit              rf     entropy  -0.046  1.000   1.000  0.999  0.997  transports
+network:DATA2025v2->DATA2025v1 / target_networ rf     msp      +0.388  1.000   0.551  0.948  0.801  operating point unreachable (recalibration does not recover it)
+network:DATA2025v2->DATA2025v1 / target_networ rf     entropy  +0.409  1.000   0.744  0.971  0.801  operating point unreachable (recalibration does not recover it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     msp      +0.403  1.000   0.976  0.996  0.898  calibration-only failure (recalibration recovers it)
+network:DATA2025v1->DATA2025v2 / target_networ rf     entropy  +0.403  1.000   0.977  0.996  0.898  calibration-only failure (recalibration recovers it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     msp      +0.095  0.935   0.451  0.939  0.826  operating point unreachable (recalibration does not recover it)
+time:25-02..25-06 -> 25-07..25-11 / later_mont rf     entropy  +0.122  0.968   0.715  0.960  0.826  operating point unreachable (recalibration does not recover it)
+visibility / visibility_V4                     rf     msp      +0.295  1.000   0.918  0.983  0.854  calibration-only failure (recalibration recovers it)
+visibility / visibility_V5                     rf     msp      +0.338  1.000   0.903  0.981  0.863  calibration-only failure (recalibration recovers it)
+visibility / visibility_V4                     rf     entropy  +0.434  1.000   0.945  0.989  0.854  calibration-only failure (recalibration recovers it)
+visibility / visibility_V5                     rf     entropy  +0.439  1.000   0.943  0.991  0.863  calibration-only failure (recalibration recovers it)
+instance:DATA2025v2 / unseen_unit              rf     msp      +0.430  1.000   0.525  0.772  0.667  operating point unreachable (recalibration does not recover it)
+instance:DATA2025v2 / unseen_unit              rf     entropy  +0.431  1.000   0.525  0.772  0.667  operating point unreachable (recalibration does not recover it)
+
+headline: the 60 of 60 (axis, method, scorer) combinations whose SOURCE operating point was worth transporting (rejection >= 0.5)
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, msp, r0]
+      acceptance +0.015 -> displacement +0.492;  rejection 1.000 -> 0.038 even after recalibration;  closed-set macro-F1 0.857 -> 0.747
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, entropy, r0]
+      acceptance +0.002 -> displacement +0.516;  rejection 1.000 -> 0.102 even after recalibration;  closed-set macro-F1 0.857 -> 0.747
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, msp, r0]
+      acceptance +0.012 -> displacement +0.581;  rejection 1.000 -> 0.018 even after recalibration;  closed-set macro-F1 1.000 -> 0.828
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, entropy, r0]
+      acceptance +0.006 -> displacement +0.592;  rejection 1.000 -> 0.001 even after recalibration;  closed-set macro-F1 1.000 -> 0.828
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, msp, r0]
+      acceptance +0.011 -> displacement +0.438;  rejection 1.000 -> 1.000 even after recalibration;  closed-set macro-F1 1.000 -> 1.000
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, entropy, r0]
+      acceptance +0.011 -> displacement +0.438;  rejection 1.000 -> 1.000 even after recalibration;  closed-set macro-F1 1.000 -> 1.000
+  visibility / visibility_V4  [rf, msp, r0]
+      acceptance -0.005 -> displacement +0.212;  rejection 0.980 -> 0.930 even after recalibration;  closed-set macro-F1 0.866 -> 0.865
+  visibility / visibility_V5  [rf, msp, r0]
+      acceptance -0.005 -> displacement +0.272;  rejection 0.980 -> 0.932 even after recalibration;  closed-set macro-F1 0.866 -> 0.865
+  visibility / visibility_V4  [rf, entropy, r0]
+      acceptance -0.005 -> displacement +0.436;  rejection 0.990 -> 0.863 even after recalibration;  closed-set macro-F1 0.866 -> 0.865
+  visibility / visibility_V5  [rf, entropy, r0]
+      acceptance -0.005 -> displacement +0.431;  rejection 0.990 -> 0.869 even after recalibration;  closed-set macro-F1 0.866 -> 0.865
+  instance:DATA2025v2 / unseen_unit  [rf, msp, r0]
+      acceptance +0.048 -> displacement +0.102;  rejection 0.737 -> 0.647 even after recalibration;  closed-set macro-F1 1.000 -> 0.665
+  instance:DATA2025v2 / unseen_unit  [rf, entropy, r0]
+      acceptance +0.047 -> displacement +0.103;  rejection 0.742 -> 0.697 even after recalibration;  closed-set macro-F1 1.000 -> 0.665
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, msp, r1]
+      acceptance -0.001 -> displacement +0.494;  rejection 1.000 -> 0.189 even after recalibration;  closed-set macro-F1 1.000 -> 0.803
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, entropy, r1]
+      acceptance -0.001 -> displacement +0.494;  rejection 1.000 -> 0.445 even after recalibration;  closed-set macro-F1 1.000 -> 0.803
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, msp, r1]
+      acceptance +0.006 -> displacement +0.470;  rejection 1.000 -> 0.296 even after recalibration;  closed-set macro-F1 1.000 -> 0.923
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, entropy, r1]
+      acceptance +0.006 -> displacement +0.470;  rejection 1.000 -> 0.261 even after recalibration;  closed-set macro-F1 1.000 -> 0.923
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, msp, r1]
+      acceptance +0.006 -> displacement +0.391;  rejection 0.854 -> 0.444 even after recalibration;  closed-set macro-F1 1.000 -> 0.999
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, entropy, r1]
+      acceptance +0.006 -> displacement +0.391;  rejection 0.854 -> 0.375 even after recalibration;  closed-set macro-F1 1.000 -> 0.999
+  visibility / visibility_V4  [rf, msp, r1]
+      acceptance +0.024 -> displacement +0.319;  rejection 0.902 -> 0.575 even after recalibration;  closed-set macro-F1 0.908 -> 0.908
+  visibility / visibility_V5  [rf, msp, r1]
+      acceptance +0.024 -> displacement +0.303;  rejection 0.902 -> 0.575 even after recalibration;  closed-set macro-F1 0.908 -> 0.908
+  visibility / visibility_V4  [rf, entropy, r1]
+      acceptance +0.024 -> displacement +0.319;  rejection 0.902 -> 0.576 even after recalibration;  closed-set macro-F1 0.908 -> 0.908
+  visibility / visibility_V5  [rf, entropy, r1]
+      acceptance +0.024 -> displacement +0.303;  rejection 0.902 -> 0.576 even after recalibration;  closed-set macro-F1 0.908 -> 0.908
+  instance:DATA2025v2 / unseen_unit  [rf, msp, r1]
+      acceptance +0.047 -> displacement +0.156;  rejection 0.937 -> 0.449 even after recalibration;  closed-set macro-F1 0.998 -> 0.664
+  instance:DATA2025v2 / unseen_unit  [rf, entropy, r1]
+      acceptance +0.045 -> displacement +0.159;  rejection 1.000 -> 0.200 even after recalibration;  closed-set macro-F1 0.998 -> 0.664
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, msp, r2]
+      acceptance +0.007 -> displacement +0.420;  rejection 1.000 -> 0.445 even after recalibration;  closed-set macro-F1 1.000 -> 0.973
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, entropy, r2]
+      acceptance +0.007 -> displacement +0.420;  rejection 1.000 -> 0.716 even after recalibration;  closed-set macro-F1 1.000 -> 0.973
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, msp, r2]
+      acceptance +0.019 -> displacement +0.347;  rejection 1.000 -> 0.971 even after recalibration;  closed-set macro-F1 1.000 -> 0.998
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, entropy, r2]
+      acceptance +0.006 -> displacement +0.389;  rejection 1.000 -> 0.971 even after recalibration;  closed-set macro-F1 1.000 -> 0.998
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, msp, r2]
+      acceptance +0.000 -> displacement +0.105;  rejection 1.000 -> 0.974 even after recalibration;  closed-set macro-F1 0.939 -> 0.909
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, entropy, r2]
+      acceptance -0.000 -> displacement +0.122;  rejection 1.000 -> 0.994 even after recalibration;  closed-set macro-F1 0.939 -> 0.909
+  visibility / visibility_V4  [rf, msp, r2]
+      acceptance -0.000 -> displacement +0.259;  rejection 0.972 -> 0.953 even after recalibration;  closed-set macro-F1 0.867 -> 0.868
+  visibility / visibility_V5  [rf, msp, r2]
+      acceptance -0.000 -> displacement +0.288;  rejection 0.972 -> 0.794 even after recalibration;  closed-set macro-F1 0.867 -> 0.867
+  visibility / visibility_V4  [rf, entropy, r2]
+      acceptance +0.001 -> displacement +0.408;  rejection 0.985 -> 0.860 even after recalibration;  closed-set macro-F1 0.867 -> 0.868
+  visibility / visibility_V5  [rf, entropy, r2]
+      acceptance +0.001 -> displacement +0.407;  rejection 0.985 -> 0.820 even after recalibration;  closed-set macro-F1 0.867 -> 0.867
+  instance:DATA2025v2 / unseen_unit  [rf, msp, r2]
+      acceptance +0.049 -> displacement +0.088;  rejection 0.738 -> 0.000 even after recalibration;  closed-set macro-F1 1.000 -> 0.663
+  instance:DATA2025v2 / unseen_unit  [rf, entropy, r2]
+      acceptance +0.048 -> displacement +0.089;  rejection 0.747 -> 0.000 even after recalibration;  closed-set macro-F1 1.000 -> 0.663
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, msp, r3]
+      acceptance +0.016 -> displacement +0.531;  rejection 1.000 -> 0.610 even after recalibration;  closed-set macro-F1 0.857 -> 0.711
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, entropy, r3]
+      acceptance +0.016 -> displacement +0.531;  rejection 1.000 -> 0.858 even after recalibration;  closed-set macro-F1 0.857 -> 0.711
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, msp, r3]
+      acceptance +0.006 -> displacement +0.380;  rejection 1.000 -> 0.782 even after recalibration;  closed-set macro-F1 1.000 -> 0.739
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, entropy, r3]
+      acceptance +0.006 -> displacement +0.380;  rejection 1.000 -> 0.948 even after recalibration;  closed-set macro-F1 1.000 -> 0.739
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, msp, r3]
+      acceptance +0.006 -> displacement +0.526;  rejection 0.775 -> 0.675 even after recalibration;  closed-set macro-F1 1.000 -> 1.000
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, entropy, r3]
+      acceptance +0.006 -> displacement +0.526;  rejection 0.775 -> 0.517 even after recalibration;  closed-set macro-F1 1.000 -> 1.000
+  visibility / visibility_V4  [rf, msp, r3]
+      acceptance -0.001 -> displacement +0.366;  rejection 0.841 -> 0.322 even after recalibration;  closed-set macro-F1 1.000 -> 0.869
+  visibility / visibility_V5  [rf, msp, r3]
+      acceptance -0.001 -> displacement +0.354;  rejection 0.841 -> 0.319 even after recalibration;  closed-set macro-F1 1.000 -> 0.881
+  visibility / visibility_V4  [rf, entropy, r3]
+      acceptance -0.001 -> displacement +0.366;  rejection 0.841 -> 0.456 even after recalibration;  closed-set macro-F1 1.000 -> 0.869
+  visibility / visibility_V5  [rf, entropy, r3]
+      acceptance -0.001 -> displacement +0.354;  rejection 0.841 -> 0.449 even after recalibration;  closed-set macro-F1 1.000 -> 0.881
+  instance:DATA2025v2 / unseen_unit  [rf, msp, r3]
+      acceptance +0.049 -> displacement -0.047;  rejection 0.999 -> 1.000 even after recalibration;  closed-set macro-F1 1.000 -> 0.997
+  instance:DATA2025v2 / unseen_unit  [rf, entropy, r3]
+      acceptance +0.048 -> displacement -0.046;  rejection 1.000 -> 1.000 even after recalibration;  closed-set macro-F1 1.000 -> 0.997
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, msp, r4]
+      acceptance +0.003 -> displacement +0.388;  rejection 1.000 -> 0.551 even after recalibration;  closed-set macro-F1 0.857 -> 0.801
+  network:DATA2025v2->DATA2025v1 / target_network  [rf, entropy, r4]
+      acceptance -0.008 -> displacement +0.409;  rejection 1.000 -> 0.744 even after recalibration;  closed-set macro-F1 0.857 -> 0.801
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, msp, r4]
+      acceptance +0.014 -> displacement +0.403;  rejection 1.000 -> 0.976 even after recalibration;  closed-set macro-F1 1.000 -> 0.898
+  network:DATA2025v1->DATA2025v2 / target_network  [rf, entropy, r4]
+      acceptance +0.014 -> displacement +0.403;  rejection 1.000 -> 0.977 even after recalibration;  closed-set macro-F1 1.000 -> 0.898
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, msp, r4]
+      acceptance +0.007 -> displacement +0.095;  rejection 0.696 -> 0.451 even after recalibration;  closed-set macro-F1 0.959 -> 0.826
+  time:25-02..25-06 -> 25-07..25-11 / later_months  [rf, entropy, r4]
+      acceptance +0.006 -> displacement +0.122;  rejection 0.965 -> 0.715 even after recalibration;  closed-set macro-F1 0.959 -> 0.826
+  visibility / visibility_V4  [rf, msp, r4]
+      acceptance +0.003 -> displacement +0.295;  rejection 0.875 -> 0.918 even after recalibration;  closed-set macro-F1 0.956 -> 0.854
+  visibility / visibility_V5  [rf, msp, r4]
+      acceptance +0.003 -> displacement +0.338;  rejection 0.875 -> 0.903 even after recalibration;  closed-set macro-F1 0.956 -> 0.863
+  visibility / visibility_V4  [rf, entropy, r4]
+      acceptance +0.002 -> displacement +0.434;  rejection 0.876 -> 0.945 even after recalibration;  closed-set macro-F1 0.956 -> 0.854
+  visibility / visibility_V5  [rf, entropy, r4]
+      acceptance +0.002 -> displacement +0.439;  rejection 0.876 -> 0.943 even after recalibration;  closed-set macro-F1 0.956 -> 0.863
+  instance:DATA2025v2 / unseen_unit  [rf, msp, r4]
+      acceptance +0.049 -> displacement +0.430;  rejection 0.999 -> 0.525 even after recalibration;  closed-set macro-F1 1.000 -> 0.667
+  instance:DATA2025v2 / unseen_unit  [rf, entropy, r4]
+      acceptance +0.048 -> displacement +0.431;  rejection 1.000 -> 0.525 even after recalibration;  closed-set macro-F1 1.000 -> 0.667
+
+dA  = nominal acceptance minus realised acceptance (0 means the operating point transported)
+R@tau  = unknown rejection at the STALE threshold;  R@tau* = at the threshold the condition needed
+csF1   = closed-set macro-F1 on the shifted condition, i.e. the number a closed-set paper would print
+
+written: <REPO_ROOT>\results\cf_threshold_transport.json
+
+NOTE: the unknown CLASS pool is the same on both sides of each comparison, which is sound here because tau is the alpha-quantile of KNOWN scores only -- no unknown window ever moves it. Report it anyway: it is the difference from the E3 protocol.

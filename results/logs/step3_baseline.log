@@ -1,0 +1,18 @@
+﻿  DATA2025v1: 103,840 windows from cache
+  DATA2025v2: 169,197 windows from cache
+  capped 24 class(es) at 2200 windows: Aeotec hub(4029->2202), Airthings Pollution(3985->2200), Apple Homepod(5719->2205), Arlec LED(9166->2200), DEEBOT N8+(4028->2200), DLink Smart Plug(29565->2202)...
+  273,037 -> 58,519 windows
+
+windows=58,519 classes=28 trainable=27 tail=1
+  tail: Tuya Air Detector(3)
+  fold 0: rf=0.976  gbm=0.978  tcn=0.969
+  fold 1: rf=0.976  gbm=0.977  tcn=0.962
+  fold 2: rf=0.976  gbm=0.978  tcn=0.962
+  fold 3: rf=0.977  gbm=0.978  tcn=0.960
+  fold 4: rf=0.976  gbm=0.977  tcn=0.965
+
+closed-set, session-grouped, all views:
+  rf     macro-F1 0.976 ▒ 0.001
+  gbm    macro-F1 0.978 ▒ 0.001
+  tcn    macro-F1 0.964 ▒ 0.003
+written: <REPO_ROOT>\results\cf_baseline.json

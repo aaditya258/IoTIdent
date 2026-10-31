@@ -1,0 +1,28 @@
+﻿  DATA2025v1: 103,840 windows from cache
+  DATA2025v2: 169,197 windows from cache
+
+windows=273,037 classes=28 trainable=27 tail=1
+  tail: Tuya Air Detector(3)
+
+DATA2025v1: 4 device types have >1 unit; held out ['78:98:e8:de:e6:62', '48:e1:e9:dd:9b:98', '40:ae:30:31:92:f3', 'a4:97:5c:b3:dd:26']
+  seen unit,   same classes : macro-F1 1.000 acc 1.000  (n=5982)
+  UNSEEN unit, same classes : macro-F1 0.720 acc 0.854  (n=13133)
+  drop attributable to the physical unit: +0.280
+  per-class recall (seen unit -> unseen unit):
+    DLink Smart Plug         1.000 -> 0.834
+    Meross Plug              1.000 -> 1.000
+    Tapo Plug                1.000 -> 0.999
+    vTech Baby monitor       1.000 -> 0.000
+
+DATA2025v2: 5 device types have >1 unit; held out ['78:98:e8:de:e4:9b', '48:e1:e9:e9:4a:3a', '74:fe:ce:1c:21:8d', 'b8:06:0d:8f:64:7e', 'a4:97:5c:b8:e7:58']
+  seen unit,   same classes : macro-F1 0.999 acc 0.999  (n=35264)
+  UNSEEN unit, same classes : macro-F1 0.775 acc 0.900  (n=32878)
+  drop attributable to the physical unit: +0.224
+  per-class recall (seen unit -> unseen unit):
+    DLink Smart Plug         1.000 -> 1.000
+    Meross Plug              0.999 -> 0.999
+    Tapo Plug                1.000 -> 1.000
+    Tuya Globe               0.991 -> 0.999
+    vTech Baby monitor       1.000 -> 0.000
+
+written: <REPO_ROOT>\results\cf_instance_heldout.json

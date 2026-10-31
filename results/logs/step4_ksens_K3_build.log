@@ -1,0 +1,38 @@
+﻿  DATA2025v1: 103,840 windows from cache
+  DATA2025v2: 169,197 windows from cache
+
+windows=273,037 classes=28 trainable=27 tail=1
+  tail: Tuya Air Detector(3)
+
+windows per network: {'DATA2025v1': 103840, 'DATA2025v2': 169197}
+handshake view available in 119,531/273,037 windows (43.8%); TLS 1.3 in 61,366; ECH in 4,398; DHCP option 55 in 33,453
+
+per class (windows / instances / networks):
+  Meross Plug                 34,040  units=6  nets=2
+  DLink Smart Plug            29,565  units=4  nets=2
+  Tapo Plug                   26,221  units=4  nets=2
+  vTech Baby monitor          19,253  units=4  nets=2
+  Tuya Camera                 15,411  units=2  nets=2
+  Ikea Hub                    15,390  units=2  nets=2
+  Dlink Camera                14,684  units=2  nets=2
+  Echo Show 5                 14,325  units=2  nets=2
+  Nest Hub                    13,514  units=2  nets=2
+  Tapo Hub                    12,954  units=2  nets=2
+  Tuya Cabinet Lights         11,425  units=1  nets=1
+  Arlec LED                    9,166  units=1  nets=1
+  Tuya Rope light              6,922  units=2  nets=2
+  Tuya Globe                   5,782  units=3  nets=1
+  Apple Homepod                5,719  units=2  nets=2
+  Aeotec hub                   4,029  units=2  nets=2
+  Ezviz Camera                 4,028  units=1  nets=1
+  DEEBOT N8+                   4,028  units=1  nets=1
+  Kasa Smart Light Strip       4,027  units=1  nets=1
+  Airthings Pollution          3,985  units=1  nets=1
+  Fire TV                      3,863  units=1  nets=1
+  Home-Assistant               3,684  units=1  nets=1
+  Yealink Phone                2,817  units=1  nets=1
+  Hikvision Cam                2,537  units=1  nets=1
+  Roku TV                      1,957  units=1  nets=1
+  Aqara Hub                    1,933  units=1  nets=1
+  Apple TV                     1,775  units=1  nets=1
+  Tuya Air Detector                3  units=1  nets=1
