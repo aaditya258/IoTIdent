@@ -1,0 +1,246 @@
+# Forbidden-feature specification — implements Section 4.3 of the proposal.
+#
+# CRITICAL DESIGN NOTE
+# --------------------
+# The proposal's §4.3 list is written in terms of concepts ("source and destination
+# MAC addresses"). The UNSW-IoTraffic protocol-parameter CSVs carry the SAME
+# semantic content under protocol-specific column names. A name-based assertion
+# that only checks for `srcMac`/`dstMac` PASSES a DHCP row whose `chaddr` column
+# contains the full MAC in hex.
+#
+# Therefore this spec is organised by SEMANTIC CATEGORY, and every category lists
+# all known column aliases across the 450 protocol-parameter files. The audit must
+# fail closed: any column not present in `allowlist` or in this file is quarantined
+# for manual classification before it can reach the training pipeline.
+#
+# ---------------------------------------------------------------------------
+# v2 — revised against the measured union schema of data/samples
+# ---------------------------------------------------------------------------
+# v1 was written from the DHCP files alone and covered 4 of the ~20 columns that
+# actually carry identity. The union schema across all 47 side/protocol
+# combinations is 86 non-common columns; every one is now classified below, so
+# `fail_closed` has something to be closed against.
+#
+# THREE FINDINGS DROVE THIS REVISION. Each is the same failure mode the note
+# above describes, and each was verified against real rows in data/samples.
+#
+# 1. The ALLOWLIST ITSELF LEAKED. `client-hello-extensions` was allowlisted as
+#    `tls_extension_type_set`. TLS extension 0x0000 is server_name, so the raw
+#    SNI sits inside the allowlisted blob as hex:
+#        AmazonEcho    -> det-ta-g7g.amazon.com, device-metrics-us.amazon.com
+#        TribySpeaker  -> ws.invoxia.io
+#        PhilipsHue    -> wsp.meethue.com
+#    §4.3 forbids raw SNI explicitly. The field is still usable, but only after
+#    the parse step defined in `allowlist_handshake`, never as raw bytes.
+#
+# 2. `server-hello-certificates` was not listed at all. v1 named the concept
+#    "certificate subject", which matches no real column. Decoded certificates
+#    yield `*.ring.com` + "Bot Home Automation, Inc." and `*.canaryis.com` +
+#    "Canary Connect, Inc." — vendor identity in plain text, i.e. very nearly the
+#    class label. It is also why the TLS response files are enormous.
+#
+# 3. SIP carries the MAC, the model and the local IP in ordinary header fields:
+#        from / to  -> "Triby-2044" <sip:...triby_18b79e022044@sip.invoxia.com>
+#        via        -> SIP/2.0/TCP 192.168.1.120:34460;branch=...
+#        user-agent -> invoxia KTP1 10.48.1 [18:B7:9E:02:20:44]
+#    and HTTP `uri` embeds it too:
+#        /ToolService/log/uploadWdLogFile/B4750EECE5A8   (BelkinCamera)
+#
+# The audit must therefore operate on CONTENT, not column names. A content scan
+# (MAC-shaped hex, RFC1918 literals, the device's own OUI, vendor tokens) must run
+# over every column that survives the name filter, including allowlisted ones.
+# The paper needs a sentence in §4.3 saying so.
+
+version: 2
+policy: fail_closed
+schema_basis: data/samples  # 47 side/protocol combinations, 86 non-common columns
+
+categories:
+
+  hardware_identifier:
+    rationale: >
+      Direct device identity. The first three bytes are the OUI, which resolves to
+      the vendor and is therefore very nearly the class label. Dropping the MAC but
+      retaining the OUI as a "vendor feature" is still leakage and is prohibited.
+      Note that `chassis id` (LLDP) is conventionally a MAC, and that MACs also
+      appear EMBEDDED in free-text fields — see `embedded_identifier_scan`.
+    columns: [srcMac, dstMac, chaddr, sname, chassis id, chassis-id-subtype]
+    derived_prohibited: [oui, vendor_prefix, mac_prefix_24]
+
+  device_name:
+    rationale: >
+      Model prefix, serial, or a UPnP/NetBIOS name that resolves to the product.
+      Observed: C100F1615229 (CanaryCamera), "Triby-2044" (TribySpeaker),
+      EIFAEFDEDJECEDDACACACACACACACAAA (HPPrinter NBNS).
+    columns: ["host name", hostname, "vendor class identifier", sname,
+              "system name", "system description", "port description",
+              "unique service name", name, "answer name", software]
+
+  local_address:
+    rationale: >
+      Local IP is a per-device constant within a capture and acts as a direct label
+      proxy. yiaddr/ciaddr carry it in hex inside DHCP payloads; SSDP `location`
+      and SIP `via` carry it as a literal inside a URL.
+    columns: [srcIp, dstIp, yiaddr, ciaddr, giaddr, "management address",
+              location, via]
+    note: >
+      dstIp is NOT deleted at ingest — it is consumed by the communication-structure
+      view (§4.7) and replaced by abstractions before training. See `abstractions`.
+
+  environment_identifier:
+    rationale: >
+      Set by the local router, DHCP server or NTP upstream, not by the device.
+      Encodes the capture environment and will inflate in-domain scores while
+      destroying cross-network transfer (E4/Exp 6). `reference id` is the NTP
+      stratum-1 upstream identifier and is environment-specific.
+    columns: [siaddr, "ip lease time", "reference id", community, "community length"]
+
+  remote_endpoint_raw:
+    rationale: >
+      Raw remote IPs, hostnames and certificate contents; §4.3 permits abstracted
+      forms only. `uri` is included because device URIs embed serials and MACs.
+    columns: [dstIp, sni, server_name, "certificate subject",
+              "server-hello-certificates", host, "http.host", server,
+              uri, from, to, subject]
+
+  application_payload:
+    rationale: Payload bytes and payload-derived identity strings.
+    columns: ["user-agent", "http.user_agent", payload, payload_bytes]
+
+  transaction_noise:
+    rationale: >
+      Randomised per transaction. Not leakage, but zero signal and a source of
+      spurious memorisation if hashed.
+    columns: [xid, "transaction id"]
+
+  zero_variance_constants:
+    rationale: >
+      Protocol constants with no observed variation (htype=1, hlen=6, hops=0).
+      Removed after the §4.1 audit confirms zero variance in-sample.
+    columns: [htype, hlen, hops, secs, opcode, flags, ethType]
+    action: drop_if_variance_zero
+
+# ---------------------------------------------------------------------------
+# Content scan — runs on every surviving column, allowlisted ones included
+# ---------------------------------------------------------------------------
+embedded_identifier_scan:
+  rationale: >
+    Finding 1 and 3 above: identity survives inside fields whose NAMES are
+    innocuous. A name-based filter alone cannot implement §4.3.
+  applies_to: all_columns_after_name_filter
+  patterns:
+    - mac_hex_12          # 18b79e022044
+    - mac_colon_or_dash   # 18:B7:9E:02:20:44
+    - rfc1918_literal     # 192.168.x.x, 10.x.x.x, 172.16-31.x.x
+    - device_own_oui
+    - vendor_token_list   # built from the class names, matched case-insensitively
+    - dns_name_literal    # anything matching a hostname shape
+  action: quarantine
+  on_hit_in_allowlisted_field: reparse_or_drop
+
+# ---------------------------------------------------------------------------
+# Permitted abstractions — derived at ingest, originals discarded immediately
+# ---------------------------------------------------------------------------
+abstractions:
+  - name: dst_service_group
+    source: [dstPort, ipProto]
+    description: Port/protocol bucketed into service classes.
+  - name: dst_asn_bucket
+    source: dstIp
+    description: >
+      Offline IP->ASN lookup, then bucketed to a coarse category. Raw IP and exact
+      ASN are both discarded; only the bucket survives.
+  - name: dst_cardinality
+    source: dstIp
+    description: Count of distinct routed destinations in the observation window.
+  - name: is_broadcast
+    source: dstIp
+    description: >
+      Broadcast/link-local segregation flag. REQUIRED — DHCP uses 255.255.255.255
+      and would otherwise pollute dst_cardinality (see CanaryCamera sample).
+
+# ---------------------------------------------------------------------------
+# Explicitly permitted protocol-view features (identifier-free)
+# ---------------------------------------------------------------------------
+allowlist_handshake:
+  - name: dhcp_parameter_request_list
+    column: "parameter request list"
+    rationale: >
+      Classic implementation fingerprint (p0f / Fingerbank family). Derived from the
+      device networking stack; carries no identity. Observed value 0301fc2a0f060c
+      decodes to DHCP options 3,1,252,42,15,6,12 in request order.
+      Measured in data/samples: five distinct values across seven devices, with
+      0103060c0f1c2a shared by AmazonEcho, BelkinCamera and WithingsBabyMonitor —
+      it groups by stack, not by device, which is exactly why it is safe.
+    encoding: ordered_option_sequence + multi_hot
+
+  - name: tls_extension_type_set
+    column: "client-hello-extensions"
+    parse_required: true
+    rationale: >
+      PERMITTED ONLY AS PARSED EXTENSION TYPES. The raw column is a TLS extensions
+      blob and extension 0x0000 is server_name — the raw SNI §4.3 forbids. Parse
+      the blob into (type, length) pairs, keep the ORDERED TYPE LIST and the
+      lengths, and discard every extension VALUE before the field leaves ingest.
+    drop_values_for_extensions: [0x0000]      # server_name / SNI
+    value_use_permitted_for:
+      - 0x000a   # supported_groups
+      - 0x000b   # ec_point_formats
+      - 0x000d   # signature_algorithms
+      - 0x0033   # key_share
+    presence_only:
+      - 0x0010   # ALPN — indicator only, never the protocol list
+      - 0x0023   # session_ticket — resumption indicator only
+
+  - name: tls_version
+    column: ["client-hello-version", "server-hello-version"]
+  - name: tls_cipher_suite_set
+    column: ["client-hello-cipher-suites", "server-hello-cipher-suite"]
+  - name: tls_supported_groups
+    derived_from: client-hello-extensions[0x000a]
+  - name: tls_alpn_present
+    derived_from: client-hello-extensions[0x0010]
+    encoding: boolean
+  - name: tls_session_resumption
+    derived_from: client-hello-extensions[0x0023]
+    encoding: boolean
+  - name: handshake_packet_length_sequence
+    source: pcap
+    rationale: >
+      Does NOT exist at flow or parameter level — the tlsattributes CSVs carry no
+      packet lengths. Requires the capture files. Supplied by
+      data/samples/pcaps/handshake/, built by src/make_pcap_sample.py.
+
+allowlist_structural:
+  rationale: >
+    Counts, protocol version numbers and mode fields. No identity, and they vary
+    with stack implementation, so they are useful and safe.
+  columns: [Qnumber, "questions count", "answer records count",
+            "authority records count", "additional records count",
+            "client mode", "client version", "server mode", "server version",
+            "origin timestamp", "transmit timestamp",
+            code, type, "status code", "response code", "response phrase",
+            "request version", "request-version", "response version",
+            "response-version", "http version", "ipp request-version",
+            version, method, "search type", "search target", "cache control",
+            "notification type", "notification sub type",
+            "stun method", command, "operation-id", "payload type", prival,
+            "max-forwards", "encryption algorithm", "encryption key length"]
+
+quarantine:
+  rationale: >
+    Capability strings. Strong implementation fingerprints in the same family as
+    the DHCP parameter request list, but they are free text and can carry vendor
+    tokens. Manually classify before use; do not admit by default.
+  columns: [accept, allow, supported, "content-type", transport]
+
+# ---------------------------------------------------------------------------
+# Upper-bound experiment only (§4.3 final paragraph, visibility profile V6)
+# ---------------------------------------------------------------------------
+endpoint_assisted_upper_bound:
+  enabled: false
+  columns: [dstIp, sni, server_name, "server-hello-certificates", host, uri]
+  note: >
+    Must never be enabled for the principal identifier-free configuration. Results
+    from this configuration are reported separately and are not comparable to the
+    main tables.
