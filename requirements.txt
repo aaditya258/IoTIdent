@@ -1,0 +1,14 @@
+﻿numpy>=1.24
+pandas>=2.0
+pyarrow>=12.0
+scikit-learn>=1.4
+scipy>=1.10
+PyYAML>=6.0
+matplotlib>=3.7
+
+# Optional. The neural arm falls back to a shallow model when torch is absent,
+# and says so at run time.
+torch>=2.0
+
+# Optional. Used only by run/probe.py for its memory check.
+psutil>=5.9

@@ -1,0 +1,34 @@
+﻿# Caches, data and build products never belong in this repository.
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Window caches rebuilt by cf_cli build (gigabytes). data/schema/ is
+# source -- the audit reads forbidden_fields.yaml -- so it is kept.
+data/*
+!data/schema/
+*.pkl
+*.pkl.part
+
+# Third-party capture data. See README for where to obtain it.
+*.parquet
+*.pcap
+*.pcapng
+
+# LaTeX build products.
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+paper/*.pdf
+
+# Run markers.
+results/logs/*.done
+
+# Local scratch.
+release/
+tmp/
+.venv/
+venv/
